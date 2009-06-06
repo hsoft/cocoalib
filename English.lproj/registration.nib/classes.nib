@@ -6,6 +6,14 @@
 	<array>
 		<dict>
 			<key>CLASS</key>
+			<string>BRSingleLineFormatter</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSFormatter</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
 			<string>FirstResponder</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>
