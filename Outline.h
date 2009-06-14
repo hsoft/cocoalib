@@ -56,6 +56,7 @@
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item;
 /* Public */
 - (OVNode *)findNodeWithName:(NSString *)aName inParentNode:(OVNode *)aParentNode;
+- (void)invalidateBuffers;
 - (void)invalidateMarkings;
 - (void)makeImagedColumnWithId:(NSString *)aId;
 - (NSArray *)selectedNodes;

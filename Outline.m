@@ -58,6 +58,19 @@
     return child;
 }
 
+- (void)invalidateBufferRecursively
+{
+	[_buffer release];
+	_buffer = nil;
+    if (_children == nil)
+        return; // nothing cached
+    for (int i=0;i<[_children count];i++)
+    {
+        OVNode *child = [_children objectAtIndex:i];
+        [child invalidateBufferRecursively];
+    }
+}
+
 - (void)invalidateMarkingRecursively:(BOOL)aRecursive
 {
     if (_children == nil)
@@ -275,10 +288,16 @@
     return nil;
 }
 
+- (void)invalidateBuffers
+{
+    [_root invalidateBufferRecursively];
+    [self setNeedsDisplay:YES];
+}
+
 - (void)invalidateMarkings
 {
     [_root invalidateMarkingRecursively:YES];
-    [self display];
+    [self setNeedsDisplay:YES];
 }
 
 - (void)makeImagedColumnWithId:(NSString *)aId;
