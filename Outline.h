@@ -21,6 +21,7 @@
 - (void)dealloc;
 
 - (OVNode *)getChildAtIndex:(int)aIndex;
+- (OVNode *)nodeAtPath:(NSIndexPath *)path;
 - (void)invalidateMarkingRecursively:(BOOL)aRecursive;
 - (BOOL)isMarked;
 - (BOOL)isMarkable;
@@ -61,6 +62,7 @@
 - (void)makeImagedColumnWithId:(NSString *)aId;
 - (NSArray *)selectedNodes;
 - (NSArray *)selectedNodePaths;
+- (void)selectNodePaths:(NSArray *)nodePaths;
 
 /* Properties */
 - (PyApp *)py;

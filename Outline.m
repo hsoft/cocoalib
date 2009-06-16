@@ -58,6 +58,18 @@
     return child;
 }
 
+- (OVNode *)nodeAtPath:(NSIndexPath *)path
+{
+	int pathLength = [self indexPath] == nil ? 0 : [[self indexPath] length];
+	if ([path length] <= pathLength)
+		return ([path compare:[self indexPath]] == NSOrderedSame) ? self : nil;
+	int childIndex = [path indexAtPosition:pathLength];
+	if (childIndex >= [self childrenCount])
+		return nil;
+	OVNode *child = [self getChildAtIndex:childIndex];
+	return [child nodeAtPath:path];
+}
+
 - (void)invalidateBufferRecursively
 {
 	[_buffer release];
@@ -333,6 +345,25 @@
     for (int i=0;i<[nodes count];i++)
         [r addObject:[Utils indexPath2Array:[[nodes objectAtIndex:i] indexPath]]];
     return r;
+}
+
+- (void)selectNodePaths:(NSArray *)nodePaths
+{
+	NSMutableIndexSet *toSelect = [NSMutableIndexSet indexSet];
+	NSEnumerator *e = [nodePaths objectEnumerator];
+	NSArray *path;
+	while (path = [e nextObject])
+	{
+		NSIndexPath *p = a2p(path);
+		OVNode *node = [_root nodeAtPath:p];
+		if (node != nil)
+			[toSelect addIndex:[self rowForItem:node]];
+	}
+	if ([toSelect count] > 0)
+	{
+		[self selectRowIndexes:toSelect byExtendingSelection:NO];
+		[self scrollRowToVisible:[toSelect firstIndex]];
+	}
 }
 
 /* Properties */
