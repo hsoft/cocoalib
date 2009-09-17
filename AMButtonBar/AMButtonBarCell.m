@@ -367,16 +367,12 @@ static float am_bezierPathFlatness = 0.2;
 	returnValue = [NSBezierPath bezierPathWithPlateInRect:innerRect];
 	[self setControlPath:returnValue];
 	
-	[am_controlPath setCachesBezierPath:YES];
-
 	// bezier path for pressed button (with gap for shadows)
 	innerRect.size.height--;
 	innerRect.origin.y++;
 
 	returnValue = [NSBezierPath bezierPathWithPlateInRect:innerRect];
 	[self setInnerControlPath:returnValue];
-
-	[am_innerControlPath setCachesBezierPath:YES];
 }
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
