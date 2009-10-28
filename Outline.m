@@ -235,16 +235,17 @@ http://www.hardcoded.net/licenses/bsd_license
     [super dealloc];
 }
 
+/* Overrides */
+- (void)reloadData
+{
+    [_root resetAllBuffers];
+    [super reloadData];
+}
+
 /* Datasource */
 - (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
     OVNode *node = item == nil ? _root : item;
-    if (node == _root)
-    {
-        // When the outline view is asking for the coult of the root item, it means that the data has been
-        // reloaded. reset all cache.
-        [node resetAllBuffers];
-    }
     return [node childrenCount];
 }
 

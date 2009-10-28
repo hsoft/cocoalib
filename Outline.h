@@ -57,6 +57,7 @@ http://www.hardcoded.net/licenses/bsd_license
     
     OVNode *_root;
 }
+- (void)doInit;
 - (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item;
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item;
 - (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item;
