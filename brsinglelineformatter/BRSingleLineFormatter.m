@@ -24,8 +24,6 @@
  */
 
 #import "BRSingleLineFormatter.h"
-#import "NSCharacterSet_Extensions.h"
-
 
 @implementation BRSingleLineFormatter
 

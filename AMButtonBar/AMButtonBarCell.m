@@ -494,9 +494,12 @@ static float am_bezierPathFlatness = 0.2;
 
 - (float)widthForFrame:(NSRect)frameRect
 {
+    if ([self title] == nil)
+        return 0.0;
 	float result;
-	NSFont *font = [self font];
-	result = ceilf([font widthOfString:[self title]]);
+    NSFont *font = [self font];
+	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil];
+    result = [[self title] sizeWithAttributes:attrs].width;
 	float radius = (frameRect.size.height/2.0)-am_backgroundInset;
 
 	float textInset;
