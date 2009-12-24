@@ -34,21 +34,20 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (NSTableColumn *)getColumn:(NSString *)columnId
 {
-    NSEnumerator *e = [columns objectEnumerator];
-    NSTableColumn *result;
-    while (result = [e nextObject])
-    {
-        if ([[result identifier] isEqualTo:columnId])
-        {
-            return result;
-        }
+    for (NSTableColumn *col in columns) {
+        if ([[col identifier] isEqualTo:columnId])
+            return col;
     }
     return nil;
 }
 
 - (BOOL)isColumnVisible:(NSString *)columnId
 {
-    return [table tableColumnWithIdentifier:columnId] != nil;
+    NSTableColumn *col = [self getColumn:columnId];
+    if (col != nil)
+        return ![col isHidden];
+    else
+        return NO;
 }
 
 - (void)linkColumn:(NSString *)columnId toUserDefault:(NSString *)udName
@@ -61,43 +60,15 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)setColumn:(NSString *)columnId visible:(BOOL)visible
 {
-    if (visible == [self isColumnVisible:columnId])
-    {
+    NSTableColumn *col = [self getColumn:columnId];
+    if (col == nil)
         return;
-    }
-    NSTableColumn *column = [self getColumn:columnId];
-    if (column == nil)
-    {
+    if ([col isHidden] == !visible)
         return;
-    }
     // Before changing the columns, we must stop edition if it is ongoing
     if ([table editedColumn] >= 0)
         [[table window] makeFirstResponder:table]; // This will abort edition
-    if (visible)
-    {
-        [table addTableColumn:column];
-        // What we want to find is the index of the column just before our column *in* the table view
-        // Because there might be some invisible columns before our column that will offset targetPosition
-        NSEnumerator *e = [columns objectEnumerator];
-        NSTableColumn *c;
-        int targetPosition = 0;
-        while ((c = [e nextObject]) && (c != column))
-        {
-            if ([[table tableColumns] containsObject:c])
-            {
-                targetPosition++;
-            }
-        }
-        int sourcePosition = [table numberOfColumns] - 1;
-        if (sourcePosition != targetPosition)
-        {
-            [table moveColumn:sourcePosition toColumn:targetPosition];
-        }
-    }
-    else
-    {
-        [table removeTableColumn:column];
-    }
+    [col setHidden:!visible];
     [table sizeToFit];
 }
 
