@@ -11,7 +11,7 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "Utils.h"
 
 @implementation RegistrationInterface
-+ (BOOL)showNagWithApp:(PyRegistrable *)app name:(NSString *)appName limitDescription:(NSString *)limitDescription
++ (BOOL)showNagWithApp:(PyRegistrable *)app
 {
     BOOL r = YES;
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -24,15 +24,14 @@ http://www.hardcoded.net/licenses/bsd_license
     [app setRegisteredCode:code andEmail:email];
     if (![app isRegistered])
     {
-        RegistrationInterface *ri = [[RegistrationInterface alloc] initWithApp:app name:appName
-            limitDescription:limitDescription];
+        RegistrationInterface *ri = [[RegistrationInterface alloc] initWithApp:app];
         r = [ri showNag];
         [ri release];
     }
     return r;
 }
 
-- (id)initWithApp:(PyRegistrable *)aApp name:(NSString *) appName limitDescription:(NSString *)limitDescription
+- (id)initWithApp:(PyRegistrable *)aApp
 {
     self = [super init];
     _nib = [[NSNib alloc] initWithNibNamed:@"registration" bundle:[NSBundle bundleForClass:[self class]]];
@@ -40,11 +39,11 @@ http://www.hardcoded.net/licenses/bsd_license
     [_nib instantiateNibWithOwner:self topLevelObjects:nil];
     [nagPanel update];
     [codePanel update];
-    [nagPanel setTitle:[NSString stringWithFormat:[nagPanel title],appName]];
-    [nagTitleTextField setStringValue:[NSString stringWithFormat:[nagTitleTextField stringValue],appName]];
-    [nagPromptTextField setStringValue:[NSString stringWithFormat:[nagPromptTextField stringValue],appName]];
-    [codePromptTextField setStringValue:[NSString stringWithFormat:[codePromptTextField stringValue],appName]];
-    [limitDescriptionTextField setStringValue:limitDescription];
+    [nagPanel setTitle:[NSString stringWithFormat:[nagPanel title],[app appName]]];
+    [nagTitleTextField setStringValue:[NSString stringWithFormat:[nagTitleTextField stringValue],[app appName]]];
+    [nagPromptTextField setStringValue:[NSString stringWithFormat:[nagPromptTextField stringValue],[app appName]]];
+    [codePromptTextField setStringValue:[NSString stringWithFormat:[codePromptTextField stringValue],[app appName]]];
+    [limitDescriptionTextField setStringValue:[app demoLimitDescription]];
     return self;
 }
 

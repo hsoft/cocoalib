@@ -37,8 +37,8 @@ http://www.hardcoded.net/licenses/bsd_license
     PyRegistrable *app;
 }
 //Show nag only if needed
-+ (BOOL)showNagWithApp:(PyRegistrable *)app name:(NSString *)appName limitDescription:(NSString *)limitDescription;
-- (id)initWithApp:(PyRegistrable *)app name:(NSString *) appName limitDescription:(NSString *)limitDescription;
++ (BOOL)showNagWithApp:(PyRegistrable *)app;
+- (id)initWithApp:(PyRegistrable *)app;
 
 - (IBAction)buyNow:(id)sender;
 - (IBAction)cancelCode:(id)sender;

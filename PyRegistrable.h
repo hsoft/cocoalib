@@ -9,6 +9,8 @@ http://www.hardcoded.net/licenses/bsd_license
 #import <Cocoa/Cocoa.h>
 
 @interface PyRegistrable: NSObject
+- (NSString *)appName;
+- (NSString *)demoLimitDescription;
 - (BOOL)isRegistered;
 - (BOOL)isCodeValid:(NSString *)code withEmail:(NSString *)email;
 - (void)setRegisteredCode:(NSString *)code andEmail:(NSString *)email;
