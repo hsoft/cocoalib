@@ -29,7 +29,7 @@ http://www.hardcoded.net/licenses/bsd_license
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     directories = [[NSMutableArray alloc] initWithArray:[ud arrayForKey:@"recentDirectories"]];
     NSFileManager *fm = [NSFileManager defaultManager];
-    for (int i=[directories count]-1;i>=0;i--)
+    for (NSInteger i=[directories count]-1;i>=0;i--)
     {
         if (![fm fileExistsAtPath:[directories objectAtIndex:i]])
             [directories removeObjectAtIndex:i];

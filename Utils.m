@@ -10,39 +10,14 @@ http://www.hardcoded.net/licenses/bsd_license
 #import <CoreServices/CoreServices.h>
 
 @implementation Utils
-+ (NSImage *)addCircleWithCount:(int)aCount ofColor:(NSColor *)aColor withTextColor:(NSColor *)aTextColor toImage:(NSImage *)aImage
-{
-    NSImage *r = [[[NSImage alloc] initWithSize:[aImage size]] autorelease];
-    NSString *s = [[NSNumber numberWithInt:aCount] stringValue];
-    int circleWidth = 18;
-    if ([s length] > 2)
-        circleWidth += (8 * ([s length] - 2));
-    NSRect circleRect = NSMakeRect(0, [r size].height - 18, circleWidth, 18);
-    [r lockFocus];
-    [aImage compositeToPoint:NSZeroPoint operation:NSCompositeCopy];
-    [aColor set];
-    NSBezierPath *bp = [NSBezierPath bezierPathWithOvalInRect:circleRect];
-    [bp fill];
-    // Set string attributes
-    NSMutableParagraphStyle *ps = [[[NSMutableParagraphStyle alloc] init] autorelease];
-    [ps setAlignment:NSCenterTextAlignment];
-    NSMutableDictionary *d = [NSMutableDictionary dictionary];
-    [d setObject:ps forKey:NSParagraphStyleAttributeName];
-    [d setObject:aTextColor forKey:NSForegroundColorAttributeName];
-    [d setObject:[NSFont boldSystemFontOfSize:12] forKey:NSFontAttributeName];
-    [s drawInRect:circleRect withAttributes:d];
-    [r unlockFocus];
-    return r;
-}
-
 //This is to pass index sets to python as arrays (so it can be converted to native lists)
 + (NSArray *)indexSet2Array:(NSIndexSet *)aIndexSet
 {
     NSMutableArray *r = [NSMutableArray array];
-    int i = [aIndexSet firstIndex];
+    NSInteger i = [aIndexSet firstIndex];
     while (i != NSNotFound)
     {
-        [r addObject:[NSNumber numberWithInt:i]];
+        [r addObject:[NSNumber numberWithInteger:i]];
         i = [aIndexSet indexGreaterThanIndex:i];
     }
     return r;

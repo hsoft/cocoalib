@@ -23,10 +23,10 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)setPy:(PyApp *)aPy;
 
 //Public
-- (id)bufferValueForRow:(int)aRow column:(int)aColumn;
+- (id)bufferValueForRow:(NSInteger)aRow column:(NSInteger)aColumn;
 
 //Delegate
-- (int)numberOfRowsInTableView:(NSTableView *)aTableView;
-- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex;
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 @end
 

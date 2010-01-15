@@ -10,5 +10,5 @@ http://www.hardcoded.net/licenses/bsd_license
 
 @interface Dialogs : NSObject
 + (void)showMessage:(NSString *)message;
-+ (int)askYesNo:(NSString *)message;
++ (NSInteger)askYesNo:(NSString *)message;
 @end

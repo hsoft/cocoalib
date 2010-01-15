@@ -81,7 +81,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 /* Public */
 
-- (id)bufferValueForRow:(int)aRow column:(int)aColumn
+- (id)bufferValueForRow:(NSInteger)aRow column:(NSInteger)aColumn
 {
     while ([_buffer count] <= aRow)
         [_buffer addObject:[NSArray array]];
@@ -98,19 +98,19 @@ http://www.hardcoded.net/licenses/bsd_license
 }
 
 /* Datasource */
-- (int)numberOfRowsInTableView:(NSTableView *)tableView
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
     if (!py)
         return 0;
-    NSNumber *tag = [NSNumber numberWithInt:[tableView tag]];
+    NSNumber *tag = [NSNumber numberWithInteger:[tableView tag]];
     return [[py getTableViewCount:tag] intValue];
 }
 
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)rowIndex
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)rowIndex
 {
     if ([(NSString *)[tableColumn identifier] isEqual:@"mark"])
         return b2n([[self markedIndexes] containsIndex:rowIndex]);
-    int colIndex = [(NSString *)[tableColumn identifier] intValue];
+    NSInteger colIndex = [(NSString *)[tableColumn identifier] integerValue];
     return [self bufferValueForRow:rowIndex column:colIndex];
 }
 

@@ -15,9 +15,9 @@ http://www.hardcoded.net/licenses/bsd_license
 //Use [Utils indexPath2Array:]
 //Data
 // 0 if none. Returning a max level saves a lot of childCountForIndexes: calls
-- (int)getOutlineViewMaxLevel:(int)tag;
+- (NSInteger)getOutlineViewMaxLevel:(NSInteger)tag;
 // returns an array of the counts of the subitems
-- (NSArray *)getOutlineView:(int)tag childCountsForPath:(NSArray *)indexPath;
+- (NSArray *)getOutlineView:(NSInteger)tag childCountsForPath:(NSArray *)indexPath;
 - (NSArray *)getOutlineView:(NSNumber *)tag valuesForIndexes:(NSArray *)indexPath;
 // 0 = unmarked, 1 = marked, 2 = unmarkable
 - (NSNumber *)getOutlineView:(NSNumber *)tag markedAtIndexes:(NSArray *)indexPath;

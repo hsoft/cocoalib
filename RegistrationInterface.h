@@ -47,5 +47,5 @@ http://www.hardcoded.net/licenses/bsd_license
 - (IBAction)tryDemo:(id)sender;
 
 - (BOOL)showNag; //YES: The code has been sucessfully submitted NO: The use wan't to try the demo.
-- (int)enterCode; //returns the modal code.
+- (NSInteger)enterCode; //returns the modal code.
 @end

@@ -10,7 +10,7 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "Utils.h"
 
 @implementation OVNode
-- (id)initWithParent:(OVNode *)aParent index:(int)aIndex childrenCount:(int)aChildrenCount
+- (id)initWithParent:(OVNode *)aParent index:(NSInteger)aIndex childrenCount:(NSInteger)aChildrenCount
 {
     self = [super init];
     _parent = aParent;
@@ -32,7 +32,7 @@ http://www.hardcoded.net/licenses/bsd_license
     if (aChildrenCount >= 0)
     {
         _children = [[NSMutableArray array] retain];
-        for (int i=0; i<aChildrenCount; i++)
+        for (NSInteger i=0; i<aChildrenCount; i++)
         {
             [_children addObject:[NSNull null]];
         }
@@ -54,7 +54,7 @@ http://www.hardcoded.net/licenses/bsd_license
     [super dealloc];
 }
 
-- (OVNode *)getChildAtIndex:(int)aIndex
+- (OVNode *)getChildAtIndex:(NSInteger)aIndex
 {
     [self childrenCount]; // initialize if needed;
     id child = [_children objectAtIndex:aIndex];
@@ -68,10 +68,10 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (OVNode *)nodeAtPath:(NSIndexPath *)path
 {
-	int pathLength = [self indexPath] == nil ? 0 : [[self indexPath] length];
+	NSInteger pathLength = [self indexPath] == nil ? 0 : [[self indexPath] length];
 	if ([path length] <= pathLength)
 		return ([path compare:[self indexPath]] == NSOrderedSame) ? self : nil;
-	int childIndex = [path indexAtPosition:pathLength];
+	NSInteger childIndex = [path indexAtPosition:pathLength];
 	if (childIndex >= [self childrenCount])
 		return nil;
 	OVNode *child = [self getChildAtIndex:childIndex];
@@ -84,7 +84,7 @@ http://www.hardcoded.net/licenses/bsd_license
 	_buffer = nil;
     if (_children == nil)
         return; // nothing cached
-    for (int i=0;i<[_children count];i++)
+    for (NSInteger i=0;i<[_children count];i++)
     {
         OVNode *child = [_children objectAtIndex:i];
         [child invalidateBufferRecursively];
@@ -98,7 +98,7 @@ http://www.hardcoded.net/licenses/bsd_license
     _marked = -1;
     if (aRecursive)
     {
-        for (int i=0;i<[_children count];i++)
+        for (NSInteger i=0;i<[_children count];i++)
         {
             OVNode *child = [_children objectAtIndex:i];
             [child invalidateMarkingRecursively:YES];
@@ -119,17 +119,17 @@ http://www.hardcoded.net/licenses/bsd_license
     return _marked != 2;
 }
 
-- (int)level
+- (NSInteger)level
 {
     return _level;
 }
 
-- (int)maxLevel
+- (NSInteger)maxLevel
 {
     return _maxLevel;
 }
 
-- (int)childrenCount
+- (NSInteger)childrenCount
 {
     if (_children == nil)
     {
@@ -140,9 +140,9 @@ http://www.hardcoded.net/licenses/bsd_license
         if ((_maxLevel == 0) || ([self level] < _maxLevel)) // max level not reached
         {
             NSArray *counts = [_py getOutlineView:_ovTag childCountsForPath:p2a([self indexPath])];
-            for (int i=0; i<[counts count]; i++)
+            for (NSInteger i=0; i<[counts count]; i++)
             {
-                int childCount = n2i([counts objectAtIndex:i]);
+                NSInteger childCount = n2i([counts objectAtIndex:i]);
                 OVNode *child = [[[OVNode alloc] initWithParent:self index:i childrenCount:childCount] autorelease];
                 [_children addObject:child];
             }
@@ -162,7 +162,7 @@ http://www.hardcoded.net/licenses/bsd_license
 }
 
 - (OVNode *)parent {return _parent;}
-- (int)index {return _index;}
+- (NSInteger)index {return _index;}
 - (NSIndexPath *)indexPath {return _indexPath;}
 - (NSArray *)buffer {return _buffer;}
 - (void)setBuffer:(NSArray *)aBuffer 
@@ -172,12 +172,12 @@ http://www.hardcoded.net/licenses/bsd_license
     [self invalidateMarkingRecursively:NO];
 }
 
-- (int)tag
+- (NSInteger)tag
 {
     return _ovTag;
 }
 
-- (void)setTag:(int)aNewTag
+- (void)setTag:(NSInteger)aNewTag
 {
     if (aNewTag == _ovTag)
         return;
@@ -243,7 +243,7 @@ http://www.hardcoded.net/licenses/bsd_license
 }
 
 /* Datasource */
-- (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
     OVNode *node = item == nil ? _root : item;
     return [node childrenCount];
@@ -256,13 +256,13 @@ http://www.hardcoded.net/licenses/bsd_license
     OVNode *node = item;
     if ([colId isEqual:@"mark"])
         return b2n([node isMarked]);
-    int colIndex = [colId intValue];
+    NSInteger colIndex = [colId intValue];
     if ([node buffer] == nil)
         [node setBuffer:[py getOutlineView:tag valuesForIndexes:p2a([node indexPath])]];
     return [[node buffer] objectAtIndex:colIndex];
 }
 
-- (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item
+- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
 {
     OVNode *parent = item == nil ? _root : item;
     return [parent getChildAtIndex:index];
@@ -278,7 +278,7 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void) textDidEndEditing: (NSNotification *) notification
 {
     NSDictionary *userInfo = [notification userInfo];
-    int textMovement = [[userInfo valueForKey:@"NSTextMovement"] intValue];
+    NSInteger textMovement = [[userInfo valueForKey:@"NSTextMovement"] intValue];
     if (textMovement == NSReturnTextMovement || textMovement == NSTabTextMovement || textMovement == NSBacktabTextMovement) 
     {
         NSMutableDictionary *newInfo;
@@ -297,9 +297,9 @@ http://www.hardcoded.net/licenses/bsd_license
 - (OVNode *)findNodeWithName:(NSString *)aName inParentNode:(OVNode *)aParentNode
 {
     //This looks into the value of the column 0
-    int childCount = [self outlineView:self numberOfChildrenOfItem:aParentNode];
+    NSInteger childCount = [self outlineView:self numberOfChildrenOfItem:aParentNode];
     NSTableColumn *searchColumn = [[self tableColumns] objectAtIndex:0];
-    for (int i=0;i<childCount;i++)
+    for (NSInteger i=0;i<childCount;i++)
     {
         OVNode *r = [self outlineView:self child:i ofItem:aParentNode];
         NSString *s = [self outlineView:self objectValueForTableColumn:searchColumn byItem:r];
@@ -337,7 +337,7 @@ http://www.hardcoded.net/licenses/bsd_license
     //Returns an array of OVNode
     NSMutableArray *r = [NSMutableArray array];
     NSIndexSet *indexes = [self selectedRowIndexes];
-    int i = [indexes firstIndex];
+    NSInteger i = [indexes firstIndex];
     while (i != NSNotFound)
     {
         [r addObject:[self itemAtRow:i]];
@@ -351,7 +351,7 @@ http://www.hardcoded.net/licenses/bsd_license
     //Returns an array of NSArray (NOT NSIndexPath, this class sucks for python).
     NSMutableArray *r = [NSMutableArray array];
     NSArray *nodes = [self selectedNodes];
-    for (int i=0;i<[nodes count];i++)
+    for (NSInteger i=0;i<[nodes count];i++)
         [r addObject:[Utils indexPath2Array:[[nodes objectAtIndex:i] indexPath]]];
     return r;
 }
@@ -384,156 +384,12 @@ http://www.hardcoded.net/licenses/bsd_license
     [self reloadData];
 }
 
-- (void)setTag:(int)aNewTag
+- (void)setTag:(NSInteger)aNewTag
 {
     if (aNewTag == [self tag])
         return;
     [super setTag:aNewTag];
     [_root setTag:aNewTag];
     [self reloadData];
-}
-@end
-
-@implementation DraggableOutlineView
-/* Initialization */
-- (void)doInit
-{
-    [super doInit];
-    _draggedNodes = nil;
-    [self registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
-}
-
-- (void)dealloc
-{
-    [self setDraggedNodes:nil];
-    [super dealloc];
-}
-
-/* Drag source/dest protocol */
-- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
-{
-    return NSDragOperationGeneric;
-}
-
-- (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)isLocal
-{
-    return NSDragOperationGeneric;
-}
-
-- (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)sender
-{
-    return NSDragOperationGeneric;
-}
-
-- (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
-{
-    DraggableOutlineView *source = [sender draggingSource];
-    NSPoint mouseLoc = [self convertPoint:[sender draggingLocation] fromView:nil];
-    OVNode *destNode = [self itemAtRow:[self rowAtPoint:mouseLoc]];
-    BOOL r = [self performDragFrom:source withNodes:[source draggedNodes] to:destNode];
-    [source selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
-    [self reloadData];
-    if (source != self)
-        [source reloadData];
-    if ([self delegate] != nil)
-        if ([[self delegate] respondsToSelector:@selector(outlineView:draggedFrom:)])
-            [[self delegate] outlineView:self draggedFrom:source];
-    return r;
-}
-
-/* Events override */
-- (void)mouseDown:(NSEvent *)aEvent
-{
-    NSDate *limitDate = [NSDate date];
-    /*For the first 0.3 seconds, we don't want a MouseDragged event to initiate
-    a drag because makes the drag initiation too sensible. */
-    limitDate = [limitDate addTimeInterval:0.3];
-    NSEvent *mouseUp = [[self window] nextEventMatchingMask:NSLeftMouseUpMask untilDate:limitDate inMode:NSDefaultRunLoopMode dequeue:NO];
-    if (mouseUp) //it's a click, do not go any further
-        [super mouseDown:aEvent];
-    else
-    {
-        /*For the next second, we look for what the next event will be, if it's
-        a drag event, we drag, if it's a mouse_up event, we click, and if it's
-        None, we drag.*/
-        limitDate = [limitDate addTimeInterval:1.1];
-        NSEvent *nextEvent = [[self window] nextEventMatchingMask:(NSLeftMouseUpMask|NSLeftMouseDraggedMask) 
-            untilDate:limitDate inMode:NSDefaultRunLoopMode dequeue:NO];
-        if (nextEvent && ([nextEvent type] == NSLeftMouseUp))
-            [super mouseDown:aEvent];
-        else
-            [self mouseDragged:aEvent];
-    }
-}
-
-- (void)mouseDragged:(NSEvent *)aEvent
-{
-    NSPasteboard *pb = [NSPasteboard pasteboardWithName:NSDragPboard];
-    NSPoint mouseLoc = [self convertPoint:[aEvent locationInWindow] fromView:nil];
-    NSPoint dragAt = NSMakePoint(mouseLoc.x - 26,mouseLoc.y + 8);
-    int draggedRow = [self rowAtPoint:mouseLoc];
-    if (draggedRow < 0)
-        return; //Trying to drag empty space
-    NSArray *draggedNodes = [self determineDraggedNodesForDraggedRow:draggedRow];
-    if ((!draggedNodes) || (![draggedNodes count]))
-        return;
-    NSImage *baseDragImage = [self determineDragImage];
-    if (!baseDragImage)
-        return;
-    NSColor *circleColor = [self determineDragCircleColor];
-    [self setDraggedNodes:draggedNodes];
-    NSImage *ghostedImage = [[[NSImage alloc] initWithSize:[baseDragImage size]] autorelease];
-    [ghostedImage lockFocus];
-    [baseDragImage compositeToPoint:NSZeroPoint operation:NSCompositeCopy fraction:0.7];
-    [ghostedImage unlockFocus];
-    NSImage *cellImage = [Utils addCircleWithCount:[draggedNodes count] ofColor:circleColor 
-        withTextColor:[NSColor whiteColor] toImage:ghostedImage];
-    [pb declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:self];
-    [pb setString:@"" forType:NSStringPboardType];
-    [self dragImage:cellImage at:dragAt offset:NSZeroSize event:aEvent pasteboard:pb source:self slideBack:YES];
-}
-
-/* Virtual */
-- (NSColor *)determineDragCircleColor
-{
-    //Override this to have the little circle ofer the drag image something else than red.
-    //This is called just after determineDragImage.
-    return [NSColor redColor];
-}
-
-- (NSArray *)determineDraggedNodesForDraggedRow:(int)aDraggedRow
-{
-    //Override this and return a list of the nodes that should be dragged.
-    // It is called on mouseDragged.
-    //If the result is empty or nil, no drag will take place.
-    if ([[self selectedRowIndexes] containsIndex:aDraggedRow])
-        //Drag everything that is selected
-        return [self selectedNodes];
-    else
-        //Drag only what the mouse is currently pointing.
-        return [NSArray arrayWithObject:[self itemAtRow:aDraggedRow]];
-}
-
-- (NSImage *)determineDragImage
-{
-    //Override this and return a base drag image. This image will be ghosted and a little circle with
-    //the number of dragged nodes will be added to it.
-    //If the result is nil, no drag will take place.
-    return nil;
-}
-- (BOOL)performDragFrom:(DraggableOutlineView *)aSource withNodes:(NSArray *)aSourceNodes to:(OVNode *)aDestNode
-{
-    //Override this and perform the drag operation. Return YES if the drag operation could be performed.
-    return NO;
-}
-
-
-/* Properties */
-- (NSArray *)draggedNodes {return _draggedNodes;}
-- (void)setDraggedNodes:(NSArray *)aNodes
-{
-    if (_draggedNodes)
-        [_draggedNodes release];
-    _draggedNodes = [aNodes retain];
 }
 @end

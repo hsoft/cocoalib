@@ -115,7 +115,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (BOOL)showNag
 {
-    int r;
+    NSInteger r;
     while (YES)
     {
         r = [NSApp runModalForWindow:nagPanel];
@@ -130,7 +130,7 @@ http://www.hardcoded.net/licenses/bsd_license
     }
 }
 
-- (int)enterCode
+- (NSInteger)enterCode
 {
     return [NSApp runModalForWindow:codePanel];
 }

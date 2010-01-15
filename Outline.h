@@ -13,37 +13,37 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     NSArray *_buffer;
     NSMutableArray *_children;
-    int _index;
+    NSInteger _index;
     NSIndexPath *_indexPath;
-    int _marked;
-    int _ovTag;
-    int _level;
-    int _maxLevel;
+    NSInteger _marked;
+    NSInteger _ovTag;
+    NSInteger _level;
+    NSInteger _maxLevel;
     OVNode *_parent;
     PyApp *_py;
 }
 // childrenCount == -1 if you don't know
-- (id)initWithParent:(OVNode *)aParent index:(int)aIndex childrenCount:(int)aChildrenCount;
+- (id)initWithParent:(OVNode *)aParent index:(NSInteger)aIndex childrenCount:(NSInteger)aChildrenCount;
 - (void)dealloc;
 
-- (OVNode *)getChildAtIndex:(int)aIndex;
+- (OVNode *)getChildAtIndex:(NSInteger)aIndex;
 - (OVNode *)nodeAtPath:(NSIndexPath *)path;
 - (void)invalidateMarkingRecursively:(BOOL)aRecursive;
 - (BOOL)isMarked;
 - (BOOL)isMarkable;
-- (int)level;
-- (int)maxLevel;
-- (int)childrenCount;
+- (NSInteger)level;
+- (NSInteger)maxLevel;
+- (NSInteger)childrenCount;
 - (void)resetAllBuffers;
 
 - (NSArray *)buffer;
 - (void)setBuffer:(NSArray *)aBuffer;
-- (int)index;
+- (NSInteger)index;
 - (NSIndexPath *)indexPath;
 - (OVNode *)parent;
 
-- (int)tag;
-- (void)setTag:(int)aNewTag;
+- (NSInteger)tag;
+- (void)setTag:(NSInteger)aNewTag;
 - (PyApp *)py;
 - (void)setPy:(PyApp *)aNewPy;
 @end
@@ -58,9 +58,9 @@ http://www.hardcoded.net/licenses/bsd_license
     OVNode *_root;
 }
 - (void)doInit;
-- (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item;
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item;
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item;
-- (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item;
+- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item;
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item;
 /* Public */
 - (OVNode *)findNodeWithName:(NSString *)aName inParentNode:(OVNode *)aParentNode;
@@ -74,23 +74,4 @@ http://www.hardcoded.net/licenses/bsd_license
 /* Properties */
 - (PyApp *)py;
 - (void)setPy:(PyApp *)aPy;
-@end
-
-@interface DraggableOutlineView : OutlineView
-{
-    NSArray *_draggedNodes;
-}
-/* Virtual */
-- (NSColor *)determineDragCircleColor;
-- (NSArray *)determineDraggedNodesForDraggedRow:(int)aDraggedRow;
-- (NSImage *)determineDragImage;
-- (BOOL)performDragFrom:(DraggableOutlineView *)aSource withNodes:(NSArray *)aSourceNodes to:(OVNode *)aDestNode;
-
-/* Properties */
-- (NSArray *)draggedNodes;
-- (void)setDraggedNodes:(NSArray *)aNodes;
-@end
-
-@protocol DraggableOutlineViewDelegate
-- (void)outlineView:(DraggableOutlineView *)aDest draggedFrom:(DraggableOutlineView *)aDest;
 @end
