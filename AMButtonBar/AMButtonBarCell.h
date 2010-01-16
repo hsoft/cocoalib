@@ -4,6 +4,7 @@
 //
 //  Created by Andreas on Sat 2007-02-10
 //  Copyright (c) 2004 Andreas Mayer. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 
 //	different representations:
 // - off
@@ -64,7 +65,7 @@
 - (BOOL)mouseDown;
 - (void)setMouseDown:(BOOL)newMouseDown;
 
-- (float)widthForFrame:(NSRect)frameRect;
+- (CGFloat)widthForFrame:(NSRect)frameRect;
 
 
 @end

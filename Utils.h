@@ -13,8 +13,13 @@ http://www.hardcoded.net/licenses/bsd_license
 #define n2i(n) [n integerValue]
 #define b2n(b) [NSNumber numberWithBool:b]
 #define n2b(n) [n boolValue]
-#define f2n(f) [NSNumber numberWithFloat:f]
-#define n2f(n) [n floatValue]
+#if __LP64__
+    #define f2n(d) [NSNumber numberWithDouble:d]
+    #define n2f(n) [n doubleValue]
+#else
+    #define f2n(f) [NSNumber numberWithFloat:f]
+    #define n2f(n) [n floatValue]
+#endif
 #define p2a(p) [Utils indexPath2Array:p]
 #define a2p(a) [Utils array2IndexPath:a]
 

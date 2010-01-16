@@ -4,6 +4,7 @@
 //
 //  Created by Andreas on Sat Jan 17 2004.
 //  Copyright (c) 2004 Andreas Mayer. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 //
 
 #import "NSColor_AMAdditions.h"
@@ -47,10 +48,10 @@
 - (NSColor *)accentColor
 {
 	NSColor *result;
-	float hue;
-	float saturation;
-	float brightness;
-	float alpha;
+	CGFloat hue;
+	CGFloat saturation;
+	CGFloat brightness;
+	CGFloat alpha;
 	[[self  colorUsingColorSpaceName:NSDeviceRGBColorSpace] getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
 	if (brightness <= 0.3) {
 		[[[NSColor colorForControlTint:[NSColor currentControlTint]] colorUsingColorSpaceName:NSDeviceRGBColorSpace] getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
@@ -69,10 +70,10 @@
 - (NSColor *)lighterColor
 {
 	NSColor *result;
-	float hue;
-	float saturation;
-	float brightness;
-	float alpha;
+	CGFloat hue;
+	CGFloat saturation;
+	CGFloat brightness;
+	CGFloat alpha;
 	[[self  colorUsingColorSpaceName:NSDeviceRGBColorSpace] getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
 	if (brightness > 0.4) {
 		if (brightness < 0.90) {
@@ -94,7 +95,7 @@
 
 - (NSColor *)disabledColor
 {
-	int alpha = [self alphaComponent];
+	NSInteger alpha = [self alphaComponent];
 	return [self colorWithAlphaComponent:alpha*0.5];
 }
 

@@ -4,6 +4,7 @@
 //
 //  Created by John Pannell on 2/17/06.
 //  Copyright 2006 Positive Spin Media. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 //
 
 #import "PSMMetalTabStyle.h"
@@ -53,12 +54,12 @@
 #pragma mark -
 #pragma mark Control Specific
 
-- (float)leftMarginForTabBarControl
+- (CGFloat)leftMarginForTabBarControl
 {
     return 10.0f;
 }
 
-- (float)rightMarginForTabBarControl
+- (CGFloat)rightMarginForTabBarControl
 {
     return 24.0f;
 }
@@ -155,7 +156,7 @@
         return NSZeroRect;
     }
     
-    float countWidth = [[self attributedObjectCountValueForTabCell:cell] size].width;
+    CGFloat countWidth = [[self attributedObjectCountValueForTabCell:cell] size].width;
     countWidth += (2 * kPSMMetalObjectCounterRadius - 6.0);
     if(countWidth < kPSMMetalCounterMinWidth)
         countWidth = kPSMMetalCounterMinWidth;
@@ -172,9 +173,9 @@
 }
 
 
-- (float)minimumWidthOfTabCell:(PSMTabBarCell *)cell
+- (CGFloat)minimumWidthOfTabCell:(PSMTabBarCell *)cell
 {
-    float resultWidth = 0.0;
+    CGFloat resultWidth = 0.0;
     
     // left margin
     resultWidth = MARGIN_X;
@@ -204,9 +205,9 @@
     return ceil(resultWidth);
 }
 
-- (float)desiredWidthOfTabCell:(PSMTabBarCell *)cell
+- (CGFloat)desiredWidthOfTabCell:(PSMTabBarCell *)cell
 {
-    float resultWidth = 0.0;
+    CGFloat resultWidth = 0.0;
     
     // left margin
     resultWidth = MARGIN_X;
@@ -247,7 +248,7 @@
     [nf setLocalizesFormat:YES];
     [nf setFormat:@"0"];
     [nf setHasThousandSeparators:YES];
-    NSString *contents = [nf stringFromNumber:[NSNumber numberWithInt:[cell count]]];
+    NSString *contents = [nf stringFromNumber:[NSNumber numberWithInteger:[cell count]]];
     attrStr = [[[NSMutableAttributedString alloc] initWithString:contents] autorelease];
     NSRange range = NSMakeRange(0, [contents length]);
     
@@ -272,7 +273,7 @@
     // Add shadow attribute
     NSShadow* shadow;
     shadow = [[[NSShadow alloc] init] autorelease];
-    float shadowAlpha;
+    CGFloat shadowAlpha;
     if(([cell state] == NSOnState) || [cell isHighlighted]){
         shadowAlpha = 0.8;
     } else {
@@ -365,7 +366,7 @@
 - (void)drawInteriorWithTabCell:(PSMTabBarCell *)cell inView:(NSView*)controlView
 {
     NSRect cellFrame = [cell frame];
-    float labelPosition = cellFrame.origin.x + MARGIN_X;
+    CGFloat labelPosition = cellFrame.origin.x + MARGIN_X;
     
     // close button
     if ([cell hasCloseButton] && ![cell isCloseButtonSuppressed]) {

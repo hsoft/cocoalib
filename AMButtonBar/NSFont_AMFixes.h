@@ -4,6 +4,7 @@
 //
 //  Created by Andreas on 10.02.07.
 //  Copyright 2007 Andreas Mayer. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 //
 
 #import <Cocoa/Cocoa.h>
@@ -11,7 +12,7 @@
 
 @interface NSFont (AMFixes)
 
-- (float)fixed_xHeight;
-- (float)fixed_capHeight;
+- (CGFloat)fixed_xHeight;
+- (CGFloat)fixed_capHeight;
 
 @end

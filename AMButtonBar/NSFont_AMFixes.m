@@ -4,6 +4,7 @@
 //
 //  Created by Andreas on 10.02.07.
 //  Copyright 2007 Andreas Mayer. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 //
 
 #import "NSFont_AMFixes.h"
@@ -11,11 +12,11 @@
 
 @implementation NSFont (AMFixes)
 
-- (float)fixed_xHeight
+- (CGFloat)fixed_xHeight
 {
-	float result = [self xHeight];
+	CGFloat result = [self xHeight];
 	if ([[self familyName] isEqualToString:[[NSFont systemFontOfSize:[NSFont systemFontSize]] familyName]]) {
-		switch (lrintf([self pointSize])) {
+		switch (lrintf((int)[self pointSize])) {
 			case 9: // mini
 			{
 				result = 5.655762;
@@ -36,12 +37,12 @@
 	return result;
 }
 
-- (float)fixed_capHeight
+- (CGFloat)fixed_capHeight
 {
-	float result = [self capHeight];
+	CGFloat result = [self capHeight];
 	if (result == [self ascender]) { // instead of checking for appkit version
 		if ([[self familyName] isEqualToString:[[NSFont systemFontOfSize:[NSFont systemFontSize]] familyName]]) { // we do have this info for the system font only 
-			switch (lrintf([self pointSize])) {
+			switch (lrintf((int)[self pointSize])) {
 				case 9: // mini
 				{
 					result = 7.00;

@@ -3,7 +3,8 @@
 //  --------------------
 //
 //  Created by Keith Blount on 30/04/2006.
-//  Copyright 2006 __MyCompanyName__. All rights reserved.
+//  Copyright 2006 Keith Blount. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 //
 
 #import <Cocoa/Cocoa.h>
@@ -18,7 +19,7 @@
     NSImage *_addTabButtonPressedImage;
     NSImage *_addTabButtonRolloverImage;
 	
-    float leftMargin;
+    CGFloat leftMargin;
 }
-- (void)setLeftMarginForTabBarControl:(float)margin;
+- (void)setLeftMarginForTabBarControl:(CGFloat)margin;
 @end

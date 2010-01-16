@@ -4,6 +4,7 @@
 //
 //  Created by Andreas on Sun Jan 18 2004.
 //  Copyright (c) 2004 Andreas Mayer. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 //
 //	2005-05-23	Andreas Mayer
 //	- added -appendBezierPathWithTriangleInRect:orientation: and +bezierPathWithTriangleInRect:orientation:
@@ -25,9 +26,9 @@ typedef enum {
 - (void)appendBezierPathWithPlateInRect:(NSRect)rect;
 
 
-+ (NSBezierPath *)bezierPathWithRoundedRect:(NSRect)rect cornerRadius:(float)radius;
++ (NSBezierPath *)bezierPathWithRoundedRect:(NSRect)rect cornerRadius:(CGFloat)radius;
 
-- (void)appendBezierPathWithRoundedRect:(NSRect)rect cornerRadius:(float)radius;
+- (void)appendBezierPathWithRoundedRect:(NSRect)rect cornerRadius:(CGFloat)radius;
 
 
 + (NSBezierPath *)bezierPathWithTriangleInRect:(NSRect)aRect orientation:(AMTriangleOrientation)orientation;

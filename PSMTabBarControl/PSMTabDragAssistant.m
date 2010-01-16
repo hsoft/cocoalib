@@ -4,6 +4,7 @@
 //
 //  Created by John Pannell on 4/10/06.
 //  Copyright 2006 Positive Spin Media. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 //
 
 #import "PSMTabDragAssistant.h"
@@ -94,12 +95,12 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
     _draggedCell = cell;
 }
 
-- (int)draggedCellIndex
+- (NSInteger)draggedCellIndex
 {
     return _draggedCellIndex;
 }
 
-- (void)setDraggedCellIndex:(int)value
+- (void)setDraggedCellIndex:(NSInteger)value
 {
     _draggedCellIndex = value;
 }
@@ -150,12 +151,12 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
     
     NSRect cellFrame = [cell frame];
     // list of widths for animation
-    int i;
-    float cellWidth = cellFrame.size.width;
+    NSInteger i;
+    CGFloat cellWidth = cellFrame.size.width;
     for(i = 0; i < kPSMTabDragAnimationSteps; i++){
-        int thisWidth;
-        thisWidth = (int)(cellWidth - ((cellWidth/2.0) + ((sin((PI/2.0) + ((float)i/(float)kPSMTabDragAnimationSteps)*PI) * cellWidth) / 2.0)));
-        [_sineCurveWidths addObject:[NSNumber numberWithInt:thisWidth]];
+        NSInteger thisWidth;
+        thisWidth = (NSInteger)(cellWidth - ((cellWidth/2.0) + ((sin((PI/2.0) + ((CGFloat)i/(CGFloat)kPSMTabDragAnimationSteps)*PI) * cellWidth) / 2.0)));
+        [_sineCurveWidths addObject:[NSNumber numberWithInteger:thisWidth]];
     }
     
     // hide UI buttons
@@ -175,7 +176,7 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
     [cell setHighlighted:NO];
     NSSize offset = NSZeroSize;
     [pboard declareTypes:[NSArray arrayWithObjects:@"PSMTabBarControlItemPBType", nil] owner: nil];
-    [pboard setString:[[NSNumber numberWithInt:[[control cells] indexOfObject:cell]] stringValue] forType:@"PSMTabBarControlItemPBType"];
+    [pboard setString:[[NSNumber numberWithInteger:[[control cells] indexOfObject:cell]] stringValue] forType:@"PSMTabBarControlItemPBType"];
     _animationTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0/30.0) target:self selector:@selector(animateDrag:) userInfo:nil repeats:YES];
     [control dragImage:dragImage at:cellFrame.origin offset:offset event:event pasteboard:pboard source:control slideBack:YES];
 }
@@ -263,8 +264,8 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
 {
     BOOL removeFlag = YES;
     NSMutableArray *cells = [control cells];
-    int i, cellCount = [cells count];
-    float xPos = [[control style] leftMarginForTabBarControl];
+    NSInteger i, cellCount = [cells count];
+    CGFloat xPos = [[control style] leftMarginForTabBarControl];
     
     // identify target cell
     // mouse at beginning of tabs
@@ -318,7 +319,7 @@ layout:
                         removeFlag = NO;
                     }
                 }
-                newRect.size.width = [[_sineCurveWidths objectAtIndex:[cell currentStep]] intValue];
+                newRect.size.width = [[_sineCurveWidths objectAtIndex:[cell currentStep]] integerValue];
             }
         } else {
             break;
@@ -343,7 +344,7 @@ layout:
     // called upon first drag - must distribute placeholders
     [self distributePlaceholdersInTabBar:control];
     // replace dragged cell with a placeholder, and clean up surrounding cells
-    int cellIndex = [[control cells] indexOfObject:cell];
+    NSInteger cellIndex = [[control cells] indexOfObject:cell];
     PSMTabBarCell *pc = [[[PSMTabBarCell alloc] initPlaceholderWithFrame:[[self draggedCell] frame] expanded:YES inControlView:control] autorelease];
     [[control cells] replaceObjectAtIndex:cellIndex withObject:pc];
     [[control cells] removeObjectAtIndex:(cellIndex + 1)];
@@ -353,7 +354,7 @@ layout:
 
 - (void)distributePlaceholdersInTabBar:(PSMTabBarControl *)control
 {
-    int i, numVisibleTabs = [control numberOfVisibleTabs];
+    NSInteger i, numVisibleTabs = [control numberOfVisibleTabs];
     for(i = 0; i < numVisibleTabs; i++){
         PSMTabBarCell *pc = [[[PSMTabBarCell alloc] initPlaceholderWithFrame:[[self draggedCell] frame] expanded:NO inControlView:control] autorelease]; 
         [[control cells] insertObject:pc atIndex:(2 * i)];
@@ -370,7 +371,7 @@ layout:
 
 - (void)removeAllPlaceholdersFromTabBar:(PSMTabBarControl *)control
 {
-    int i, cellCount = [[control cells] count];
+    NSInteger i, cellCount = [[control cells] count];
     for(i = (cellCount - 1); i >= 0; i--){
         PSMTabBarCell *cell = [[control cells] objectAtIndex:i];
         if([cell isPlaceholder])
@@ -391,7 +392,7 @@ layout:
         [aCoder encodeObject:_destinationTabBar forKey:@"destinationTabBar"];
         [aCoder encodeObject:_participatingTabBars forKey:@"participatingTabBars"];
         [aCoder encodeObject:_draggedCell forKey:@"draggedCell"];
-        [aCoder encodeInt:_draggedCellIndex forKey:@"draggedCellIndex"];
+        [aCoder encodeInteger:_draggedCellIndex forKey:@"draggedCellIndex"];
         [aCoder encodeBool:_isDragging forKey:@"isDragging"];
         [aCoder encodeObject:_animationTimer forKey:@"animationTimer"];
         [aCoder encodeObject:_sineCurveWidths forKey:@"sineCurveWidths"];

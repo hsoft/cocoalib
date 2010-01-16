@@ -4,14 +4,13 @@
 //
 //  Created by Andreas on 09.02.07.
 //  Copyright 2007 Andreas Mayer. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 //
 
 #import <Cocoa/Cocoa.h>
 
-@class CTGradient;
 @class AMButtonBarItem;
 @class AMButtonBarCell;
-
 
 extern NSString *const AMButtonBarSelectionDidChangeNotification;
 
@@ -24,7 +23,7 @@ extern NSString *const AMButtonBarSelectionDidChangeNotification;
 @interface AMButtonBar : NSView {
 	id delegate;
 	BOOL delegateRespondsToSelectionDidChange;
-	CTGradient *backgroundGradient;
+	NSGradient *backgroundGradient;
 	NSColor *baselineSeparatorColor;
 	BOOL showsBaselineSeparator;
 	BOOL allowsMultipleSelection;
@@ -60,15 +59,12 @@ extern NSString *const AMButtonBarSelectionDidChangeNotification;
 - (BOOL)allowsMultipleSelection;
 - (void)setAllowsMultipleSelection:(BOOL)value;
 
-- (CTGradient *)backgroundGradient;
-- (void)setBackgroundGradient:(CTGradient *)value;
+- (NSGradient *)backgroundGradient;
+- (void)setBackgroundGradient:(NSGradient *)value;
 
 - (NSColor *)baselineSeparatorColor;
 - (void)setBaselineSeparatorColor:(NSColor *)value;
 
 - (BOOL)showsBaselineSeparator;
 - (void)setShowsBaselineSeparator:(BOOL)value;
-
-
-
 @end

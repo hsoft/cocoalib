@@ -4,14 +4,13 @@
 //
 //  Created by Andreas on 10.02.07.
 //  Copyright 2007 Andreas Mayer. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 //
 
 #import "NSShadow_AMAdditions.h"
 
-
 @implementation NSShadow (AMAdditions)
-
-+ (NSShadow *)shadowWithColor:(NSColor *)color blurRadius:(float)radius offset:(NSSize)offset
++ (NSShadow *)shadowWithColor:(NSColor *)color blurRadius:(CGFloat)radius offset:(NSSize)offset
 {
 	NSShadow *result = [[[NSShadow alloc] init] autorelease];
 	[result setShadowOffset:offset];
@@ -19,6 +18,4 @@
 	[result setShadowColor:color];
 	return result;
 }
-
-
 @end

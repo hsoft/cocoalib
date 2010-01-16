@@ -4,6 +4,7 @@
 //
 //  Created by John Pannell on 2/17/06.
 //  Copyright 2006 Positive Spin Media. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 //
 
 /* 
@@ -19,8 +20,8 @@ Protocol to be observed by all style delegate objects.  These objects handle the
 - (NSString *)name;
 
 // control specific parameters
-- (float)leftMarginForTabBarControl;
-- (float)rightMarginForTabBarControl;
+- (CGFloat)leftMarginForTabBarControl;
+- (CGFloat)rightMarginForTabBarControl;
 
 // add tab button
 - (NSImage *)addTabButtonImage;
@@ -32,8 +33,8 @@ Protocol to be observed by all style delegate objects.  These objects handle the
 - (NSRect)iconRectForTabCell:(PSMTabBarCell *)cell;
 - (NSRect)indicatorRectForTabCell:(PSMTabBarCell *)cell;
 - (NSRect)objectCounterRectForTabCell:(PSMTabBarCell *)cell;
-- (float)minimumWidthOfTabCell:(PSMTabBarCell *)cell;
-- (float)desiredWidthOfTabCell:(PSMTabBarCell *)cell;
+- (CGFloat)minimumWidthOfTabCell:(PSMTabBarCell *)cell;
+- (CGFloat)desiredWidthOfTabCell:(PSMTabBarCell *)cell;
 
 // cell values
 - (NSAttributedString *)attributedObjectCountValueForTabCell:(PSMTabBarCell *)cell;

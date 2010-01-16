@@ -21,11 +21,11 @@
     if ([sourceImage isValid])
     {
         NSSize imageSize = [sourceImage size];
-        float width  = imageSize.width;
-        float height = imageSize.height;
+        CGFloat width  = imageSize.width;
+        CGFloat height = imageSize.height;
 
-        float targetWidth  = targetSize.width;
-        float targetHeight = targetSize.height;
+        CGFloat targetWidth  = targetSize.width;
+        CGFloat targetHeight = targetSize.height;
 
         // scaleFactor will be the fraction that we'll
         // use to adjust the size. For example, if we shrink
@@ -38,9 +38,9 @@
         // the image actually is drawn at, once we take into
         // account the ideal of maintaining proportions
 
-        float scaleFactor  = 0.0;                
-        float scaledWidth  = targetWidth;
-        float scaledHeight = targetHeight;
+        CGFloat scaleFactor  = 0.0;                
+        CGFloat scaledWidth  = targetWidth;
+        CGFloat scaledHeight = targetHeight;
 
         NSPoint thumbnailPoint = NSMakePoint(0,0);
 
@@ -56,8 +56,8 @@
             // intended width. Otherwise, we'll use the
             // height.
             
-            float widthFactor  = targetWidth / width;
-            float heightFactor = targetHeight / height;
+            CGFloat widthFactor  = targetWidth / width;
+            CGFloat heightFactor = targetHeight / height;
             
             if ( widthFactor < heightFactor )
                 scaleFactor = widthFactor;

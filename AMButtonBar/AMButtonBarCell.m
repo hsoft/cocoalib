@@ -4,6 +4,7 @@
 //
 //  Created by Andreas on 2007-02-10
 //  Copyright (c) 2004 Andreas Mayer. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 
 // assumes a flipped control
 
@@ -15,15 +16,15 @@
 #import "NSShadow_AMAdditions.h"
 #import </usr/include/math.h>
 
-static float am_backgroundInset = 1.5;
-static float am_textGap = 1.5;
-static float am_bezierPathFlatness = 0.2;
+static CGFloat am_backgroundInset = 1.5;
+static CGFloat am_textGap = 1.5;
+static CGFloat am_bezierPathFlatness = 0.2;
 
 
 @interface AMButtonBarCell (Private)
 - (NSSize)lastFrameSize;
 - (void)setLastFrameSize:(NSSize)newLastFrameSize;
-- (float)calculateTextInsetForRadius:(float)radius font:(NSFont *)font;
+- (CGFloat)calculateTextInsetForRadius:(CGFloat)radius font:(NSFont *)font;
 - (void)finishInit;
 @end
 
@@ -344,19 +345,19 @@ static float am_bezierPathFlatness = 0.2;
 	NSDictionary *stringAttributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil];
 	NSAttributedString *string = [[[NSAttributedString alloc] initWithString:[self title] attributes:stringAttributes] autorelease];
 	NSSize size = [string size];
-	float radius = (am_lastFrameSize.height/2.0)-am_backgroundInset;
+	CGFloat radius = (am_lastFrameSize.height/2.0)-am_backgroundInset;
 	// calculate minimum text inset
-	float textInset;
-	float h = [font ascender]/2.0;
-	textInset = ceilf(radius-sqrt(radius*radius - h*h));
+	CGFloat textInset;
+	CGFloat h = [font ascender]/2.0;
+	textInset = ceilf((float)(radius-sqrt(radius*radius - h*h)));
 	am_textRect = NSInsetRect(am_textRect, textInset+am_textGap, 0);
 	am_textRect.size.height = size.height;
-	float capHeight = [font fixed_capHeight];
-	float ascender = [font ascender];
-	float yOrigin = innerRect.origin.y;
-	float offset = ((innerRect.size.height-am_textRect.size.height) / 2.0);
+	CGFloat capHeight = [font fixed_capHeight];
+	CGFloat ascender = [font ascender];
+	CGFloat yOrigin = innerRect.origin.y;
+	CGFloat offset = ((innerRect.size.height-am_textRect.size.height) / 2.0);
 	offset += (ascender-capHeight)-((am_textRect.size.height-capHeight) / 2.0);
-	yOrigin += floorf(offset);
+	yOrigin += floorf((float)offset);
 	am_textRect.origin.y = yOrigin;
 
 	// bezier path for button background
@@ -457,7 +458,7 @@ static float am_bezierPathFlatness = 0.2;
 		[NSGraphicsContext saveGraphicsState];
 		// adjust clipping rectangle
 		NSRect halfFrame = cellFrame;
-		halfFrame.size.height =  floorf(halfFrame.size.height/2);
+		halfFrame.size.height =  floorf((float)(halfFrame.size.height/2));
 		[NSBezierPath clipRect:halfFrame];
 		[upperShadow set];
 		[path fill];
@@ -469,7 +470,7 @@ static float am_bezierPathFlatness = 0.2;
 		[path fill];
 		[NSGraphicsContext restoreGraphicsState];
 		// draw middle part without shadow
-		halfFrame.origin.y = cellFrame.origin.y+floorf(cellFrame.size.height/2)-1;
+		halfFrame.origin.y = cellFrame.origin.y+floorf((float)(cellFrame.size.height/2))-1;
 		halfFrame.size.height = 2;
 		[NSBezierPath clipRect:halfFrame];
 		[path fill];
@@ -492,23 +493,23 @@ static float am_bezierPathFlatness = 0.2;
 	[NSGraphicsContext restoreGraphicsState];
 }
 
-- (float)widthForFrame:(NSRect)frameRect
+- (CGFloat)widthForFrame:(NSRect)frameRect
 {
     if ([self title] == nil)
         return 0.0;
-	float result;
+	CGFloat result;
     NSFont *font = [self font];
 	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil];
     result = [[self title] sizeWithAttributes:attrs].width;
-	float radius = (frameRect.size.height/2.0)-am_backgroundInset;
+	CGFloat radius = (frameRect.size.height/2.0)-am_backgroundInset;
 
-	float textInset;
-	float h = [font ascender]/2.0;
-	textInset = ceilf(radius-sqrt(radius*radius - h*h)+(radius*0.25));
+	CGFloat textInset;
+	CGFloat h = [font ascender]/2.0;
+	textInset = ceilf((float)(radius-sqrt(radius*radius - h*h)+(radius*0.25)));
 
 	result += 2.0*(textInset+am_backgroundInset+am_textGap);
 	if ([self menu] != nil) {
-		float arrowWidth = [NSFont systemFontSizeForControlSize:[self controlSize]]*0.6;
+		CGFloat arrowWidth = [NSFont systemFontSizeForControlSize:[self controlSize]]*0.6;
 		result += (radius*0.5)+arrowWidth;
 	}
 	return result;

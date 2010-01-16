@@ -4,18 +4,17 @@
 //
 //	Created by Andreas on 09.02.07.
 //	Copyright 2007 Andreas Mayer. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 //
 
 #import "AMButtonBar.h"
 #import "AMButtonBarItem.h"
 #import "AMButtonBarCell.h"
-#import "CTGradient.h"
-#import "CTGradient_AMButtonBar.h"
+#import "NSGradient_AMButtonBar.h"
 
-
-float const AM_START_GAP_WIDTH = 8.0;
-float const AM_BUTTON_GAP_WIDTH = 2.0;
-float const AM_BUTTON_HEIGHT = 20.0;
+CGFloat const AM_START_GAP_WIDTH = 8.0;
+CGFloat const AM_BUTTON_GAP_WIDTH = 2.0;
+CGFloat const AM_BUTTON_HEIGHT = 20.0;
 
 NSString *const AMButtonBarSelectionDidChangeNotification = @"AMButtonBarSelectionDidChangeNotification";
 
@@ -90,8 +89,7 @@ NSString *const AMButtonBarSelectionDidChangeNotification = @"AMButtonBarSelecti
 - (void)am_commonInit
 {
 	[self setItems:[[[NSMutableArray alloc] init] autorelease]];
-	[self setBackgroundGradient:[CTGradient grayButtonBarGradient]];
-		//[self setBackgroundGradient:[CTGradient blueButtonBarGradient]];
+	[self setBackgroundGradient:[NSGradient grayButtonBarGradient]];
 	[self setBaselineSeparatorColor:[NSColor grayColor]];
 	[self setShowsBaselineSeparator:YES];
 	[self setButtonCell:[[[AMButtonBarCell alloc] init] autorelease]];
@@ -149,12 +147,12 @@ NSString *const AMButtonBarSelectionDidChangeNotification = @"AMButtonBarSelecti
 	}
 }
 
-- (CTGradient *)backgroundGradient
+- (NSGradient *)backgroundGradient
 {
 	return backgroundGradient;
 }
 
-- (void)setBackgroundGradient:(CTGradient *)value
+- (void)setBackgroundGradient:(NSGradient *)value
 {
 	if (backgroundGradient != value) {
 		id old = backgroundGradient;
@@ -570,11 +568,11 @@ NSString *const AMButtonBarSelectionDidChangeNotification = @"AMButtonBarSelecti
 			gradientBounds.origin.y += 1;
 		}
 	}
-	float angle = 90;
+	CGFloat angle = 90;
 	if ([self isFlipped]) {
 		angle = -90;
 	}
-	[[self backgroundGradient] fillRect:gradientBounds angle:angle];
+	[[self backgroundGradient] drawInRect:gradientBounds angle:angle];
 	if ([self showsBaselineSeparator]) {
 		[[self baselineSeparatorColor] set];
 		NSFrameRect(baselineRect);

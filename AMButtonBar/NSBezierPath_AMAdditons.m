@@ -4,6 +4,7 @@
 //
 //  Created by Andreas on Sun Jan 18 2004.
 //  Copyright (c) 2004 Andreas Mayer. All rights reserved.
+//  Copyright 2010 Hardcoded Software (http://www.hardcoded.net)
 //
 //	2005-05-23	Andreas Mayer
 //	- added -appendBezierPathWithTriangleInRect:orientation: and +bezierPathWithTriangleInRect:orientation:
@@ -24,9 +25,9 @@
 - (void)appendBezierPathWithPlateInRect:(NSRect)rect
 {
 	if (rect.size.height > 0) {
-		float xoff = rect.origin.x;
-		float yoff = rect.origin.y;
-		float radius = rect.size.height/2.0;
+		CGFloat xoff = rect.origin.x;
+		CGFloat yoff = rect.origin.y;
+		CGFloat radius = rect.size.height/2.0;
 		NSPoint point4 = NSMakePoint(xoff+radius, yoff+rect.size.height);
 		NSPoint center1 = NSMakePoint(xoff+radius, yoff+radius);
 		NSPoint center2 = NSMakePoint(xoff+rect.size.width-radius, yoff+radius);
@@ -38,18 +39,18 @@
 }
 
 
-+ (NSBezierPath *)bezierPathWithRoundedRect:(NSRect)rect cornerRadius:(float)radius
++ (NSBezierPath *)bezierPathWithRoundedRect:(NSRect)rect cornerRadius:(CGFloat)radius
 {
 	NSBezierPath *result = [[[NSBezierPath alloc] init] autorelease];
 	[result appendBezierPathWithRoundedRect:rect cornerRadius:radius];
 	return result;
 }
 
-- (void)appendBezierPathWithRoundedRect:(NSRect)rect cornerRadius:(float)radius
+- (void)appendBezierPathWithRoundedRect:(NSRect)rect cornerRadius:(CGFloat)radius
 {
 	if (rect.size.height > 0) {
-		float xoff = rect.origin.x;
-		float yoff = rect.origin.y;
+		CGFloat xoff = rect.origin.x;
+		CGFloat yoff = rect.origin.y;
 		NSPoint startpoint = NSMakePoint(xoff, yoff+radius);
 		NSPoint center1 = NSMakePoint(xoff+radius, yoff+radius);
 		NSPoint center2 = NSMakePoint(xoff+rect.size.width-radius, yoff+radius);
