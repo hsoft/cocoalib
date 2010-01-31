@@ -75,8 +75,8 @@ http://www.hardcoded.net/licenses/bsd_license
     [submitButton setEnabled:NO];
     NSString *code = [codeTextField stringValue];
     NSString *email = [emailTextField stringValue];
-    BOOL r = [app isCodeValid:code withEmail:email];
-    if (r)
+    NSString *errorMsg = [app isCodeValid:code withEmail:email];
+    if (errorMsg == nil)
     {
         [codePanel close];
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -88,21 +88,7 @@ http://www.hardcoded.net/licenses/bsd_license
     }
     else
     {
-        NSString *msg = @"Your code is invalid. Make sure that you wrote the good code. Also make sure that the e-mail you gave is the same as the e-mail you used for your purchase.";
-        // Try with other app ids to see if the user just used a wrong key
-        // NSArray *appIds = [NSArray arrayWithObjects:i2n(DUPEGURU_ID),i2n(DUPEGURU_ME_ID),i2n(DUPEGURU_PE_ID),i2n(MUSICGURU_ID),i2n(MONEYGURU_ID),nil];
-        // NSArray *appNames = [NSArray arrayWithObjects:DUPEGURU_NAME,DUPEGURU_ME_NAME,DUPEGURU_PE_NAME,MUSICGURU_NAME,MONEYGURU_NAME,nil];
-        // for (int i=0; i<[appIds count];i++)
-        // {
-        //     int appId = n2i([appIds objectAtIndex:i]);
-        //     if ([isa isCode:code validForEmail:email appId:appId])
-        //     {
-        //         NSString *appName = [appNames objectAtIndex:i];
-        //         msg = [NSString stringWithFormat:@"This code is a %@ code. You can download it at http://www.hardcoded.net",appName];
-        //         break;
-        //     }
-        // }
-        [Dialogs showMessage:msg];
+        [Dialogs showMessage:errorMsg];
     }
     [submitButton setEnabled:YES];
 }
