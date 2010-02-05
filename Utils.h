@@ -32,4 +32,6 @@ http://www.hardcoded.net/licenses/bsd_license
 + (NSIndexPath *)string2IndexPath:(NSString *)aString;
 + (BOOL)isTiger;
 + (BOOL)isLeopard;
++ (void)setPluginName:(NSString *)aPluginName;
++ (Class)classNamed:(NSString *)className;
 @end

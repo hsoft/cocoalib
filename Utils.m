@@ -98,4 +98,17 @@ http://www.hardcoded.net/licenses/bsd_license
     return (major == 10) && (minor == 5);
 }
 
+static NSString *pluginName;
++ (void)setPluginName:(NSString *)aPluginName
+{
+    [pluginName release];
+    pluginName = [aPluginName retain];
+}
+
++ (Class)classNamed:(NSString *)className
+{
+    NSString *pluginPath = [[NSBundle mainBundle] pathForResource:pluginName ofType:@"plugin"];
+    NSBundle *pluginBundle = [NSBundle bundleWithPath:pluginPath];
+    return [pluginBundle classNamed:className];
+}
 @end
