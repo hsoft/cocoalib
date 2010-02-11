@@ -18,6 +18,10 @@ extern NSString *JobCancelledNotification;
 - (NSNumber *)getJobProgress;
 - (NSString *)getJobDesc;
 - (void)cancelJob;
+/* This might seem a little stupid, but it's the simplest way to get a **sync** call to the python
+side after a job. Because the python-side app is not an NSObject subclass, it can't listen to
+notifications. */
+- (void)jobCompleted:(id)jobid;
 @end
 
 @interface ProgressController : NSWindowController

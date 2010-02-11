@@ -95,6 +95,7 @@ static ProgressController *_mainPC = nil;
     else
     {
         [self hide];
+        [_worker jobCompleted:_jobId];
         [[NSNotificationCenter defaultCenter] postNotificationName:JobCompletedNotification object:self];
     }
 }
