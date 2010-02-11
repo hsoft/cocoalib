@@ -42,7 +42,9 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)refresh
 {
     [itemData removeAllObjects];
+    [outlineView setDelegate:nil];
     [outlineView reloadData];
+    [outlineView setDelegate:self];
     [self updateSelection];
 }
 
