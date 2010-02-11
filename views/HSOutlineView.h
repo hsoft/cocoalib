@@ -17,6 +17,8 @@ http://www.hardcoded.net/licenses/bsd_license
 }
 - (NSIndexPath *)selectedPath;
 - (void)selectPath:(NSIndexPath *)aPath;
+- (NSArray *)selectedNodePaths;
+- (void)selectNodePaths:(NSArray *)nodePaths;
 - (void)stopEditing;
 - (void)updateSelection;
 - (void)ignoreEventForEdition:(NSEvent *)aEvent;

@@ -99,6 +99,31 @@ http://www.hardcoded.net/licenses/bsd_license
     [self selectRowIndexes:selected byExtendingSelection:NO];
 }
 
+- (NSArray *)selectedNodePaths
+{
+    NSMutableArray *r = [NSMutableArray array];
+    NSIndexSet *indexes = [self selectedRowIndexes];
+    NSInteger i = [indexes firstIndex];
+    while (i != NSNotFound) {
+        NSIndexPath *path = [self itemAtRow:i];
+        [r addObject:path];
+        i = [indexes indexGreaterThanIndex:i];
+    }
+    return r;
+}
+
+- (void)selectNodePaths:(NSArray *)aPaths
+{
+	NSMutableIndexSet *toSelect = [NSMutableIndexSet indexSet];
+	for (NSIndexPath *path in aPaths) {
+		[toSelect addIndex:[self rowForItem:path]];
+	}
+	if ([toSelect count] > 0) {
+		[self selectRowIndexes:toSelect byExtendingSelection:NO];
+		[self scrollRowToVisible:[toSelect firstIndex]];
+	}
+}
+
 - (void)stopEditing
 {
     // If we're not editing, don't do anything because we don't want to steal focus from another view
