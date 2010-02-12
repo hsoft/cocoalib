@@ -64,12 +64,17 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (NSIndexPath *)selectedIndexPath
 {
-    return a2p([[self selectedIndexPaths] objectAtIndex:0]);
+    return [[self selectedIndexPaths] objectAtIndex:0];
 }
 
 - (NSArray *)selectedIndexPaths
 {
-    return [[self py] selectedPaths];
+    NSArray *arrayPaths = [[self py] selectedPaths];
+    NSMutableArray *result = [NSMutableArray array];
+    for (NSArray *arrayPath in arrayPaths) {
+        [result addObject:a2p(arrayPath)];
+    }
+    return result;
 }
 
 - (void)startEditing
