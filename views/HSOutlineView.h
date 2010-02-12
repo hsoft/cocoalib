@@ -25,7 +25,7 @@ http://www.hardcoded.net/licenses/bsd_license
 @end
 
 @interface NSObject(HSOutlineViewDelegate)
-- (NSIndexPath *)selectedIndexPath;
+- (NSArray *)selectedIndexPaths; /* array of NSIndexPath* */
 - (void)outlineViewDidEndEditing:(HSOutlineView *)outlineView;
 - (void)outlineViewCancelsEdition:(HSOutlineView *)outlineView;
 - (void)outlineViewWasDoubleClicked:(HSOutlineView *)outlineView;

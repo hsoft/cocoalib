@@ -15,6 +15,8 @@ http://www.hardcoded.net/licenses/hs_license
 - (void)saveEdits;
 - (NSArray *)selectedPath;
 - (void)setSelectedPath:(NSArray *)path;
+- (NSArray *)selectedPaths;
+- (void)setSelectedPaths:(NSArray *)paths;
 - (id)property:(NSString *)property valueAtPath:(NSArray *)path;
 - (void)setProperty:(NSString *)property value:(id)value atPath:(NSArray *)path;
 @end

@@ -38,6 +38,20 @@ http://www.hardcoded.net/licenses/bsd_license
     return (PyOutline *)py;
 }
 
+/* Private */
+- (void)setPySelection
+{
+    NSMutableArray *paths = [NSMutableArray array];
+    NSIndexSet *indexes = [outlineView selectedRowIndexes];
+    NSInteger i = [indexes firstIndex];
+    while (i != NSNotFound) {
+        NSIndexPath *path = [outlineView itemAtRow:i];
+        [paths addObject:p2a(path)];
+        i = [indexes indexGreaterThanIndex:i];
+    }
+    [[self py] setSelectedPaths:paths];
+}
+
 /* Public */
 - (void)refresh
 {
@@ -50,7 +64,12 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (NSIndexPath *)selectedIndexPath
 {
-    return a2p([[self py] selectedPath]);
+    return a2p([[self selectedIndexPaths] objectAtIndex:0]);
+}
+
+- (NSArray *)selectedIndexPaths
+{
+    return [[self py] selectedPaths];
 }
 
 - (void)startEditing
@@ -178,18 +197,12 @@ never called
 */
 - (void)outlineViewSelectionIsChanging:(NSNotification *)notification
 {
-    NSArray *indexPath = p2a([outlineView itemAtRow:[outlineView selectedRow]]);
-    if (![indexPath isEqualTo:[[self py] selectedPath]]) {
-        [[self py] setSelectedPath:indexPath];
-    }
+    [self setPySelection];
 }
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification
 {
-    NSArray *indexPath = p2a([outlineView itemAtRow:[outlineView selectedRow]]);
-    if (![indexPath isEqualTo:[[self py] selectedPath]]) {
-        [[self py] setSelectedPath:indexPath];
-    }
+    [self setPySelection];
 }
 
 - (void)outlineViewDidEndEditing:(HSOutlineView *)outlineView

@@ -137,8 +137,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)updateSelection
 {
-    NSIndexPath *selected = [[self delegate] selectedIndexPath];
-    [self selectPath:selected];
+    [self selectNodePaths:[[self delegate] selectedIndexPaths]];
 }
 
 /* BIG HACK ZONE
