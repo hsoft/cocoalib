@@ -88,15 +88,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)selectPath:(NSIndexPath *)aPath
 {
-    // Make sure the path to aPath is expanded.
-    NSIndexPath *path = [NSIndexPath indexPathWithIndex:[aPath indexAtPosition:0]];
-    for (int i=1; i<[aPath length]; i++)
-    {
-        [self expandItem:path];
-        path = [path indexPathByAddingIndex:[aPath indexAtPosition:i]];
-    }
-    NSIndexSet *selected = [NSIndexSet indexSetWithIndex:[self rowForItem:aPath]];
-    [self selectRowIndexes:selected byExtendingSelection:NO];
+    [self selectNodePaths:[NSArray arrayWithObject:aPath]];
 }
 
 - (NSArray *)selectedNodePaths
@@ -115,6 +107,16 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)selectNodePaths:(NSArray *)aPaths
 {
 	NSMutableIndexSet *toSelect = [NSMutableIndexSet indexSet];
+	/* To ensure that we have correct row indexes, we must first expand all paths, and *then* select
+	 * row indexes.
+	**/
+	for (NSIndexPath *path in aPaths) {
+	    NSIndexPath *tmppath = [NSIndexPath indexPathWithIndex:[path indexAtPosition:0]];
+	    for (int i=1; i<[path length]; i++) {
+            [self expandItem:tmppath];
+            tmppath = [tmppath indexPathByAddingIndex:[path indexAtPosition:i]];
+        }
+	}
 	for (NSIndexPath *path in aPaths) {
 		[toSelect addIndex:[self rowForItem:path]];
 	}
