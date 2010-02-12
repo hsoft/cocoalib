@@ -118,8 +118,14 @@ http://www.hardcoded.net/licenses/bsd_license
 	for (NSIndexPath *path in aPaths) {
 		[toSelect addIndex:[self rowForItem:path]];
 	}
+	/* The first selectRowIndexes call is there because it seems that if an index is exclusively
+	 * part of the current selection, even if byExtendingSelection is NO, the selection will not
+	 * be reduced if it needs to be. For example, if row (1, 2, 3) is selected and that toSelect
+	 * only contains (2), the selection would stay at (1, 2, 3). Weird...
+	**/
+    [self selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
+	[self selectRowIndexes:toSelect byExtendingSelection:NO];
 	if ([toSelect count] > 0) {
-		[self selectRowIndexes:toSelect byExtendingSelection:NO];
 		[self scrollRowToVisible:[toSelect firstIndex]];
 	}
 }
