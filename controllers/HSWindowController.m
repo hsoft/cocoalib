@@ -22,6 +22,7 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     // see HSGUIController
     if ([self retainCount] == 2) {
+        NSLog(@"%@ free", [[self class] description]);
         [py free];
     }
     [super release];
@@ -32,6 +33,11 @@ http://www.hardcoded.net/licenses/bsd_license
     // NSLog([NSString stringWithFormat:@"%@ dealloc",[[self class] description]]);
     [py release];
     [super dealloc];
+}
+
+- (PyGUI *)py
+{
+    return py;
 }
 
 - (void)connect

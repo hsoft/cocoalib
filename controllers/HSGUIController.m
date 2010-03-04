@@ -30,8 +30,8 @@ http://www.hardcoded.net/licenses/bsd_license
     // we must break our reference in the py side (free). We also can't call retainCount after
     // [super release], because we might be freed. If the retainCount is 2 before the release, it
     // will be 1 afterwards.
-    if ([self retainCount] == 2)
-    {
+    if ([self retainCount] == 2) {
+        NSLog(@"%@ free", [[self class] description]);
         [py free];
     }
     [super release];
