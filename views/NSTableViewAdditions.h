@@ -19,5 +19,6 @@ http://www.hardcoded.net/licenses/bsd_license
 - (BOOL)tableViewHadDeletePressed:(NSTableView *)tableView;
 - (BOOL)tableViewHadReturnPressed:(NSTableView *)tableView;
 - (BOOL)tableViewHadSpacePressed:(NSTableView *)tableView;
+- (BOOL)tableView:(NSTableView *)tableView receivedKeyEvent:(NSEvent *)aEvent;
 - (BOOL)shouldEditTableColumn:(NSTableColumn *)column row:(NSInteger)row;
 @end

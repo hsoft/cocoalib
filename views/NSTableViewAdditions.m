@@ -38,7 +38,12 @@ http://www.hardcoded.net/licenses/bsd_license
 - (BOOL)dispatchSpecialKeys:(NSEvent *)event
 {
     id delegate = [self delegate];
-    bool stopChain = NO;
+    if ([delegate respondsToSelector:@selector(tableView:receivedKeyEvent:)]) {
+        if ([delegate tableView:self receivedKeyEvent:event]) {
+            return YES;
+        }
+    }
+    BOOL stopChain = NO;
     if ([event isDeleteOrBackspace] && [delegate respondsToSelector:@selector(tableViewHadDeletePressed:)])
 	{
         stopChain = [delegate tableViewHadDeletePressed:self];
