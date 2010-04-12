@@ -22,7 +22,7 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     // see HSGUIController
     if ([self retainCount] == 2) {
-        NSLog(@"%@ free", [[self class] description]);
+        // NSLog(@"%@ free", [[self class] description]);
         [py free];
     }
     [super release];
