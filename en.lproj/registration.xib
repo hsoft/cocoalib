@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10C540</string>
-		<string key="IBDocument.InterfaceBuilderVersion">740</string>
-		<string key="IBDocument.AppKitVersion">1038.25</string>
-		<string key="IBDocument.HIToolboxVersion">458.00</string>
+		<string key="IBDocument.SystemVersion">10F569</string>
+		<string key="IBDocument.InterfaceBuilderVersion">762</string>
+		<string key="IBDocument.AppKitVersion">1038.29</string>
+		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">740</string>
+			<string key="NS.object.0">762</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -336,7 +336,7 @@
 						<object class="NSButton" id="460130324">
 							<reference key="NSNextResponder" ref="421546683"/>
 							<int key="NSvFlags">256</int>
-							<string key="NSFrame">{{316, 13}, {85, 32}}</string>
+							<string key="NSFrame">{{301, 13}, {100, 32}}</string>
 							<reference key="NSSuperview" ref="421546683"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="36160038">
@@ -357,7 +357,7 @@
 						<object class="NSButton" id="762227133">
 							<reference key="NSNextResponder" ref="421546683"/>
 							<int key="NSvFlags">256</int>
-							<string key="NSFrame">{{231, 13}, {85, 32}}</string>
+							<string key="NSFrame">{{201, 13}, {100, 32}}</string>
 							<reference key="NSSuperview" ref="421546683"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="1022586596">
@@ -378,7 +378,7 @@
 						<object class="NSButton" id="928445284">
 							<reference key="NSNextResponder" ref="421546683"/>
 							<int key="NSvFlags">256</int>
-							<string key="NSFrame">{{14, 15}, {95, 32}}</string>
+							<string key="NSFrame">{{14, 13}, {100, 32}}</string>
 							<reference key="NSSuperview" ref="421546683"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="613730806">
@@ -1164,6 +1164,7 @@
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
+		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
 			<integer value="1050" key="NS.object.0"/>
