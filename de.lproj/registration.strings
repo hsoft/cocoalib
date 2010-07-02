@@ -18,7 +18,7 @@
 "122.title" = "Code eingeben";
 
 /* Class = "NSButtonCell"; title = "Try Demo"; ObjectID = "123"; */
-"123.title" = "Testversion ausprobieren";
+"123.title" = "Ausprobieren";
 
 /* Class = "NSTextFieldCell"; title = "Enter your code"; ObjectID = "125"; */
 "125.title" = "Geben sie ihren Code ein";
