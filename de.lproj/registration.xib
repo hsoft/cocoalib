@@ -42,7 +42,7 @@
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{115, 459}, {385, 187}}</string>
 				<int key="NSWTFlags">1350041600</int>
-				<string key="NSWindowTitle">Testversion von %@</string>
+				<string key="NSWindowTitle">%@ Testversion</string>
 				<object class="NSMutableString" key="NSWindowClass">
 					<characters key="NS.bytes">NSPanel</characters>
 				</object>
@@ -65,7 +65,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="737325435">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">272629760</int>
-								<string key="NSContents">Version démo de %@</string>
+								<string key="NSContents">%@ Testversion</string>
 								<object class="NSFont" key="NSSupport" id="327754695">
 									<string key="NSName">LucidaGrande</string>
 									<double key="NSSize">13</double>
@@ -142,7 +142,7 @@
 							<object class="NSButtonCell" key="NSCell" id="1065079130">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">Entrer code</string>
+								<string key="NSContents">Code eingeben</string>
 								<reference key="NSSupport" ref="327754695"/>
 								<reference key="NSControlView" ref="1056584109"/>
 								<int key="NSButtonFlags">-2038284033</int>
@@ -165,7 +165,7 @@
 							<object class="NSButtonCell" key="NSCell" id="389171582">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">Probeversion testen</string>
+								<string key="NSContents">Testversion ausprobieren</string>
 								<reference key="NSSupport" ref="327754695"/>
 								<reference key="NSControlView" ref="497527399"/>
 								<int key="NSButtonFlags">-2038284033</int>
@@ -260,7 +260,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="239940989">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">272629760</int>
-								<string key="NSContents">Code:</string>
+								<string key="NSContents">Registrierungs-Code:</string>
 								<reference key="NSSupport" ref="26"/>
 								<reference key="NSControlView" ref="6857021"/>
 								<reference key="NSBackgroundColor" ref="22908545"/>
@@ -339,7 +339,7 @@
 							<object class="NSButtonCell" key="NSCell" id="36160038">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">beantragen</string>
+								<string key="NSContents">Aktivieren</string>
 								<reference key="NSSupport" ref="327754695"/>
 								<reference key="NSControlView" ref="460130324"/>
 								<int key="NSButtonFlags">-2038284033</int>
@@ -360,7 +360,7 @@
 							<object class="NSButtonCell" key="NSCell" id="1022586596">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">Annuler</string>
+								<string key="NSContents">Abbrechen</string>
 								<reference key="NSSupport" ref="327754695"/>
 								<reference key="NSControlView" ref="762227133"/>
 								<int key="NSButtonFlags">-2038284033</int>
@@ -381,7 +381,7 @@
 							<object class="NSButtonCell" key="NSCell" id="613730806">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">Acheter</string>
+								<string key="NSContents">Jetzt kaufen</string>
 								<reference key="NSSupport" ref="327754695"/>
 								<reference key="NSControlView" ref="928445284"/>
 								<int key="NSButtonFlags">-2038284033</int>
