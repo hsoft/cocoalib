@@ -1,0 +1,42 @@
+
+/* Class = "NSPanel"; title = "%@ Demo Version"; ObjectID = "7"; */
+"7.title" = "%@ Testversion";
+
+/* Class = "NSPanel"; title = "Enter Code"; ObjectID = "19"; */
+"19.title" = "Code eingeben";
+
+/* Class = "NSTextFieldCell"; title = "%@ Demo Version"; ObjectID = "119"; */
+"119.title" = "%@ Testversion";
+
+/* Class = "NSTextFieldCell"; title = "You are currently running a demo version of %@. This version has limited functionalities, and you need to buy it to have access to these functionalities."; ObjectID = "120"; */
+"120.title" = "Sie nutzen die Testversion von %@. Diese Version enthält nur eine beschränkte Anzahl an Funktionen. Sie müssen moneyGuru kaufen, um sämtliche Funktionen nutzen zu können.";
+
+/* Class = "NSButtonCell"; title = "Buy Now"; ObjectID = "121"; */
+"121.title" = "Jetzt kaufen";
+
+/* Class = "NSButtonCell"; title = "Enter Code"; ObjectID = "122"; */
+"122.title" = "Code eingeben";
+
+/* Class = "NSButtonCell"; title = "Try Demo"; ObjectID = "123"; */
+"123.title" = "Ausprobieren";
+
+/* Class = "NSTextFieldCell"; title = "Enter your code"; ObjectID = "125"; */
+"125.title" = "Geben sie ihren Code ein";
+
+/* Class = "NSTextFieldCell"; title = "Type the code you received when you bought %@, as well as the e-mail used as a reference for the purchase."; ObjectID = "126"; */
+"126.title" = "Geben sie hier sowohl ihren erworbenen %@ Code als auch ihre zum Kauf genutzte Emailadresse ein.";
+
+/* Class = "NSTextFieldCell"; title = "Registration Code:"; ObjectID = "127"; */
+"127.title" = "Registrierungs-Code:";
+
+/* Class = "NSTextFieldCell"; title = "Reference e-mail:"; ObjectID = "128"; */
+"128.title" = "Email:";
+
+/* Class = "NSButtonCell"; title = "Submit"; ObjectID = "131"; */
+"131.title" = "Aktivieren";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "132"; */
+"132.title" = "Abbrechen";
+
+/* Class = "NSButtonCell"; title = "Buy Now"; ObjectID = "133"; */
+"133.title" = "Jetzt kaufen";

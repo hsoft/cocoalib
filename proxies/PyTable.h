@@ -13,7 +13,6 @@ http://www.hardcoded.net/licenses/hs_license
 - (void)add;
 - (void)cancelEdits;
 - (BOOL)canEditColumn:(NSString *)column atRow:(NSInteger)row;
-- (void)changeColumns:(NSArray *)columns;
 - (void)deleteSelectedRows;
 - (NSInteger)numberOfRows;
 - (void)saveEdits;

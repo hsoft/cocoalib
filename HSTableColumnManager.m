@@ -69,7 +69,6 @@ http://www.hardcoded.net/licenses/bsd_license
     if ([table editedColumn] >= 0)
         [[table window] makeFirstResponder:table]; // This will abort edition
     [col setHidden:!visible];
-    [table sizeToFit];
 }
 
 - (void)toggleColumnVisibility:(NSString *)columnId

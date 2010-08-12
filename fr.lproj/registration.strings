@@ -1,0 +1,45 @@
+
+/* Class = "NSPanel"; title = "%@ Demo Version"; ObjectID = "7"; */
+"7.title" = "Version démo de %@";
+
+/* Class = "NSPanel"; title = "Enter Code"; ObjectID = "19"; */
+"19.title" = "Entrer code";
+
+/* Class = "NSTextFieldCell"; title = "%@ Demo Version"; ObjectID = "119"; */
+"119.title" = "Version démo de %@";
+
+/* Class = "NSTextFieldCell"; title = "You are currently running a demo version of %@. This version has limited functionalities, and you need to buy it to have access to these functionalities."; ObjectID = "120"; */
+"120.title" = "Vous utilisez une version démo de %@. Cette version a des fonctionnalités limitées et vous devez l'acheter pour enlever ces limites.";
+
+/* Class = "NSButtonCell"; title = "Buy Now"; ObjectID = "121"; */
+"121.title" = "Acheter";
+
+/* Class = "NSButtonCell"; title = "Enter Code"; ObjectID = "122"; */
+"122.title" = "Entrer code";
+
+/* Class = "NSButtonCell"; title = "Try Demo"; ObjectID = "123"; */
+"123.title" = "Essayer";
+
+/* Class = "NSTextFieldCell"; title = "<demo desc>"; ObjectID = "124"; */
+"124.title" = "<demo desc>";
+
+/* Class = "NSTextFieldCell"; title = "Enter your code"; ObjectID = "125"; */
+"125.title" = "Entrer votre code";
+
+/* Class = "NSTextFieldCell"; title = "Type the code you received when you bought %@, as well as the e-mail used as a reference for the purchase."; ObjectID = "126"; */
+"126.title" = "Entrez le code que vous avez reçu en achetant %@ ainsi que le courriel utilisé lors de l'achat.";
+
+/* Class = "NSTextFieldCell"; title = "Registration Code:"; ObjectID = "127"; */
+"127.title" = "Code:";
+
+/* Class = "NSTextFieldCell"; title = "Reference e-mail:"; ObjectID = "128"; */
+"128.title" = "Courriel référence:";
+
+/* Class = "NSButtonCell"; title = "Submit"; ObjectID = "131"; */
+"131.title" = "Soumettre";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "132"; */
+"132.title" = "Annuler";
+
+/* Class = "NSButtonCell"; title = "Buy Now"; ObjectID = "133"; */
+"133.title" = "Acheter";

@@ -1,0 +1,45 @@
+
+/* Class = "NSPanel"; title = "%@ Demo Version"; ObjectID = "7"; */
+"7.title" = "%@ Demo Version";
+
+/* Class = "NSPanel"; title = "Enter Code"; ObjectID = "19"; */
+"19.title" = "Enter Code";
+
+/* Class = "NSTextFieldCell"; title = "%@ Demo Version"; ObjectID = "119"; */
+"119.title" = "%@ Demo Version";
+
+/* Class = "NSTextFieldCell"; title = "You are currently running a demo version of %@. This version has limited functionalities, and you need to buy it to have access to these functionalities."; ObjectID = "120"; */
+"120.title" = "You are currently running a demo version of %@. This version has limited functionalities, and you need to buy it to have access to these functionalities.";
+
+/* Class = "NSButtonCell"; title = "Buy Now"; ObjectID = "121"; */
+"121.title" = "Buy Now";
+
+/* Class = "NSButtonCell"; title = "Enter Code"; ObjectID = "122"; */
+"122.title" = "Enter Code";
+
+/* Class = "NSButtonCell"; title = "Try Demo"; ObjectID = "123"; */
+"123.title" = "Try Demo";
+
+/* Class = "NSTextFieldCell"; title = "<demo desc>"; ObjectID = "124"; */
+"124.title" = "<demo desc>";
+
+/* Class = "NSTextFieldCell"; title = "Enter your code"; ObjectID = "125"; */
+"125.title" = "Enter your code";
+
+/* Class = "NSTextFieldCell"; title = "Type the code you received when you bought %@, as well as the e-mail used as a reference for the purchase."; ObjectID = "126"; */
+"126.title" = "Type the code you received when you bought %@, as well as the e-mail used as a reference for the purchase.";
+
+/* Class = "NSTextFieldCell"; title = "Registration Code:"; ObjectID = "127"; */
+"127.title" = "Registration Code:";
+
+/* Class = "NSTextFieldCell"; title = "Reference e-mail:"; ObjectID = "128"; */
+"128.title" = "Reference e-mail:";
+
+/* Class = "NSButtonCell"; title = "Submit"; ObjectID = "131"; */
+"131.title" = "Submit";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "132"; */
+"132.title" = "Cancel";
+
+/* Class = "NSButtonCell"; title = "Buy Now"; ObjectID = "133"; */
+"133.title" = "Buy Now";
