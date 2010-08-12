@@ -28,6 +28,7 @@ static ProgressController *_mainPC = nil;
     [progressBar setUsesThreadedAnimation:YES];
     _worker = nil;
     _running = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:NSApplicationDidBecomeActiveNotification object:nil];
     return self;
 }
 
@@ -41,9 +42,16 @@ static ProgressController *_mainPC = nil;
     if (_worker != nil)
         [_worker cancelJob];
     [[NSNotificationCenter defaultCenter] postNotificationName:JobCancelledNotification object:self];
-    [NSApp endSheet:[self window]];
-    [[self window] close];
     _running = NO;
+    [NSApp endSheet:[self window] returnCode:NSRunAbortedResponse];
+    /* There's this really strange thing where when the app is inactive at the point we want to hide
+       the progress dialog, it becomes impossible to close it. I guess it's due to some strange
+       thread-related crap. Anyway, *DO NOT HIDE THE SHEET WHILE THE APP IS INACTIVE*. Do it later,
+       when the app becomes active again.
+     */
+    if ([NSApp isActive]) {
+        [[self window] orderOut:nil];
+    }
 }
 
 - (void)show
@@ -74,7 +82,7 @@ static ProgressController *_mainPC = nil;
     [cancelButton setEnabled:cancelEnabled];
     _running = YES;
     [NSThread detachNewThreadSelector:@selector(threadedWorkerProbe) toTarget:self withObject:nil];
-    [NSApp beginSheet:[self window] modalForWindow:parentWindow modalDelegate:NULL didEndSelector:NULL contextInfo:NULL];
+    [NSApp beginSheet:[self window] modalForWindow:parentWindow modalDelegate:nil didEndSelector:nil contextInfo:nil];
 }
 
 - (void)updateProgress
@@ -133,5 +141,13 @@ static ProgressController *_mainPC = nil;
 - (void)setWorker:(NSObject<Worker> *)worker
 {
     _worker = worker;
+}
+
+/* Delegate and Notifs */
+- (void)applicationDidBecomeActive:(NSNotification *)notification
+{
+    if (!_running) {
+        [[self window] orderOut:nil];
+    }
 }
 @end
