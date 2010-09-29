@@ -8,9 +8,9 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import <Cocoa/Cocoa.h>
 #import "ProgressController.h"
-#import "PyRegistrable.h"
+#import "PyFairware.h"
 
-@interface PyApp: PyRegistrable <Worker>
+@interface PyApp: PyFairware <Worker>
 //Worker
 - (NSNumber *)getJobProgress;
 - (NSString *)getJobDesc;

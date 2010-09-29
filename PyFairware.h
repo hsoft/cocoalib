@@ -8,11 +8,11 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import <Cocoa/Cocoa.h>
 
-@interface PyRegistrable: NSObject
+@interface PyFairware: NSObject
 - (NSString *)appName;
-- (NSString *)demoLimitDescription;
 - (BOOL)isRegistered;
 // Returns nil if valid, and an error message if not.
 - (NSString *)isCodeValid:(NSString *)code withEmail:(NSString *)email;
 - (void)setRegisteredCode:(NSString *)code andEmail:(NSString *)email;
+- (NSNumber *)unpaidHours;
 @end

@@ -7,21 +7,9 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
-#import "PyRegistrable.h"
+#import "PyFairware.h"
 
-#define DUPEGURU_ID 4
-#define DUPEGURU_ME_ID 1
-#define DUPEGURU_PE_ID 5
-#define MUSICGURU_ID 2
-#define MONEYGURU_ID 6
-
-#define DUPEGURU_NAME @"dupeGuru"
-#define DUPEGURU_ME_NAME @"dupeGuru Music Edition"
-#define DUPEGURU_PE_NAME @"dupeGuru Picture Edition"
-#define MUSICGURU_NAME @"musicGuru"
-#define MONEYGURU_NAME @"moneyGuru"
-
-@interface RegistrationInterface : NSObject
+@interface HSFairwareReminder : NSObject
 {
     IBOutlet NSPanel *codePanel;
     IBOutlet NSTextField *codePromptTextField;
@@ -29,22 +17,22 @@ http://www.hardcoded.net/licenses/bsd_license
     IBOutlet NSTextField *emailTextField;
     IBOutlet NSPanel *nagPanel;
     IBOutlet NSTextField *nagPromptTextField;
-    IBOutlet NSTextField *nagTitleTextField;
-    IBOutlet NSTextField *limitDescriptionTextField;
+    IBOutlet NSTextField *nagUnpaidHoursTextField;
     IBOutlet NSButton *submitButton;
     
     NSNib *_nib;
-    PyRegistrable *app;
+    PyFairware *app;
 }
 //Show nag only if needed
-+ (BOOL)showNagWithApp:(PyRegistrable *)app;
-- (id)initWithApp:(PyRegistrable *)app;
++ (BOOL)showNagWithApp:(PyFairware *)app;
+- (id)initWithApp:(PyFairware *)app;
 
-- (IBAction)buyNow:(id)sender;
+- (IBAction)contribute:(id)sender;
+- (IBAction)moreInfo:(id)sender;
 - (IBAction)cancelCode:(id)sender;
 - (IBAction)enterCode:(id)sender;
 - (IBAction)submitCode:(id)sender;
-- (IBAction)tryDemo:(id)sender;
+- (IBAction)closeDialog:(id)sender;
 
 - (BOOL)showNag; //YES: The code has been sucessfully submitted NO: The use wan't to try the demo.
 - (NSInteger)enterCode; //returns the modal code.

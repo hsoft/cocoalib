@@ -6,44 +6,43 @@ which should be included with this package. The terms are also available at
 http://www.hardcoded.net/licenses/bsd_license
 */
 
-#import "RegistrationInterface.h"
+#import "HSFairwareReminder.h"
 #import "Dialogs.h"
 #import "Utils.h"
 
-@implementation RegistrationInterface
-+ (BOOL)showNagWithApp:(PyRegistrable *)app
+@implementation HSFairwareReminder
++ (BOOL)showNagWithApp:(PyFairware *)app
 {
     BOOL r = YES;
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSString *code = [ud stringForKey:@"RegisteredCode"];
-    if (code == nil)
+    if (code == nil) {
         code = @"";
+    }
     NSString *email = [ud stringForKey:@"RegisteredEmail"];
     if (email == nil)
         email = @"";
     [app setRegisteredCode:code andEmail:email];
-    if (![app isRegistered])
-    {
-        RegistrationInterface *ri = [[RegistrationInterface alloc] initWithApp:app];
-        r = [ri showNag];
-        [ri release];
+    if ((![app isRegistered]) && (n2f([app unpaidHours]) >= 1)) {
+        HSFairwareReminder *fr = [[HSFairwareReminder alloc] initWithApp:app];
+        r = [fr showNag];
+        [fr release];
     }
     return r;
 }
 
-- (id)initWithApp:(PyRegistrable *)aApp
+- (id)initWithApp:(PyFairware *)aApp
 {
     self = [super init];
-    _nib = [[NSNib alloc] initWithNibNamed:@"registration" bundle:[NSBundle bundleForClass:[self class]]];
+    _nib = [[NSNib alloc] initWithNibNamed:@"FairwareReminder" bundle:[NSBundle bundleForClass:[self class]]];
     app = aApp;
     [_nib instantiateNibWithOwner:self topLevelObjects:nil];
     [nagPanel update];
     [codePanel update];
     [nagPanel setTitle:[NSString stringWithFormat:[nagPanel title],[app appName]]];
-    [nagTitleTextField setStringValue:[NSString stringWithFormat:[nagTitleTextField stringValue],[app appName]]];
     [nagPromptTextField setStringValue:[NSString stringWithFormat:[nagPromptTextField stringValue],[app appName]]];
+    [nagUnpaidHoursTextField setStringValue:[NSString stringWithFormat:[nagUnpaidHoursTextField stringValue],n2f([app unpaidHours])]];
     [codePromptTextField setStringValue:[NSString stringWithFormat:[codePromptTextField stringValue],[app appName]]];
-    [limitDescriptionTextField setStringValue:[app demoLimitDescription]];
     return self;
 }
 
@@ -53,9 +52,14 @@ http://www.hardcoded.net/licenses/bsd_license
     [super dealloc];
 }
 
-- (IBAction)buyNow:(id)sender
+- (IBAction)contribute:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.hardcoded.net/purchase.htm"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://open.hardcoded.net/contribute/"]];
+}
+
+- (IBAction)moreInfo:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://open.hardcoded.net/about/"]];
 }
 
 - (IBAction)cancelCode:(id)sender
@@ -76,8 +80,7 @@ http://www.hardcoded.net/licenses/bsd_license
     NSString *code = [codeTextField stringValue];
     NSString *email = [emailTextField stringValue];
     NSString *errorMsg = [app isCodeValid:code withEmail:email];
-    if (errorMsg == nil)
-    {
+    if (errorMsg == nil) {
         [codePanel close];
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         [ud setValue:code forKey:@"RegisteredCode"];
@@ -86,14 +89,13 @@ http://www.hardcoded.net/licenses/bsd_license
         [Dialogs showMessage:@"Your code is valid. Thanks!"];
         [NSApp stopModalWithCode:NSOKButton];
     }
-    else
-    {
+    else {
         [Dialogs showMessage:errorMsg];
     }
     [submitButton setEnabled:YES];
 }
 
-- (IBAction)tryDemo:(id)sender
+- (IBAction)closeDialog:(id)sender
 {
     [nagPanel close];
     [NSApp stopModalWithCode:NSCancelButton];
@@ -102,17 +104,17 @@ http://www.hardcoded.net/licenses/bsd_license
 - (BOOL)showNag
 {
     NSInteger r;
-    while (YES)
-    {
+    while (YES) {
         r = [NSApp runModalForWindow:nagPanel];
-        if (r == NSOKButton)
-        {
+        if (r == NSOKButton) {
             r = [self enterCode];
-            if (r == NSOKButton)
+            if (r == NSOKButton) {
                 return YES;
+            }
         }
-        else
+        else {
             return NO;
+        }
     }
 }
 
