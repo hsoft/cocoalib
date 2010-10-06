@@ -13,8 +13,8 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="8"/>
-			<integer value="144"/>
 			<integer value="20"/>
+			<integer value="144"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -499,7 +499,7 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 							<object class="NSTextFieldCell" key="NSCell" id="684050358">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">272629760</int>
-								<string key="NSContents">You won't or you can't contribute? You must have your reasons. I'd like to know about them. You don't have enought money? My hours don't deserve to be compensated? Please, tell me. I promise you right here right now that anything reasonable will get you a registration key.</string>
+								<string key="NSContents">You won't or you can't contribute? You must have your reasons. I'd like to know about them. You don't have enough money? My hours don't deserve to be compensated? Please, tell me. I promise you right here right now that anything reasonable will get you a registration key.</string>
 								<reference key="NSSupport" ref="26"/>
 								<reference key="NSControlView" ref="547618592"/>
 								<reference key="NSBackgroundColor" ref="22908545"/>
