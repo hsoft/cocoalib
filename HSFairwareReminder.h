@@ -18,7 +18,9 @@ http://www.hardcoded.net/licenses/bsd_license
     IBOutlet NSPanel *nagPanel;
     IBOutlet NSTextField *nagPromptTextField;
     IBOutlet NSTextField *nagUnpaidHoursTextField;
-    IBOutlet NSButton *submitButton;
+    IBOutlet NSButton *dontContributeBox;
+    IBOutlet NSWindow *dontContributeWindow;
+    IBOutlet NSTextView *dontContributeTextView;
     
     NSNib *_nib;
     PyFairware *app;
@@ -33,6 +35,8 @@ http://www.hardcoded.net/licenses/bsd_license
 - (IBAction)enterCode:(id)sender;
 - (IBAction)submitCode:(id)sender;
 - (IBAction)closeDialog:(id)sender;
+- (IBAction)sendDontContributeText:(id)sender;
+- (IBAction)cancelDontContribute:(id)sender;
 
 - (BOOL)showNag; //YES: The code has been sucessfully submitted NO: The use wan't to try the demo.
 - (NSInteger)enterCode; //returns the modal code.

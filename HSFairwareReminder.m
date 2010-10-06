@@ -76,7 +76,6 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (IBAction)submitCode:(id)sender
 {
-    [submitButton setEnabled:NO];
     NSString *code = [codeTextField stringValue];
     NSString *email = [emailTextField stringValue];
     NSString *errorMsg = [app isCodeValid:code withEmail:email];
@@ -92,13 +91,28 @@ http://www.hardcoded.net/licenses/bsd_license
     else {
         [Dialogs showMessage:errorMsg];
     }
-    [submitButton setEnabled:YES];
 }
 
 - (IBAction)closeDialog:(id)sender
 {
     [nagPanel close];
     [NSApp stopModalWithCode:NSCancelButton];
+}
+
+- (IBAction)cancelDontContribute:(id)sender
+{
+    [dontContributeWindow close];
+    [NSApp stopModalWithCode:NSCancelButton];
+}
+
+- (IBAction)sendDontContributeText:(id)sender
+{
+    NSString *text = [[dontContributeTextView textStorage] string];
+    NSString *URL = [NSString stringWithFormat:@"mailto:hsoft@hardcoded.net?SUBJECT=I don't want to contribute&BODY=%@",text];
+    NSString *encodedURL = [URL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:encodedURL]];
+    [dontContributeWindow close];
+    [NSApp stopModalWithCode:NSOKButton];
 }
 
 - (BOOL)showNag
@@ -113,6 +127,9 @@ http://www.hardcoded.net/licenses/bsd_license
             }
         }
         else {
+            if ([dontContributeBox state] == NSOnState) {
+                [NSApp runModalForWindow:dontContributeWindow];
+            }
             return NO;
         }
     }
