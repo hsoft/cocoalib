@@ -22,6 +22,7 @@ http://www.hardcoded.net/licenses/bsd_license
 #endif
 #define p2a(p) [Utils indexPath2Array:p]
 #define a2p(a) [Utils array2IndexPath:a]
+#define fmt(x,...) [NSString stringWithFormat:x,__VA_ARGS__]
 
 @interface Utils : NSObject
 + (NSArray *)indexSet2Array:(NSIndexSet *)aIndexSet;

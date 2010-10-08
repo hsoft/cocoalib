@@ -39,10 +39,10 @@ http://www.hardcoded.net/licenses/bsd_license
     [_nib instantiateNibWithOwner:self topLevelObjects:nil];
     [nagPanel update];
     [codePanel update];
-    [nagPanel setTitle:[NSString stringWithFormat:[nagPanel title],[app appName]]];
-    [nagPromptTextField setStringValue:[NSString stringWithFormat:[nagPromptTextField stringValue],[app appName]]];
-    [nagUnpaidHoursTextField setStringValue:[NSString stringWithFormat:[nagUnpaidHoursTextField stringValue],n2f([app unpaidHours])]];
-    [codePromptTextField setStringValue:[NSString stringWithFormat:[codePromptTextField stringValue],[app appName]]];
+    [nagPanel setTitle:fmt([nagPanel title],[app appName])];
+    [nagPromptTextField setStringValue:fmt([nagPromptTextField stringValue],[app appName])];
+    [nagUnpaidHoursTextField setStringValue:fmt([nagUnpaidHoursTextField stringValue],n2f([app unpaidHours]))];
+    [codePromptTextField setStringValue:fmt([codePromptTextField stringValue],[app appName])];
     return self;
 }
 
@@ -108,7 +108,8 @@ http://www.hardcoded.net/licenses/bsd_license
 - (IBAction)sendDontContributeText:(id)sender
 {
     NSString *text = [[dontContributeTextView textStorage] string];
-    NSString *URL = [NSString stringWithFormat:@"mailto:hsoft@hardcoded.net?SUBJECT=I don't want to contribute&BODY=%@",text];
+    NSString *subject = fmt(@"I don't want to contribute to %@",[app appName]);
+    NSString *URL = fmt(@"mailto:hsoft@hardcoded.net?SUBJECT=%@&BODY=%@",subject,text);
     NSString *encodedURL = [URL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:encodedURL]];
     [dontContributeWindow close];
