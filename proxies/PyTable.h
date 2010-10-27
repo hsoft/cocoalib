@@ -18,6 +18,7 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)saveEdits;
 - (void)selectRows:(NSArray *)rows;
 - (NSArray *)selectedRows;
+- (NSString *)selectionAsCSV;
 - (void)setValue:(id)value forColumn:(NSString *)column row:(NSInteger)row;
 - (void)sortByColumn:(NSString *)column desc:(BOOL)desc;
 - (id)valueForColumn:(NSString *)column row:(NSInteger)row;
