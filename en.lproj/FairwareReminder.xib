@@ -2,18 +2,18 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10F569</string>
-		<string key="IBDocument.InterfaceBuilderVersion">788</string>
-		<string key="IBDocument.AppKitVersion">1038.29</string>
+		<string key="IBDocument.SystemVersion">10H574</string>
+		<string key="IBDocument.InterfaceBuilderVersion">823</string>
+		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">788</string>
+			<string key="NS.object.0">823</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="8"/>
 			<integer value="20"/>
+			<integer value="8"/>
 			<integer value="144"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -21,13 +21,8 @@
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<object class="NSArray" key="dict.sortedKeys" id="0">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-			</object>
-			<object class="NSMutableArray" key="dict.values">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-			</object>
+			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
+			<integer value="1" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="667637701">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -105,14 +100,14 @@
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">272629760</int>
 								<string type="base64-UTF8" key="NSContents">JUAgaXMgRmFpcndhcmUsIHdoaWNoIG1lYW5zICJvcGVuIHNvdXJjZSBzb2Z0d2FyZSBkZXZlbG9wZWQg
-d2l0aCBleHBlY3RhdGlvbiBvZiBmYWlyIGNvbnRyaWJ1dGlvbnMgZnJvbSB1c2VycyIuIEhvdXJzIGlu
-dmVzdGVkIGluIHRoaXMgc29mdHdhcmUgaGF2ZSBiZWVuIGxvZ2dlZCB3aXRoIHRoZSBleHBlY3RhdGlv
-biB0aGF0IHVzZXJzIHdpbGwgYmUgZmFpciBlbm91Z2ggdG8gY29tcGVuc2F0ZSB0aGVtLiBUaGUgIlVu
-cGFpZCBob3VycyIgZmlndXJlIHlvdSBzZWUgYmVsb3cgaXMgdGhlIGhvdXJzIHRoYXQgaGF2ZSB5ZXQg
-dG8gYmUgY29tcGVuc2F0ZWQgZm9yIHRoaXMgcHJvamVjdC4KCklmIHlvdSBsaWtlIHRoaXMgYXBwbGlj
-YXRpb24sIHBsZWFzZSBtYWtlIGEgY29udHJpYnV0aW9uIHRoYXQgeW91IGNvbnNpZGVyIGZhaXIuIFRo
-YW5rcyEKClRoaXMgZGlhbG9nIGRvZXNuJ3Qgc2hvdyB3aGVuIHRoZXJlIGFyZSBubyB1bnBhaWQgaG91
-cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
+d2l0aCBleHBlY3RhdGlvbiBvZiBmYWlyIGNvbnRyaWJ1dGlvbnMgZnJvbSB1c2VycyIuIEhvdXJzIGhh
+dmUgYmVlbiBpbnZlc3RlZCBpbiB0aGlzIHNvZnR3YXJlIHdpdGggdGhlIGV4cGVjdGF0aW9uIHRoYXQg
+dXNlcnMgd2lsbCBiZSBmYWlyIGVub3VnaCB0byBjb21wZW5zYXRlIHRoZW0uIFRoZSAiVW5wYWlkIGhv
+dXJzIiBmaWd1cmUgeW91IHNlZSBiZWxvdyBpcyB0aGUgaG91cnMgdGhhdCBoYXZlIHlldCB0byBiZSBj
+b21wZW5zYXRlZCBmb3IgdGhpcyBwcm9qZWN0LgoKSWYgeW91IGxpa2UgdGhpcyBhcHBsaWNhdGlvbiwg
+cGxlYXNlIG1ha2UgYSBjb250cmlidXRpb24gdGhhdCB5b3UgY29uc2lkZXIgZmFpci4gVGhhbmtzIQoK
+VGhpcyBkaWFsb2cgZG9lc24ndCBzaG93IHdoZW4gdGhlcmUgYXJlIG5vIHVucGFpZCBob3VycyBvciB3
+aGVuIHlvdSBoYXZlIGEgdmFsaWQgY29udHJpYnV0aW9uIGtleS4</string>
 								<object class="NSFont" key="NSSupport" id="26">
 									<string key="NSName">LucidaGrande</string>
 									<double key="NSSize">11</double>
@@ -961,7 +956,9 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBObjectRecord">
 						<int key="objectID">0</int>
-						<reference key="object" ref="0"/>
+						<object class="NSArray" key="object" id="0">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+						</object>
 						<reference key="children" ref="667637701"/>
 						<nil key="parent"/>
 					</object>
@@ -2286,7 +2283,7 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 			<integer value="3000" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<string key="IBDocument.LastKnownRelativeProjectPath">../../cocoa/me/dupeguru.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">../../cocoa/pe/dupeguru.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="NS.key.0">NSSwitch</string>
