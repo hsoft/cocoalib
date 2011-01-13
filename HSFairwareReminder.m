@@ -43,6 +43,9 @@ http://www.hardcoded.net/licenses/bsd_license
     [nagPromptTextField setStringValue:fmt([nagPromptTextField stringValue],[app appName])];
     [nagUnpaidHoursTextField setStringValue:fmt([nagUnpaidHoursTextField stringValue],n2f([app unpaidHours]))];
     [codePromptTextField setStringValue:fmt([codePromptTextField stringValue],[app appName])];
+    if ([app isFirstRun]) {
+        [dontContributeBox setHidden:YES];
+    }
     return self;
 }
 

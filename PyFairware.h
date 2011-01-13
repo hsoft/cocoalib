@@ -11,6 +11,7 @@ http://www.hardcoded.net/licenses/bsd_license
 @interface PyFairware: NSObject
 - (NSString *)appName;
 - (BOOL)isRegistered;
+- (BOOL)isFirstRun;
 // Returns nil if valid, and an error message if not.
 - (NSString *)isCodeValid:(NSString *)code withEmail:(NSString *)email;
 - (void)setRegisteredCode:(NSString *)code andEmail:(NSString *)email;
