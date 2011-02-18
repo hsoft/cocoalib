@@ -97,14 +97,14 @@
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">272629760</int>
 								<string type="base64-UTF8" key="NSContents">JUAgaXMgRmFpcndhcmUsIHdoaWNoIG1lYW5zICJvcGVuIHNvdXJjZSBzb2Z0d2FyZSBkZXZlbG9wZWQg
-d2l0aCBleHBlY3RhdGlvbiBvZiBmYWlyIGNvbnRyaWJ1dGlvbnMgZnJvbSB1c2VycyIuIEhvdXJzIGlu
-dmVzdGVkIGluIHRoaXMgc29mdHdhcmUgaGF2ZSBiZWVuIGxvZ2dlZCB3aXRoIHRoZSBleHBlY3RhdGlv
-biB0aGF0IHVzZXJzIHdpbGwgYmUgZmFpciBlbm91Z2ggdG8gY29tcGVuc2F0ZSB0aGVtLiBUaGUgIlVu
-cGFpZCBob3VycyIgZmlndXJlIHlvdSBzZWUgYmVsb3cgaXMgdGhlIGhvdXJzIHRoYXQgaGF2ZSB5ZXQg
-dG8gYmUgY29tcGVuc2F0ZWQgZm9yIHRoaXMgcHJvamVjdC4KCklmIHlvdSBsaWtlIHRoaXMgYXBwbGlj
-YXRpb24sIHBsZWFzZSBtYWtlIGEgY29udHJpYnV0aW9uIHRoYXQgeW91IGNvbnNpZGVyIGZhaXIuIFRo
-YW5rcyEKClRoaXMgZGlhbG9nIGRvZXNuJ3Qgc2hvdyB3aGVuIHRoZXJlIGFyZSBubyB1bnBhaWQgaG91
-cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
+d2l0aCBleHBlY3RhdGlvbiBvZiBmYWlyIGNvbnRyaWJ1dGlvbnMgZnJvbSB1c2VycyIuIEhvdXJzIGhh
+dmUgYmVlbiBpbnZlc3RlZCBpbiB0aGlzIHNvZnR3YXJlIHdpdGggdGhlIGV4cGVjdGF0aW9uIHRoYXQg
+dXNlcnMgd2lsbCBiZSBmYWlyIGVub3VnaCB0byBjb21wZW5zYXRlIHRoZW0uIFRoZSAiVW5wYWlkIGhv
+dXJzIiBmaWd1cmUgeW91IHNlZSBiZWxvdyBpcyB0aGUgaG91cnMgdGhhdCBoYXZlIHlldCB0byBiZSBj
+b21wZW5zYXRlZCBmb3IgdGhpcyBwcm9qZWN0LgoKSWYgeW91IGxpa2UgdGhpcyBhcHBsaWNhdGlvbiwg
+cGxlYXNlIG1ha2UgYSBjb250cmlidXRpb24gdGhhdCB5b3UgY29uc2lkZXIgZmFpci4gVGhhbmtzIQoK
+VGhpcyBkaWFsb2cgZG9lc24ndCBzaG93IHdoZW4gdGhlcmUgYXJlIG5vIHVucGFpZCBob3VycyBvciB3
+aGVuIHlvdSBoYXZlIGEgdmFsaWQgY29udHJpYnV0aW9uIGtleS4</string>
 								<object class="NSFont" key="NSSupport" id="26">
 									<string key="NSName">LucidaGrande</string>
 									<double key="NSSize">11</double>
@@ -315,7 +315,7 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 						<object class="NSTextField" id="6857021">
 							<reference key="NSNextResponder" ref="421546683"/>
 							<int key="NSvFlags">256</int>
-							<string key="NSFrame">{{17, 91}, {126, 17}}</string>
+							<string key="NSFrame">{{17, 94}, {134, 17}}</string>
 							<reference key="NSSuperview" ref="421546683"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="239940989">
@@ -331,7 +331,7 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 						<object class="NSTextField" id="248049609">
 							<reference key="NSNextResponder" ref="421546683"/>
 							<int key="NSvFlags">256</int>
-							<string key="NSFrame">{{17, 62}, {126, 14}}</string>
+							<string key="NSFrame">{{17, 64}, {134, 14}}</string>
 							<reference key="NSSuperview" ref="421546683"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="795347442">
@@ -347,7 +347,7 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 						<object class="NSTextField" id="469295220">
 							<reference key="NSNextResponder" ref="421546683"/>
 							<int key="NSvFlags">256</int>
-							<string key="NSFrame">{{143, 92}, {264, 22}}</string>
+							<string key="NSFrame">{{148, 92}, {259, 22}}</string>
 							<reference key="NSSuperview" ref="421546683"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="1015730575">
@@ -377,7 +377,7 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 						<object class="NSTextField" id="538624147">
 							<reference key="NSNextResponder" ref="421546683"/>
 							<int key="NSvFlags">256</int>
-							<string key="NSFrame">{{143, 60}, {264, 22}}</string>
+							<string key="NSFrame">{{148, 60}, {259, 22}}</string>
 							<reference key="NSSuperview" ref="421546683"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="365682197">
@@ -1081,14 +1081,14 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="125744205"/>
-							<reference ref="6857021"/>
-							<reference ref="248049609"/>
 							<reference ref="928445284"/>
 							<reference ref="314554421"/>
 							<reference ref="469295220"/>
 							<reference ref="538624147"/>
 							<reference ref="460130324"/>
 							<reference ref="762227133"/>
+							<reference ref="6857021"/>
+							<reference ref="248049609"/>
 						</object>
 						<reference key="parent" ref="1025101295"/>
 					</object>
@@ -1435,6 +1435,8 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 					<string>143.IBPluginDependency</string>
 					<string>143.IBWindowTemplateEditedContentRect</string>
 					<string>143.NSWindowTemplate.visibleAtLaunch</string>
+					<string>143.windowTemplate.maxSize</string>
+					<string>143.windowTemplate.minSize</string>
 					<string>144.IBPluginDependency</string>
 					<string>145.IBPluginDependency</string>
 					<string>145.IBViewBoundsToFrameTransform</string>
@@ -1469,8 +1471,10 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 					<string>22.IBPluginDependency</string>
 					<string>22.ImportedFromIB2</string>
 					<string>23.IBPluginDependency</string>
+					<string>23.IBViewBoundsToFrameTransform</string>
 					<string>23.ImportedFromIB2</string>
 					<string>24.IBPluginDependency</string>
+					<string>24.IBViewBoundsToFrameTransform</string>
 					<string>24.ImportedFromIB2</string>
 					<string>25.IBPluginDependency</string>
 					<string>25.IBViewBoundsToFrameTransform</string>
@@ -1533,6 +1537,8 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{228, 412}, {502, 332}}</string>
 					<boolean value="NO"/>
+					<string>{1.79769e+308, 1.79769e+308}</string>
+					<string>{0, 0}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
@@ -1575,8 +1581,14 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABBiAAAwtQAAA</bytes>
+					</object>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABBiAAAwpQAAA</bytes>
+					</object>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
@@ -1639,7 +1651,7 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 					<string key="superclassName">NSFormatter</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../brsinglelineformatter/BRSingleLineFormatter.h</string>
+						<string key="minorKey">brsinglelineformatter/BRSingleLineFormatter.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -1825,28 +1837,42 @@ cnMgb3Igd2hlbiB5b3UgaGF2ZSBhIHZhbGlkIGNvbnRyaWJ1dGlvbiBrZXkuA</string>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../HSFairwareReminder.h</string>
+						<string key="minorKey">HSFairwareReminder.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../views/HSOutlineView.h</string>
+						<string key="minorKey">../ambuttonbar/AMButtonBar.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../views/HSTableView.h</string>
+						<string key="minorKey">../psmtabbarcontrol/PSMTabBarControl.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../views/NSTableViewAdditions.h</string>
+						<string key="minorKey">support/MGTableView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">views/HSOutlineView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">views/NSTableViewAdditions.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
