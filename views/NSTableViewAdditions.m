@@ -100,17 +100,19 @@ http://www.hardcoded.net/licenses/bsd_license
     }
     
     // We only want to edit columns that are editable. If there aren't any, don't edit.
-    for (NSInteger i=0;i<[[self tableColumns] count];i++)
-    {
+    for (NSInteger i=0;i<[[self tableColumns] count];i++) {
         NSTableColumn *col = [[self tableColumns] objectAtIndex:i];
-        if ([self shouldEditTableColumn:col row:[self selectedRow]])
-        {
-            // We only want one row to be selected.
-            NSIndexSet *selection = [NSIndexSet indexSetWithIndex:[self selectedRow]];
-            [self selectRowIndexes:selection byExtendingSelection:NO];
-        	[self editColumn:i row:[self selectedRow] withEvent:nil select:YES];
-            break;
+        if ([col isHidden]) {
+            continue;
         }
+        if (![self shouldEditTableColumn:col row:[self selectedRow]]) {
+            continue;
+        }
+        // We only want one row to be selected.
+        NSIndexSet *selection = [NSIndexSet indexSetWithIndex:[self selectedRow]];
+        [self selectRowIndexes:selection byExtendingSelection:NO];
+    	[self editColumn:i row:[self selectedRow] withEvent:nil select:YES];
+        break;
     }
 }
 @end
