@@ -43,9 +43,6 @@ http://www.hardcoded.net/licenses/bsd_license
     [nagPromptTextField setStringValue:fmt([nagPromptTextField stringValue],[app appName])];
     [nagUnpaidHoursTextField setStringValue:fmt([nagUnpaidHoursTextField stringValue],n2f([app unpaidHours]))];
     [codePromptTextField setStringValue:fmt([codePromptTextField stringValue],[app appName])];
-    if ([app isFirstRun]) {
-        [dontContributeBox setHidden:YES];
-    }
     return self;
 }
 
@@ -102,23 +99,6 @@ http://www.hardcoded.net/licenses/bsd_license
     [NSApp stopModalWithCode:NSCancelButton];
 }
 
-- (IBAction)cancelDontContribute:(id)sender
-{
-    [dontContributeWindow close];
-    [NSApp stopModalWithCode:NSCancelButton];
-}
-
-- (IBAction)sendDontContributeText:(id)sender
-{
-    NSString *text = [[dontContributeTextView textStorage] string];
-    NSString *subject = fmt(@"I don't want to contribute to %@",[app appName]);
-    NSString *URL = fmt(@"mailto:hsoft@hardcoded.net?SUBJECT=%@&BODY=%@",subject,text);
-    NSString *encodedURL = [URL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:encodedURL]];
-    [dontContributeWindow close];
-    [NSApp stopModalWithCode:NSOKButton];
-}
-
 - (BOOL)showNag
 {
     NSInteger r;
@@ -131,9 +111,6 @@ http://www.hardcoded.net/licenses/bsd_license
             }
         }
         else {
-            if ([dontContributeBox state] == NSOnState) {
-                [NSApp runModalForWindow:dontContributeWindow];
-            }
             return NO;
         }
     }

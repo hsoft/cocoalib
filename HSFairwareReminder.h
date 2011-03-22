@@ -18,9 +18,6 @@ http://www.hardcoded.net/licenses/bsd_license
     IBOutlet NSPanel *nagPanel;
     IBOutlet NSTextField *nagPromptTextField;
     IBOutlet NSTextField *nagUnpaidHoursTextField;
-    IBOutlet NSButton *dontContributeBox;
-    IBOutlet NSWindow *dontContributeWindow;
-    IBOutlet NSTextView *dontContributeTextView;
     
     NSNib *_nib;
     PyFairware *app;
