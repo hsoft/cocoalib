@@ -22,7 +22,7 @@ http://www.hardcoded.net/licenses/bsd_license
     NSString *email = [ud stringForKey:@"RegisteredEmail"];
     if (email == nil)
         email = @"";
-    [app setRegisteredCode:code andEmail:email];
+    [app setRegisteredCode:code andEmail:email registerOS:NO];
     if ((![app isRegistered]) && (n2f([app unpaidHours]) >= 1)) {
         HSFairwareReminder *fr = [[HSFairwareReminder alloc] initWithApp:app];
         r = [fr showNag];
@@ -84,7 +84,8 @@ http://www.hardcoded.net/licenses/bsd_license
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         [ud setValue:code forKey:@"RegisteredCode"];
         [ud setValue:email forKey:@"RegisteredEmail"];
-        [app setRegisteredCode:code andEmail:email];
+        BOOL registerOperatingSystem = [registerOperatingSystemButton state] == NSOnState;
+        [app setRegisteredCode:code andEmail:email registerOS:registerOperatingSystem];
         [Dialogs showMessage:@"Your code is valid. Thanks!"];
         [NSApp stopModalWithCode:NSOKButton];
     }

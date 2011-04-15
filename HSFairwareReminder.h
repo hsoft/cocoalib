@@ -15,6 +15,7 @@ http://www.hardcoded.net/licenses/bsd_license
     IBOutlet NSTextField *codePromptTextField;
     IBOutlet NSTextField *codeTextField;
     IBOutlet NSTextField *emailTextField;
+    IBOutlet NSButton *registerOperatingSystemButton;
     IBOutlet NSPanel *nagPanel;
     IBOutlet NSTextField *nagPromptTextField;
     IBOutlet NSTextField *nagUnpaidHoursTextField;
