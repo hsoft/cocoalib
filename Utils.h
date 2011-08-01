@@ -31,8 +31,8 @@ http://www.hardcoded.net/licenses/bsd_license
 + (NSIndexPath *)array2IndexPath:(NSArray *)indexArray;
 + (NSString *)indexPath2String:(NSIndexPath *)aIndexPath;
 + (NSIndexPath *)string2IndexPath:(NSString *)aString;
-+ (BOOL)isTiger;
-+ (BOOL)isLeopard;
 + (void)setPluginName:(NSString *)aPluginName;
 + (Class)classNamed:(NSString *)className;
 @end
+
+void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith);

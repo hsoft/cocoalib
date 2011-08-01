@@ -82,22 +82,6 @@ http://www.hardcoded.net/licenses/bsd_license
     return [Utils array2IndexPath:indexes];
 }
 
-+ (BOOL)isTiger
-{
-    SInt32 major, minor;
-    Gestalt(gestaltSystemVersionMajor, &major);
-    Gestalt(gestaltSystemVersionMinor, &minor);
-    return (major == 10) && (minor == 4);
-}
-
-+ (BOOL)isLeopard
-{
-    SInt32 major, minor;
-    Gestalt(gestaltSystemVersionMajor, &major);
-    Gestalt(gestaltSystemVersionMinor, &minor);
-    return (major == 10) && (minor == 5);
-}
-
 static NSString *pluginName;
 + (void)setPluginName:(NSString *)aPluginName
 {
@@ -112,3 +96,11 @@ static NSString *pluginName;
     return [pluginBundle classNamed:className];
 }
 @end
+
+void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith)
+{
+    NSView *parent = [placeholder superview];
+    [replaceWith setFrame:[placeholder frame]];
+    [replaceWith setAutoresizingMask:[placeholder autoresizingMask]];
+    [parent replaceSubview:placeholder with:replaceWith];
+}
