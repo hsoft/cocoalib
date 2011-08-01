@@ -10,7 +10,7 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "HSGUIController.h"
 #import "PyTable.h"
 
-@interface HSTable : HSGUIController
+@interface HSTable : HSGUIController <NSTableViewDelegate, NSTableViewDataSource>
 {
     NSTableView *tableView;
 }
