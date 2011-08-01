@@ -1,3 +1,6 @@
 syntax: glob
 
 .DS_Store
+fr.lproj/*.xib
+de.lproj/*.xib
+it.lproj/*.xib
