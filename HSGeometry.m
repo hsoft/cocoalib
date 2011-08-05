@@ -60,7 +60,7 @@ CGFloat angleFromPoints(NSPoint pt1, NSPoint pt2)
     }
     else if ((dx >= 0) && (dy < 0)) {
         // bottom-right quadrant
-        angle += (2 * M_PI) - angle;
+        angle = (2 * M_PI) - angle;
     }
     return angle;
 }
