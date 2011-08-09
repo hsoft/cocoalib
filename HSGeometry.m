@@ -27,11 +27,11 @@ NSPoint pointInCircle(NSPoint center, CGFloat radius, CGFloat angle)
     CGFloat ratio = c / sin(C);
     CGFloat b = ratio * sin(B);
     CGFloat a = ratio * sin(A);
-    if (angle > M_PI * 1.5)
+    if (angle >= M_PI * 1.5)
         return NSMakePoint(center.x + a, center.y - b);
-    else if (angle > M_PI)
+    else if (angle >= M_PI)
         return NSMakePoint(center.x - b, center.y - a);
-    else if (angle > M_PI/2)
+    else if (angle >= M_PI/2)
         return NSMakePoint(center.x - a, center.y + b);
     else
         return NSMakePoint(center.x + b, center.y + a);
