@@ -9,6 +9,14 @@ http://www.hardcoded.net/licenses/bsd_license
 #import <Cocoa/Cocoa.h>
 #import "NSTableViewAdditions.h"
 
+@class HSTableView;
+
+@protocol HSTableViewDelegate <NSTableViewDelegate>
+- (NSIndexSet *)selectedIndexes;
+- (void)tableViewDidEndEditing:(HSTableView *)tableView;
+- (void)tableViewCancelsEdition:(HSTableView *)tableView;
+- (void)tableViewWasDoubleClicked:(HSTableView *)tableView;
+@end
 
 @interface HSTableView : NSTableView 
 {
@@ -16,12 +24,7 @@ http://www.hardcoded.net/licenses/bsd_license
 }
 - (void)updateSelection;
 - (void)stopEditing;
-@end
-
-@interface NSObject(HSTableViewDelegate)
-- (NSIndexSet *)selectedIndexes;
-- (void)tableViewDidEndEditing:(HSTableView *)tableView;
-- (void)tableViewCancelsEdition:(HSTableView *)tableView;
-- (void)tableViewWasDoubleClicked:(HSTableView *)tableView;
+- (id <HSTableViewDelegate>)delegate;
+- (void)setDelegate:(id <HSTableViewDelegate>)aDelegate;
 @end
 

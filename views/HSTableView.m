@@ -18,7 +18,12 @@ http://www.hardcoded.net/licenses/bsd_license
 	}
 }
 
-- (void)setDelegate:(id)aDelegate
+- (id <HSTableViewDelegate>)delegate
+{
+    return (id <HSTableViewDelegate>)[super delegate];
+}
+
+- (void)setDelegate:(id <HSTableViewDelegate>)aDelegate
 {
     [super setDelegate:aDelegate];
     id delegate = [self delegate];
