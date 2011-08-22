@@ -9,7 +9,7 @@
 "119.title" = "Bitte spenden";
 
 /* Class = "NSTextFieldCell"; title = "%@ is Fairware, which means \"open source software developed with expectation of fair contributions from users\". Hours have been invested in this software with the expectation that users will be fair enough to compensate them. The \"Unpaid hours\" figure you see below is the hours that have yet to be compensated for this project.\n\nIf you like this application, please make a contribution that you consider fair. Thanks!\n\nIf you cannot afford to contribute, you can either ignore this reminder or send an e-mail at support@hardcoded.net so I can give you a registration key.\n\nThis dialog doesn't show when there are no unpaid hours or when you have a valid contribution key."; ObjectID = "120"; */
-"120.title" = "%@ ist Fairware, das bedeutet \"Open Source Software, entwickelt in der Hoffnung auf einen fairen Beitrag von den Benutzern\". Stunden wurden in die Software investiert, mit der Erwartung der Nutzer möge fair genug sein die Entwickler zu kompensieren. Die \"Unbezahlte Stunden\" Abbildung zeigt die Anzahl der Stunden die noch nicht finanziert wurden.\n\nWenn Sie diese Anwendung mögen, so spenden Sie bitte einen Ihrer Ansicht nach angemessenen Betrag. Danke!\n\nWenn Sie es sich nicht leisten können zu spenden, können Sie diese Erinnerung entweder ignorieren oder mir eine Nachricht an hsoft@hardcoded.net schicken für einen Registrierungsschlüssel.\n\nDieser Dialog erscheint nicht, wenn es keine unbezahlten Stunden gibt oder Sie einen gülten Registrierungsschlüssel besitzen.";
+"120.title" = "%@ ist Fairware, das bedeutet \"Open Source Software, entwickelt in der Hoffnung auf einen fairen Beitrag von den Benutzern\". Viel Zeit wurde in die Software investiert, mit der Erwartung der Nutzer möge fair genug sein die Entwickler für ihren Einsatz zu kompensieren. Die \"Unbezahlte Stunden\" Abbildung zeigt die Anzahl der Stunden die noch nicht bezahlt wurden.\n\nWenn Sie diese Anwendung mögen, so spenden Sie bitte einen Ihrer Ansicht nach angemessenen Betrag. Danke!\n\nWenn Sie es sich nicht leisten können zu spenden, können Sie diese Erinnerung entweder ignorieren oder mir eine Anfrage an hsoft@hardcoded.net schicken, mit der Bitte für einen Registrierungsschlüssel.\n\nDieser Dialog erscheint nicht, wenn es keine unbezahlten Stunden gibt oder Sie einen gültigen Registrierungsschlüssel besitzen.";
 /* Class = "NSButtonCell"; title = "Contribute"; ObjectID = "121"; */
 "121.title" = "Spenden";
 
@@ -23,7 +23,7 @@
 "125.title" = "Schlüssel eingeben";
 
 /* Class = "NSTextFieldCell"; title = "Type the key you received when you contributed to %@, as well as the e-mail used as a reference for the purchase."; ObjectID = "126"; */
-"126.title" = "Geben sie den empfangenen Schlüssel und die E-Mail-Adresse als Referenz für den Kauf an, wenn sie für %@ gespendet haben.";
+"126.title" = "Geben Sie den empfangenen Schlüssel und die E-Mail-Adresse als Referenz für den Kauf an, wenn Sie für %@ gespendet haben.";
 
 /* Class = "NSTextFieldCell"; title = "Registration key:"; ObjectID = "127"; */
 "127.title" = "Registrierungsschlüssel:";
