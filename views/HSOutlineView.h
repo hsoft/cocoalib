@@ -24,7 +24,7 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)ignoreEventForEdition:(NSEvent *)aEvent;
 @end
 
-@interface NSObject(HSOutlineViewDelegate)
+@protocol HSOutlineViewDelegate<NSOutlineViewDelegate>
 - (NSArray *)selectedIndexPaths; /* array of NSIndexPath* */
 - (void)outlineViewDidEndEditing:(HSOutlineView *)outlineView;
 - (void)outlineViewCancelsEdition:(HSOutlineView *)outlineView;

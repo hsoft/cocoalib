@@ -16,6 +16,22 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     self = [super initWithPyClassName:aClassName pyParent:aPyParent];
     itemData = [[NSMutableDictionary dictionary] retain];
+    /* Dictionaries don't retain its keys because it copies them. Our items are NSIndexPath and when
+    an index path has the same value, it's the same instance. Before OS X 10.7, all these instances
+    stayed in memory, so we didn't need to worry about retaining them. Hoever, it seems now that
+    index path instances are sometimes released. Oops. So, we now need to retain our index path
+    instances and that's why we use itemRetainer.
+
+    WEIRNESS NOTICE: You might be asking "why use an array instead of a set for itemRetainer?".
+    Under 10.7.1, using a set caused a crash. Same weirness in outlineView:child:ofItem:. Why add
+    the child to the retainer at all times? Shouldn't it be only when the child is not in itemData?
+    Well, if I do this, I get a crash. That's pretty bad because it means that itemRetainer will
+    grow all the time until the next refresh. Well, that's life.
+
+    My guess on this weirness is that even though Cocoa's doc says so, it's not true that two index
+    paths with the same value will always be the same instance.
+    */
+    itemRetainer = [[NSMutableArray array] retain];
     outlineView = aOutlineView;
     [outlineView setDataSource:self];
     [outlineView setDelegate:self];
@@ -25,6 +41,7 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)dealloc
 {
     [itemData release];
+    [itemRetainer release];
     [super dealloc];
 }
 
@@ -56,9 +73,13 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)refresh
 {
     [itemData removeAllObjects];
+    // We can't get rid of our instances just yet, we have to wait until after reloadData
+    NSArray *oldRetainer = itemRetainer;
+    itemRetainer = [[NSMutableArray array] retain];
     [outlineView setDelegate:nil];
     [outlineView reloadData];
     [outlineView setDelegate:self];
+    [oldRetainer release];
     [self updateSelection];
 }
 
@@ -167,11 +188,10 @@ http://www.hardcoded.net/licenses/bsd_license
     NSIndexPath *parent = item;
     NSIndexPath *child = parent == nil ? [NSIndexPath indexPathWithIndex:index] : [parent indexPathByAddingIndex:index];
     if ([itemData objectForKey:child] == nil) {
-        // Note: in general, the dictionary doesn't retain the keys that are given to it, but copies
-        // of them. In our case, since a copy of an index path is the same index path, using an index
-        // path as a key in actually retains the index path.
         [itemData setObject:[NSMutableDictionary dictionary] forKey:child];
     }
+    // Why do we retain here instead of in the if block? See notice in init method.
+    [itemRetainer addObject:child];
     return child;
 }
 
@@ -213,6 +233,10 @@ never called
 - (void)outlineViewDidEndEditing:(HSOutlineView *)outlineView
 {
     [[self py] saveEdits];
+}
+
+- (void)outlineViewWasDoubleClicked:(HSOutlineView *)outlineView
+{
 }
 
 - (void)outlineViewCancelsEdition:(HSOutlineView *)outlineView
