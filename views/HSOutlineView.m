@@ -139,7 +139,10 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)updateSelection
 {
-    [self selectNodePaths:[[self delegate] selectedIndexPaths]];
+    id delegate = [self delegate];
+    if ([delegate respondsToSelector:@selector(selectedIndexPaths)]) {
+        [self selectNodePaths:[delegate selectedIndexPaths]];
+    }
 }
 
 /* BIG HACK ZONE
