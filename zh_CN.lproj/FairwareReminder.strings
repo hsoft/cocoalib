@@ -3,52 +3,52 @@
 "7.title" = "%@ is Fairware";
 
 /* Class = "NSPanel"; title = "Enter Key"; ObjectID = "19"; */
-"19.title" = "Enter Key";
+"19.title" = "输入密钥";
 
 /* Class = "NSTextFieldCell"; title = "Please contribute"; ObjectID = "119"; */
-"119.title" = "Please contribute";
+"119.title" = "期待您的捐助";
 
 /* Class = "NSTextFieldCell"; title = "%@ is Fairware, which means \"open source software developed with expectation of fair contributions from users\". Hours have been invested in this software with the expectation that users will be fair enough to compensate them. The \"Unpaid hours\" figure you see below is the hours that have yet to be compensated for this project.\n\nIf you like this application, please make a contribution that you consider fair. Thanks!\n If you cannot afford to contribute, you can either ignore this reminder or send an e-mail at support@hardcoded.net so I can send you a registration key. \nThis dialog doesn't show when there are no unpaid hours or when you have a valid contribution key."; ObjectID = "120"; */
-"120.title" = "%@ is Fairware, which means \"open source software developed with expectation of fair contributions from users\". Hours have been invested in this software with the expectation that users will be fair enough to compensate them. The \"Unpaid hours\" figure you see below is the hours that have yet to be compensated for this project.\n\nIf you like this application, please make a contribution that you consider fair. Thanks!\n If you cannot afford to contribute, you can either ignore this reminder or send an e-mail at support@hardcoded.net so I can send you a registration key. \nThis dialog doesn't show when there are no unpaid hours or when you have a valid contribution key.";
+"120.title" = "%@ 是一款捐助软件,也就是说 &quot;用户对研发开源软件所花费的时间进行符合用户意愿的捐助&quot;。用户可以根据研发人员花费在开发软件上的时间进行合理的补偿。用户在下面看到的 &quot;未支付的时间&quot; (Unpaid hours)表示需要对该软件进行补偿的时间。\n\n如果您喜欢这款软件，我诚挚的希望您可以进行必要的捐助。谢谢！\n\n如果您无法承担捐助，您也可以忽略此提醒，或者发送电子邮件至 support@hardcoded.net ，我会发送给您一个注册密钥。\n\n当软件没有未支付的时间或您已使用一个有效的注册密钥，此对话框将不会再显示。";
 
 /* Class = "NSButtonCell"; title = "Contribute"; ObjectID = "121"; */
-"121.title" = "Contribute";
+"121.title" = "捐助";
 
 /* Class = "NSButtonCell"; title = "Enter Key"; ObjectID = "122"; */
-"122.title" = "Enter Key";
+"122.title" = "输入密钥";
 
 /* Class = "NSButtonCell"; title = "Continue"; ObjectID = "123"; */
-"123.title" = "Continue";
+"123.title" = "继续";
 
 /* Class = "NSTextFieldCell"; title = "Enter your key"; ObjectID = "125"; */
 "125.title" = "Enter your key";
 
 /* Class = "NSTextFieldCell"; title = "Type the key you received when you contributed to %@, as well as the e-mail used as a reference for the purchase."; ObjectID = "126"; */
-"126.title" = "Type the key you received when you contributed to %@, as well as the e-mail used as a reference for the purchase.";
+"126.title" = "当您捐助 %@ 后，请输入收到的注册密钥以及电子邮件，这将作为购买凭证。";
 
 /* Class = "NSTextFieldCell"; title = "Registration key:"; ObjectID = "127"; */
-"127.title" = "Registration key:";
+"127.title" = "密钥:";
 
 /* Class = "NSTextFieldCell"; title = "Reference e-mail:"; ObjectID = "128"; */
-"128.title" = "Reference e-mail:";
+"128.title" = "电子邮箱:";
 
 /* Class = "NSButtonCell"; title = "Submit"; ObjectID = "131"; */
-"131.title" = "Submit";
+"131.title" = "提交";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "132"; */
-"132.title" = "Cancel";
+"132.title" = "取消";
 
 /* Class = "NSButtonCell"; title = "Contribute"; ObjectID = "133"; */
-"133.title" = "Contribute";
+"133.title" = "捐助";
 
 /* Class = "NSTextFieldCell"; title = "Unpaid hours: %0.1f"; ObjectID = "135"; */
 "135.title" = "Unpaid hours: %0.1f";
 
 /* Class = "NSButtonCell"; title = "More Info"; ObjectID = "137"; */
-"137.title" = "More Info";
+"137.title" = "更多信息";
 
 /* Class = "NSButtonCell"; title = "Tell Hardcoded Software which operating system I'm using."; ObjectID = "170"; */
-"170.title" = "Tell Hardcoded Software which operating system I'm using.";
+"170.title" = "告诉Hardcoded Software您正在使用的操作系统。";
 
 /* Class = "NSTextFieldCell"; title = "(to have some contribution statistics based on OSes)"; ObjectID = "172"; */
-"172.title" = "(to have some contribution statistics based on OSes)";
+"172.title" = "(这将有助于根据操作系统来进行捐助统计)";
