@@ -7,11 +7,14 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
+#import "HSGUIController.h"
+#import "PySelectableList.h"
 
-@interface PyGUI : NSObject {}
-- (id)initWithCocoa:(id)cocoa pyParent:(id)pyParent;
-- (void)bindCocoa:(id)cocoa;
-- (void)connect;
-- (void)disconnect;
-- (void)free;
-@end;
+@interface HSPopUpList : HSGUIController {}
+- (NSPopUpButton *)view;
+- (void)setView:(NSPopUpButton *)aPopupView;
+- (PySelectableList *)py;
+
+- (void)popupViewSelectionChanged;
+- (void)refresh;
+@end

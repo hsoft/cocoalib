@@ -7,11 +7,12 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
+#import "PyGUI.h"
 
-@interface PyGUI : NSObject {}
-- (id)initWithCocoa:(id)cocoa pyParent:(id)pyParent;
-- (void)bindCocoa:(id)cocoa;
-- (void)connect;
-- (void)disconnect;
-- (void)free;
-@end;
+@interface PySelectableList : PyGUI
+- (NSArray *)items;
+- (void)selectIndex:(NSInteger)index;
+- (NSInteger)selectedIndex;
+- (void)selectIndexes:(NSArray *)indexes;
+- (NSArray *)selectedIndexes;
+@end

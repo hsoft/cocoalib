@@ -12,9 +12,14 @@ http://www.hardcoded.net/licenses/bsd_license
 @interface HSGUIController : NSObject
 {
     PyGUI *py;
+    NSView *view;
 }
 - (id)initWithPyClassName:(NSString *)aClassName pyParent:(id)aPyParent;
+- (id)initWithPy:(id)aPy;
+- (id)initWithPyClassName:(NSString *)aClassName pyParent:(id)aPyParent view:(NSView *)aView;
+- (id)initWithPy:(id)aPy view:(NSView *)aView;
 - (NSView *)view;
+- (void)setView:(NSView *)aView;
 - (void)connect;
 - (void)disconnect;
 @end

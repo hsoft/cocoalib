@@ -7,11 +7,16 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
+#import "HSGUIController.h"
+#import "PySelectableList.h"
 
-@interface PyGUI : NSObject {}
-- (id)initWithCocoa:(id)cocoa pyParent:(id)pyParent;
-- (void)bindCocoa:(id)cocoa;
-- (void)connect;
-- (void)disconnect;
-- (void)free;
-@end;
+@interface HSSelectableList : HSGUIController <NSTableViewDelegate, NSTableViewDataSource>
+{
+    NSArray *items;
+}
+- (NSTableView *)view;
+- (void)setView:(NSTableView *)aTableView;
+- (PySelectableList *)py;
+
+- (void)refresh;
+@end
