@@ -9,6 +9,7 @@ http://www.hardcoded.net/licenses/bsd_license
 #import <Cocoa/Cocoa.h>
 
 @interface PyFairware: NSObject
+- (void)initialRegistrationSetup;
 - (NSString *)appName;
 - (BOOL)isRegistered;
 - (BOOL)isFirstRun;

@@ -13,21 +13,9 @@ http://www.hardcoded.net/licenses/bsd_license
 @implementation HSFairwareReminder
 + (BOOL)showNagWithApp:(PyFairware *)app
 {
-    BOOL r = YES;
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSString *code = [ud stringForKey:@"RegisteredCode"];
-    if (code == nil) {
-        code = @"";
-    }
-    NSString *email = [ud stringForKey:@"RegisteredEmail"];
-    if (email == nil)
-        email = @"";
-    [app setRegisteredCode:code andEmail:email registerOS:NO];
-    if ((![app isRegistered]) && (n2f([app unpaidHours]) >= 1)) {
-        HSFairwareReminder *fr = [[HSFairwareReminder alloc] initWithApp:app];
-        r = [fr showNag];
-        [fr release];
-    }
+    HSFairwareReminder *fr = [[HSFairwareReminder alloc] initWithApp:app];
+    BOOL r = [fr showNag];
+    [fr release];
     return r;
 }
 
@@ -81,9 +69,6 @@ http://www.hardcoded.net/licenses/bsd_license
     NSString *errorMsg = [app isCodeValid:code withEmail:email];
     if (errorMsg == nil) {
         [codePanel close];
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        [ud setValue:code forKey:@"RegisteredCode"];
-        [ud setValue:email forKey:@"RegisteredEmail"];
         BOOL registerOperatingSystem = [registerOperatingSystemButton state] == NSOnState;
         [app setRegisteredCode:code andEmail:email registerOS:registerOperatingSystem];
         [Dialogs showMessage:@"Your code is valid. Thanks!"];
