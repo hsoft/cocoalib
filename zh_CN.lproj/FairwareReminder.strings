@@ -8,9 +8,6 @@
 /* Class = "NSTextFieldCell"; title = "Please contribute"; ObjectID = "119"; */
 "119.title" = "期待您的捐助";
 
-/* Class = "NSTextFieldCell"; title = "%@ is Fairware, which means \"open source software developed with expectation of fair contributions from users\". Hours have been invested in this software with the expectation that users will be fair enough to compensate them. The \"Unpaid hours\" figure you see below is the hours that have yet to be compensated for this project.\n\nIf you like this application, please make a contribution that you consider fair. Thanks!\n If you cannot afford to contribute, you can either ignore this reminder or send an e-mail at support@hardcoded.net so I can send you a registration key. \nThis dialog doesn't show when there are no unpaid hours or when you have a valid contribution key."; ObjectID = "120"; */
-"120.title" = "%@ 是一款捐助软件,也就是说 &quot;用户对研发开源软件所花费的时间进行符合用户意愿的捐助&quot;。用户可以根据研发人员花费在开发软件上的时间进行合理的补偿。用户在下面看到的 &quot;未支付的时间&quot; (Unpaid hours)表示需要对该软件进行补偿的时间。\n\n如果您喜欢这款软件，我诚挚的希望您可以进行必要的捐助。谢谢！\n\n如果您无法承担捐助，您也可以忽略此提醒，或者发送电子邮件至 support@hardcoded.net ，我会发送给您一个注册密钥。\n\n当软件没有未支付的时间或您已使用一个有效的注册密钥，此对话框将不会再显示。";
-
 /* Class = "NSButtonCell"; title = "Contribute"; ObjectID = "121"; */
 "121.title" = "捐助";
 
@@ -52,3 +49,18 @@
 
 /* Class = "NSTextFieldCell"; title = "(to have some contribution statistics based on OSes)"; ObjectID = "172"; */
 "172.title" = "(这将有助于根据操作系统来进行捐助统计)";
+
+/* Class = "NSPanel"; title = "%@ is fairware"; ObjectID = "174"; */
+"174.title" = "%@ is fairware";
+
+/* Class = "NSButtonCell"; title = "Buy"; ObjectID = "185"; */
+"185.title" = "Buy";
+
+/* Class = "NSButtonCell"; title = "Enter Key"; ObjectID = "186"; */
+"186.title" = "Enter Key";
+
+/* Class = "NSButtonCell"; title = "Try"; ObjectID = "187"; */
+"187.title" = "Try";
+
+/* Class = "NSButtonCell"; title = "Fairware?"; ObjectID = "199"; */
+"199.title" = "Fairware?";

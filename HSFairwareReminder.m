@@ -11,10 +11,18 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "Utils.h"
 
 @implementation HSFairwareReminder
-+ (BOOL)showNagWithApp:(PyFairware *)app
++ (BOOL)showFairwareNagWithApp:(PyFairware *)app prompt:(NSString *)prompt
 {
     HSFairwareReminder *fr = [[HSFairwareReminder alloc] initWithApp:app];
-    BOOL r = [fr showNag];
+    BOOL r = [fr showFairwareNagPanelWithPrompt:prompt];
+    [fr release];
+    return r;
+}
+
++ (BOOL)showDemoNagWithApp:(PyFairware *)app prompt:(NSString *)prompt
+{
+    HSFairwareReminder *fr = [[HSFairwareReminder alloc] initWithApp:app];
+    BOOL r = [fr showDemoNagPanelWithPrompt:prompt];
     [fr release];
     return r;
 }
@@ -25,11 +33,11 @@ http://www.hardcoded.net/licenses/bsd_license
     _nib = [[NSNib alloc] initWithNibNamed:@"FairwareReminder" bundle:[NSBundle bundleForClass:[self class]]];
     app = aApp;
     [_nib instantiateNibWithOwner:self topLevelObjects:nil];
-    [nagPanel update];
+    [fairwareNagPanel update];
     [codePanel update];
-    [nagPanel setTitle:fmt([nagPanel title],[app appName])];
-    [nagPromptTextField setStringValue:fmt([nagPromptTextField stringValue],[app appName])];
-    [nagUnpaidHoursTextField setStringValue:fmt([nagUnpaidHoursTextField stringValue],n2f([app unpaidHours]))];
+    [fairwareNagPanel setTitle:fmt([fairwareNagPanel title],[app appName])];
+    [demoNagPanel setTitle:fmt([demoNagPanel title],[app appName])];
+    [fairwareUnpaidHoursTextField setStringValue:fmt([fairwareUnpaidHoursTextField stringValue],n2f([app unpaidHours]))];
     [codePromptTextField setStringValue:fmt([codePromptTextField stringValue],[app appName])];
     return self;
 }
@@ -42,12 +50,17 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (IBAction)contribute:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://open.hardcoded.net/contribute/"]];
+    [app contribute];
+}
+
+- (IBAction)buy:(id)sender
+{
+    [app buy];
 }
 
 - (IBAction)moreInfo:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://open.hardcoded.net/about/"]];
+    [app aboutFairware];
 }
 
 - (IBAction)cancelCode:(id)sender
@@ -58,7 +71,8 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (IBAction)enterCode:(id)sender
 {
-    [nagPanel close];
+    [fairwareNagPanel close];
+    [demoNagPanel close];
     [NSApp stopModalWithCode:NSOKButton];
 }
 
@@ -66,30 +80,25 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     NSString *code = [codeTextField stringValue];
     NSString *email = [emailTextField stringValue];
-    NSString *errorMsg = [app isCodeValid:code withEmail:email];
-    if (errorMsg == nil) {
+    BOOL registerOperatingSystem = [registerOperatingSystemButton state] == NSOnState;
+    if ([app setRegisteredCode:code andEmail:email registerOS:registerOperatingSystem]) {
         [codePanel close];
-        BOOL registerOperatingSystem = [registerOperatingSystemButton state] == NSOnState;
-        [app setRegisteredCode:code andEmail:email registerOS:registerOperatingSystem];
-        [Dialogs showMessage:@"Your code is valid. Thanks!"];
         [NSApp stopModalWithCode:NSOKButton];
-    }
-    else {
-        [Dialogs showMessage:errorMsg];
     }
 }
 
 - (IBAction)closeDialog:(id)sender
 {
-    [nagPanel close];
+    [fairwareNagPanel close];
+    [demoNagPanel close];
     [NSApp stopModalWithCode:NSCancelButton];
 }
 
-- (BOOL)showNag
+- (BOOL)showNagPanel:(NSPanel *)panel;
 {
     NSInteger r;
     while (YES) {
-        r = [NSApp runModalForWindow:nagPanel];
+        r = [NSApp runModalForWindow:panel];
         if (r == NSOKButton) {
             r = [self enterCode];
             if (r == NSOKButton) {
@@ -100,6 +109,18 @@ http://www.hardcoded.net/licenses/bsd_license
             return NO;
         }
     }
+}
+
+- (BOOL)showFairwareNagPanelWithPrompt:(NSString *)prompt
+{
+    [fairwarePromptTextField setStringValue:prompt];
+    return [self showNagPanel:fairwareNagPanel];
+}
+
+- (BOOL)showDemoNagPanelWithPrompt:(NSString *)prompt
+{
+    [demoPromptTextField setStringValue:prompt];
+    return [self showNagPanel:demoNagPanel];
 }
 
 - (NSInteger)enterCode

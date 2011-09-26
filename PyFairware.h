@@ -12,9 +12,9 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)initialRegistrationSetup;
 - (NSString *)appName;
 - (BOOL)isRegistered;
-- (BOOL)isFirstRun;
-// Returns nil if valid, and an error message if not.
-- (NSString *)isCodeValid:(NSString *)code withEmail:(NSString *)email;
-- (void)setRegisteredCode:(NSString *)code andEmail:(NSString *)email registerOS:(BOOL)registerOS;
+- (BOOL)setRegisteredCode:(NSString *)code andEmail:(NSString *)email registerOS:(BOOL)registerOS;
 - (NSNumber *)unpaidHours;
+- (void)contribute;
+- (void)buy;
+- (void)aboutFairware;
 @end
