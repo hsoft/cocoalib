@@ -8,6 +8,11 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import "HSGeometry.h"
 
+CGFloat deg2rad(CGFloat deg)
+{
+    return deg * M_PI / 180;
+}
+
 CGFloat distance(NSPoint p1, NSPoint p2)
 {
     CGFloat dX = p1.x - p2.x;

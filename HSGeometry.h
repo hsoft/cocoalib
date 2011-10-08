@@ -9,8 +9,7 @@ http://www.hardcoded.net/licenses/bsd_license
 #import <Cocoa/Cocoa.h>
 #import <math.h>
 
-#define RADIANS( degrees ) ( degrees * M_PI / 180 )
-
+CGFloat deg2rad(CGFloat deg);
 CGFloat distance(NSPoint p1, NSPoint p2);
 NSPoint pointInCircle(NSPoint center, CGFloat radius, CGFloat angle);
 CGFloat angleFromPoints(NSPoint pt1, NSPoint pt2);
