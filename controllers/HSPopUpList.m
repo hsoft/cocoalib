@@ -43,6 +43,11 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     [[self view] removeAllItems];
     [[self view] addItemsWithTitles:[[self py] items]];
-    [[self view] selectItemAtIndex:[[self py] selectedIndex]];
+    [self updateSelection];
+}
+
+- (void)updateSelection
+{
+    [[self view] selectItemAtIndex:[[self py] selectedIndex]]; 
 }
 @end

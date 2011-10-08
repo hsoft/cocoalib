@@ -17,4 +17,5 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)popupViewSelectionChanged;
 - (void)refresh;
+- (void)updateSelection;
 @end
