@@ -8,8 +8,10 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import <Cocoa/Cocoa.h>
 #import "PyGUI.h"
+#import "PyColumns.h"
 
 @interface PyOutline : PyGUI
+- (PyColumns *)columns;
 - (void)cancelEdits;
 - (BOOL)canEditProperty:(NSString *)property atPath:(NSArray *)path;
 - (void)saveEdits;

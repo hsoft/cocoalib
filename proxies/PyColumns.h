@@ -7,9 +7,9 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
-#import "PyTable.h"
+#import "PyGUI.h"
 
-@interface PyColumns : PyTable {}
+@interface PyColumns : PyGUI {}
 - (NSArray *)columnNamesInOrder;
 - (NSInteger)columnWidth:(NSString *)colName;
 - (BOOL)columnIsVisible:(NSString *)colName;

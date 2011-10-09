@@ -11,9 +11,9 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "HSTableView.h" // To prevent warning on stopEditing
 
 @implementation HSColumns
-- (id)initWithPyParent:(id)aPyParent tableView:(NSTableView *)aTableView
+- (id)initWithPy:(id)aPy tableView:(NSTableView *)aTableView
 {
-    self = [super initWithPyClassName:@"PyColumns" pyParent:(id)aPyParent];
+    self = [super initWithPy:aPy view:aTableView];
     tableView = [aTableView retain];
     [self connectNotifications];
     return self;

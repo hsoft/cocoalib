@@ -8,8 +8,10 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import <Cocoa/Cocoa.h>
 #import "PyGUI.h"
+#import "PyColumns.h"
 
 @interface PyTable : PyGUI {}
+- (PyColumns *)columns;
 - (void)add;
 - (void)cancelEdits;
 - (BOOL)canEditColumn:(NSString *)column atRow:(NSInteger)row;

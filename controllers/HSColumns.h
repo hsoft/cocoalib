@@ -36,7 +36,7 @@ typedef struct {
 {
     NSTableView *tableView;
 }
-- (id)initWithPyParent:(id)aPyParent tableView:(NSTableView *)aTableView;
+- (id)initWithPy:(id)aPy tableView:(NSTableView *)aTableView;
 - (PyColumns *)py;
 - (void)connectNotifications;
 - (void)disconnectNotifications;
