@@ -4,4 +4,5 @@ syntax: glob
 fr.lproj/*.xib
 de.lproj/*.xib
 it.lproj/*.xib
+cs.lproj/*.xib
 zh_CN.lproj/*.xib

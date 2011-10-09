@@ -1,0 +1,66 @@
+
+/* Class = "NSPanel"; title = "%@ is Fairware"; ObjectID = "7"; */
+"7.title" = "%@ is Fairware";
+
+/* Class = "NSPanel"; title = "Enter Key"; ObjectID = "19"; */
+"19.title" = "Enter Key";
+
+/* Class = "NSTextFieldCell"; title = "Please contribute"; ObjectID = "119"; */
+"119.title" = "Please contribute";
+
+/* Class = "NSButtonCell"; title = "Contribute"; ObjectID = "121"; */
+"121.title" = "Contribute";
+
+/* Class = "NSButtonCell"; title = "Enter Key"; ObjectID = "122"; */
+"122.title" = "Enter Key";
+
+/* Class = "NSButtonCell"; title = "Continue"; ObjectID = "123"; */
+"123.title" = "Continue";
+
+/* Class = "NSTextFieldCell"; title = "Enter your key"; ObjectID = "125"; */
+"125.title" = "Enter your key";
+
+/* Class = "NSTextFieldCell"; title = "Type the key you received when you contributed to %@, as well as the e-mail used as a reference for the purchase."; ObjectID = "126"; */
+"126.title" = "Type the key you received when you contributed to %@, as well as the e-mail used as a reference for the purchase.";
+
+/* Class = "NSTextFieldCell"; title = "Registration key:"; ObjectID = "127"; */
+"127.title" = "Registration key:";
+
+/* Class = "NSTextFieldCell"; title = "Reference e-mail:"; ObjectID = "128"; */
+"128.title" = "Reference e-mail:";
+
+/* Class = "NSButtonCell"; title = "Submit"; ObjectID = "131"; */
+"131.title" = "Submit";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "132"; */
+"132.title" = "Cancel";
+
+/* Class = "NSButtonCell"; title = "Contribute"; ObjectID = "133"; */
+"133.title" = "Contribute";
+
+/* Class = "NSTextFieldCell"; title = "Unpaid hours: %0.1f"; ObjectID = "135"; */
+"135.title" = "Unpaid hours: %0.1f";
+
+/* Class = "NSButtonCell"; title = "More Info"; ObjectID = "137"; */
+"137.title" = "More Info";
+
+/* Class = "NSButtonCell"; title = "Tell Hardcoded Software which operating system I'm using."; ObjectID = "170"; */
+"170.title" = "Tell Hardcoded Software which operating system I'm using.";
+
+/* Class = "NSTextFieldCell"; title = "(to have some contribution statistics based on OSes)"; ObjectID = "172"; */
+"172.title" = "(to have some contribution statistics based on OSes)";
+
+/* Class = "NSPanel"; title = "%@ is fairware"; ObjectID = "174"; */
+"174.title" = "%@ is fairware";
+
+/* Class = "NSButtonCell"; title = "Buy"; ObjectID = "185"; */
+"185.title" = "Buy";
+
+/* Class = "NSButtonCell"; title = "Enter Key"; ObjectID = "186"; */
+"186.title" = "Enter Key";
+
+/* Class = "NSButtonCell"; title = "Try"; ObjectID = "187"; */
+"187.title" = "Try";
+
+/* Class = "NSButtonCell"; title = "Fairware?"; ObjectID = "199"; */
+"199.title" = "Fairware?";
