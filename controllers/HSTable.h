@@ -15,6 +15,7 @@ http://www.hardcoded.net/licenses/bsd_license
     NSTableView *tableView;
 }
 - (id)initWithPyClassName:(NSString *)aClassName pyParent:(id)aPyParent view:(NSTableView *)aTableView;
+- (id)initWithPy:(id)aPy view:(NSTableView *)aTableView;
 
 /* Virtual */
 - (PyTable *)py;

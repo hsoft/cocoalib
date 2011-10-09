@@ -19,6 +19,15 @@ http://www.hardcoded.net/licenses/bsd_license
     return self;
 }
 
+- (id)initWithPy:(id)aPy view:(NSTableView *)aTableView
+{
+    self = [super initWithPy:aPy view:aTableView];
+    tableView = aTableView;
+    [tableView setDataSource:self];
+    [tableView setDelegate:self];
+    return self;
+}
+
 /* Private */
 - (void)setPySelection
 {
