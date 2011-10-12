@@ -9,23 +9,26 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "HSOutlineView.h"
 
 @implementation HSOutlineView
+- (id <HSOutlineViewDelegate>)delegate
+{
+    return (id <HSOutlineViewDelegate>)[super delegate];
+}
+
+- (void)setDelegate:(id <HSOutlineViewDelegate>)aDelegate
+{
+    [super setDelegate:aDelegate];
+    id delegate = [self delegate];
+    if ([delegate respondsToSelector:@selector(outlineViewWasDoubleClicked:)]) {
+        [self setTarget:[self delegate]];
+        [self setDoubleAction:@selector(outlineViewWasDoubleClicked:)];
+    }
+}
 /* NSOutlineView overrides */
 - (void)keyDown:(NSEvent *)event 
 {
     if (![self dispatchSpecialKeys:event])
     {
         [super keyDown:event];
-    }
-}
-
-- (void)setDelegate:(id)aDelegate
-{
-    [super setDelegate:aDelegate];
-    id delegate = [self delegate];
-    if ([delegate respondsToSelector:@selector(outlineViewWasDoubleClicked:)])
-    {
-        [self setTarget:[self delegate]];
-        [self setDoubleAction:@selector(outlineViewWasDoubleClicked:)];
     }
 }
 
@@ -142,6 +145,18 @@ http://www.hardcoded.net/licenses/bsd_license
     id delegate = [self delegate];
     if ([delegate respondsToSelector:@selector(selectedIndexPaths)]) {
         [self selectNodePaths:[delegate selectedIndexPaths]];
+    }
+}
+
+/* Actions */
+
+- (IBAction)copy:(id)sender
+{
+    NSString *data = [[self delegate] dataForCopyToPasteboard];
+    if (data != nil) {
+        NSPasteboard *p = [NSPasteboard generalPasteboard];
+        [p declareTypes:[NSArray arrayWithObjects:NSStringPboardType, nil] owner:nil];
+        [p setString:data forType:NSStringPboardType];
     }
 }
 

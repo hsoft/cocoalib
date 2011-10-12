@@ -26,6 +26,7 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)refresh;
 - (NSIndexPath *)selectedIndexPath;
 - (NSArray *)selectedIndexPaths;
+- (NSString *)dataForCopyToPasteboard;
 - (void)startEditing;
 - (void)stopEditing;
 - (void)updateSelection;

@@ -10,11 +10,23 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "NSTableViewAdditions.h"
 #import "NSIndexPathAdditions.h"
 
+@class HSOutlineView;
+
+@protocol HSOutlineViewDelegate <NSOutlineViewDelegate>
+- (NSArray *)selectedIndexPaths; /* array of NSIndexPath* */
+- (NSString *)dataForCopyToPasteboard;
+- (void)outlineViewDidEndEditing:(HSOutlineView *)outlineView;
+- (void)outlineViewCancelsEdition:(HSOutlineView *)outlineView;
+- (void)outlineViewWasDoubleClicked:(HSOutlineView *)outlineView;
+@end
+
 @interface HSOutlineView : NSOutlineView
 {
     BOOL manualEditionStop;
     NSEvent *eventToIgnore;
 }
+- (id <HSOutlineViewDelegate>)delegate;
+- (void)setDelegate:(id <HSOutlineViewDelegate>)aDelegate;
 - (NSIndexPath *)selectedPath;
 - (void)selectPath:(NSIndexPath *)aPath;
 - (NSArray *)selectedNodePaths;
@@ -22,12 +34,6 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)stopEditing;
 - (void)updateSelection;
 - (void)ignoreEventForEdition:(NSEvent *)aEvent;
-@end
 
-@protocol HSOutlineViewDelegate<NSOutlineViewDelegate>
-- (NSArray *)selectedIndexPaths; /* array of NSIndexPath* */
-- (void)outlineViewDidEndEditing:(HSOutlineView *)outlineView;
-- (void)outlineViewCancelsEdition:(HSOutlineView *)outlineView;
-- (void)outlineViewWasDoubleClicked:(HSOutlineView *)outlineView;
+- (IBAction)copy:(id)sender;
 @end
-

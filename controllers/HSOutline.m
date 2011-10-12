@@ -83,11 +83,6 @@ http://www.hardcoded.net/licenses/bsd_license
     [self updateSelection];
 }
 
-- (NSIndexPath *)selectedIndexPath
-{
-    return [[self selectedIndexPaths] objectAtIndex:0];
-}
-
 - (NSArray *)selectedIndexPaths
 {
     NSArray *arrayPaths = [[self py] selectedPaths];
@@ -228,6 +223,17 @@ never called
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification
 {
     [self setPySelection];
+}
+
+/* HSOutlineView delegate */
+- (NSIndexPath *)selectedIndexPath
+{
+    return [[self selectedIndexPaths] objectAtIndex:0];
+}
+
+- (NSString *)dataForCopyToPasteboard
+{
+    return nil;
 }
 
 - (void)outlineViewDidEndEditing:(HSOutlineView *)outlineView
