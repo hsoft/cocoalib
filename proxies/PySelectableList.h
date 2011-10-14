@@ -15,4 +15,5 @@ http://www.hardcoded.net/licenses/bsd_license
 - (NSInteger)selectedIndex;
 - (void)selectIndexes:(NSArray *)indexes;
 - (NSArray *)selectedIndexes;
+- (NSInteger)searchByPrefix:(NSString *)prefix;
 @end
