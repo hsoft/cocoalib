@@ -18,6 +18,7 @@ http://www.hardcoded.net/licenses/bsd_license
     PyGUI *py;
 }
 - (id)initWithNibName:(NSString *)aNibName pyClassName:(NSString *)aClassName pyParent:(id)aPyParent;
+- (id)initWithNibName:(NSString *)aNibName py:(id)aPy;
 - (PyGUI *)py;
 - (void)connect;
 - (void)disconnect;

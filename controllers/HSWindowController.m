@@ -18,6 +18,14 @@ http://www.hardcoded.net/licenses/bsd_license
     return self;
 }
 
+- (id)initWithNibName:(NSString *)aNibName py:(id)aPy;
+{
+    self = [super initWithWindowNibName:aNibName];
+    py = [aPy retain];
+    [py bindCocoa:self];
+    return self;
+}
+
 - (oneway void)release
 {
     // see HSGUIController
