@@ -11,6 +11,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 @interface PyColumns : PyGUI {}
 - (NSArray *)columnNamesInOrder;
+- (NSString *)columnDisplay:(NSString *)colName;
 - (NSInteger)columnWidth:(NSString *)colName;
 - (BOOL)columnIsVisible:(NSString *)colName;
 - (void)moveColumn:(NSString *)colName toIndex:(NSInteger)index;

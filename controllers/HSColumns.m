@@ -83,7 +83,7 @@ http://www.hardcoded.net/licenses/bsd_license
         [c setResizingMask:NSTableColumnUserResizingMask];
         /* If the column is not added right away, it causes glitches under 10.5 (minwidths instead of default widths) */
         [tableView addTableColumn:c]; 
-        NSString *title = NSLocalizedStringFromTable(cdef->title, @"columns", @"");
+        NSString *title = [[self py] columnDisplay:cdef->attrname];
         [[c headerCell] setStringValue:title];
         if (cdef->sortable) {
             NSSortDescriptor *d = [[[NSSortDescriptor alloc] initWithKey:cdef->attrname ascending:YES] autorelease];

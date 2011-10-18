@@ -24,7 +24,6 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 typedef struct {
     NSString *attrname;
-    NSString *title; /* Untranslated. It will be translated on column instantiation. */
     NSUInteger defaultWidth;
     NSUInteger minWidth;
     NSUInteger maxWidth;
