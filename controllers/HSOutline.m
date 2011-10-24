@@ -22,16 +22,10 @@ http://www.hardcoded.net/licenses/bsd_license
     index path instances are sometimes released. Oops. So, we now need to retain our index path
     instances and that's why we use itemRetainer.
 
-    WEIRNESS NOTICE: You might be asking "why use an array instead of a set for itemRetainer?".
-    Under 10.7.1, using a set caused a crash. Same weirness in outlineView:child:ofItem:. Why add
-    the child to the retainer at all times? Shouldn't it be only when the child is not in itemData?
-    Well, if I do this, I get a crash. That's pretty bad because it means that itemRetainer will
-    grow all the time until the next refresh. Well, that's life.
-
-    My guess on this weirness is that even though Cocoa's doc says so, it's not true that two index
-    paths with the same value will always be the same instance.
+    In fact, it seems that unlike what the doc says, it's not true that two index paths with the
+    same value will always be the same instance.
     */
-    itemRetainer = [[NSMutableArray array] retain];
+    itemRetainer = [[NSMutableSet set] retain];
     outlineView = aOutlineView;
     [outlineView setDataSource:self];
     [outlineView setDelegate:self];
@@ -69,13 +63,28 @@ http://www.hardcoded.net/licenses/bsd_license
     [[self py] setSelectedPaths:paths];
 }
 
+- (NSIndexPath *)internalizedPath:(NSIndexPath *)path
+{
+    /* Because NSIndexPath stopped guaranteeing that the same paths always were represented by the
+       same instances, we have to make sure, when we manipulate paths, that we manipulate the same
+       instances as those that were given by outlineView:child:ofItem:
+    */
+    NSIndexPath *result = [itemRetainer member:path];
+    if (result == nil) {
+        result = path;
+        [itemData setObject:[NSMutableDictionary dictionary] forKey:result];
+        [itemRetainer addObject:result];
+    }
+    return result;
+}
+
 /* Public */
 - (void)refresh
 {
     [itemData removeAllObjects];
     // We can't get rid of our instances just yet, we have to wait until after reloadData
-    NSArray *oldRetainer = itemRetainer;
-    itemRetainer = [[NSMutableArray array] retain];
+    NSSet *oldRetainer = itemRetainer;
+    itemRetainer = [[NSMutableSet set] retain];
     [outlineView setDelegate:nil];
     [outlineView reloadData];
     [outlineView setDelegate:self];
@@ -88,7 +97,7 @@ http://www.hardcoded.net/licenses/bsd_license
     NSArray *arrayPaths = [[self py] selectedPaths];
     NSMutableArray *result = [NSMutableArray array];
     for (NSArray *arrayPath in arrayPaths) {
-        [result addObject:a2p(arrayPath)];
+        [result addObject:[self internalizedPath:a2p(arrayPath)]];
     }
     return result;
 }
@@ -181,13 +190,8 @@ http://www.hardcoded.net/licenses/bsd_license
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
 {
     NSIndexPath *parent = item;
-    NSIndexPath *child = parent == nil ? [NSIndexPath indexPathWithIndex:index] : [parent indexPathByAddingIndex:index];
-    if ([itemData objectForKey:child] == nil) {
-        [itemData setObject:[NSMutableDictionary dictionary] forKey:child];
-    }
-    // Why do we retain here instead of in the if block? See notice in init method.
-    [itemRetainer addObject:child];
-    return child;
+    NSIndexPath *path = parent == nil ? [NSIndexPath indexPathWithIndex:index] : [parent indexPathByAddingIndex:index];
+    return [self internalizedPath:path];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)theOutlineView isItemExpandable:(id)item

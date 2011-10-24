@@ -15,7 +15,7 @@ http://www.hardcoded.net/licenses/bsd_license
 @interface HSOutline : HSGUIController <HSOutlineViewDelegate, NSOutlineViewDataSource> {
     HSOutlineView *outlineView;
     NSMutableDictionary *itemData;
-    NSMutableArray *itemRetainer;
+    NSMutableSet *itemRetainer;
 }
 - (id)initWithPyClassName:(NSString *)aClassName pyParent:(id)aPyParent view:(HSOutlineView *)aOutlineView;
 
