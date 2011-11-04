@@ -1,0 +1,114 @@
+# 
+msgid ""
+msgstr ""
+
+#: cocoalib/en.lproj/about.strings:0
+msgid "This app is registered, thanks!"
+msgstr "This app is registered, thanks!"
+
+#: cocoalib/en.lproj/about.strings:0
+msgid "Register"
+msgstr "Register"
+
+#: cocoalib/en.lproj/ErrorReportWindow.strings:0
+msgid "Error report"
+msgstr "Error report"
+
+#: cocoalib/en.lproj/ErrorReportWindow.strings:0
+msgid ""
+"Something went wrong. Would you like to send the error report to Hardcoded "
+"Software?"
+msgstr ""
+"Something went wrong. Would you like to send the error report to Hardcoded "
+"Software?"
+
+#: cocoalib/en.lproj/ErrorReportWindow.strings:0
+msgid "Send"
+msgstr "Send"
+
+#: cocoalib/en.lproj/ErrorReportWindow.strings:0
+msgid "Don't Send"
+msgstr "Don't Send"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "%@ is Fairware"
+msgstr "%@ is Fairware"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Enter Key"
+msgstr "Enter Key"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Please contribute"
+msgstr "Please contribute"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Contribute"
+msgstr "Contribute"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Continue"
+msgstr "Continue"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Enter your key"
+msgstr "Enter your key"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid ""
+"Type the key you received when you contributed to %@, as well as the e-mail "
+"used as a reference for the purchase."
+msgstr ""
+"Type the key you received when you contributed to %@, as well as the e-mail "
+"used as a reference for the purchase."
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Registration key:"
+msgstr "Registration key:"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Reference e-mail:"
+msgstr "Reference e-mail:"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Submit"
+msgstr "Submit"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Cancel"
+msgstr "Cancel"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Unpaid hours: %0.1f"
+msgstr "Unpaid hours: %0.1f"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "More Info"
+msgstr "More Info"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Tell Hardcoded Software which operating system I'm using."
+msgstr "Tell Hardcoded Software which operating system I'm using."
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "(to have some contribution statistics based on OSes)"
+msgstr "(to have some contribution statistics based on OSes)"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "%@ is fairware"
+msgstr "%@ is fairware"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Buy"
+msgstr "Buy"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Try"
+msgstr "Try"
+
+#: cocoalib/en.lproj/FairwareReminder.strings:0
+msgid "Fairware?"
+msgstr "Fairware?"
