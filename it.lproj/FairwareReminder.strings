@@ -57,7 +57,7 @@
 "185.title" = "Acquista";
 
 /* Class = "NSButtonCell"; title = "Enter Key"; ObjectID = "186"; */
-"186.title" = "Inserisci il codice";
+"186.title" = "Inserisci Codice";
 
 /* Class = "NSButtonCell"; title = "Try"; ObjectID = "187"; */
 "187.title" = "Prova";
