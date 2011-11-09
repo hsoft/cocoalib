@@ -7,12 +7,13 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import "Dialogs.h"
+#import "HSConsts.h"
 
 @implementation Dialogs
 + (void)showMessage:(NSString *)message
 {
     NSAlert *a = [[NSAlert alloc] init];
-    [a addButtonWithTitle:@"OK"];
+    [a addButtonWithTitle:TR(@"OK")];
     [a setMessageText:message];
     [a runModal];
     [a release];
@@ -21,8 +22,8 @@ http://www.hardcoded.net/licenses/bsd_license
 + (NSInteger)askYesNo:(NSString *)message
 {
     NSAlert *a = [[NSAlert alloc] init];
-    [a addButtonWithTitle:@"Yes"];
-    [[a addButtonWithTitle:@"No"] setKeyEquivalent:@"\E"];
+    [a addButtonWithTitle:TR(@"Yes")];
+    [[a addButtonWithTitle:TR(@"No")] setKeyEquivalent:@"\E"];
     [a setMessageText:message];
     NSInteger r = [a runModal];
     [a release];
