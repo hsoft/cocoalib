@@ -16,4 +16,9 @@ http://www.hardcoded.net/licenses/bsd_license
 - (BOOL)columnIsVisible:(NSString *)colName;
 - (void)moveColumn:(NSString *)colName toIndex:(NSInteger)index;
 - (void)resizeColumn:(NSString *)colName toWidth:(NSInteger)newWidth;
+- (void)setColumn:(NSString *)colName defaultWidth:(NSInteger)width;
+- (NSArray *)menuItems;
+// Returns whether the menu item should be toggle afterwards.
+- (BOOL)toggleMenuItem:(NSInteger)index;
+- (void)resetToDefaults;
 @end

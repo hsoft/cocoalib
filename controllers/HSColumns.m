@@ -90,6 +90,7 @@ http://www.hardcoded.net/licenses/bsd_license
             [c setSortDescriptorPrototype:d];
         }
         [c setWidth:cdef->defaultWidth];
+        [[self py] setColumn:cdef->attrname defaultWidth:cdef->defaultWidth];
         [c setMinWidth:cdef->minWidth];
         NSUInteger maxWidth = cdef->maxWidth;
         if (maxWidth == 0) {
