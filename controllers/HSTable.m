@@ -13,6 +13,7 @@ http://www.hardcoded.net/licenses/bsd_license
 - (id)initWithPyClassName:(NSString *)aClassName pyParent:(id)aPyParent view:(NSTableView *)aTableView
 {
     self = [super initWithPyClassName:aClassName pyParent:aPyParent];
+    columns = [[HSColumns alloc] initWithPy:[[self py] columns] tableView:aTableView];
     tableView = aTableView;
     [tableView setDataSource:self];
     [tableView setDelegate:self];
@@ -22,10 +23,17 @@ http://www.hardcoded.net/licenses/bsd_license
 - (id)initWithPy:(id)aPy view:(NSTableView *)aTableView
 {
     self = [super initWithPy:aPy view:aTableView];
+    columns = [[HSColumns alloc] initWithPy:[[self py] columns] tableView:aTableView];
     tableView = aTableView;
     [tableView setDataSource:self];
     [tableView setDelegate:self];
     return self;
+}
+
+- (void)dealloc
+{
+    [columns release];
+    [super dealloc];
 }
 
 /* Private */
@@ -91,6 +99,10 @@ http://www.hardcoded.net/licenses/bsd_license
 }
 
 /* Public */
+- (HSColumns *)columns
+{
+    return columns;
+}
 
 - (void)refresh
 {

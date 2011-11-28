@@ -8,11 +8,13 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import <Cocoa/Cocoa.h>
 #import "HSGUIController.h"
+#import "HSColumns.h"
 #import "PyTable.h"
 
 @interface HSTable : HSGUIController <NSTableViewDelegate, NSTableViewDataSource>
 {
     NSTableView *tableView;
+    HSColumns *columns;
 }
 - (id)initWithPyClassName:(NSString *)aClassName pyParent:(id)aPyParent view:(NSTableView *)aTableView;
 - (id)initWithPy:(id)aPy view:(NSTableView *)aTableView;
@@ -21,6 +23,7 @@ http://www.hardcoded.net/licenses/bsd_license
 - (PyTable *)py;
 
 /* Public */
+- (HSColumns *)columns;
 - (void)refresh;
 - (void)showSelectedRow;
 - (void)updateSelection;
