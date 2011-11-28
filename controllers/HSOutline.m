@@ -232,7 +232,13 @@ never called
 /* HSOutlineView delegate */
 - (NSIndexPath *)selectedIndexPath
 {
-    return [[self selectedIndexPaths] objectAtIndex:0];
+    NSArray *paths = [self selectedIndexPaths];
+    if ([paths count] > 0) {
+        return [paths objectAtIndex:0];
+    }
+    else {
+        return nil;
+    }
 }
 
 - (NSString *)dataForCopyToPasteboard
