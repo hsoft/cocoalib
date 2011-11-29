@@ -19,8 +19,11 @@ http://www.hardcoded.net/licenses/bsd_license
     filepaths = [[NSMutableArray alloc] initWithArray:[ud arrayForKey:name]];
     NSFileManager *fm = [NSFileManager defaultManager];
     for (NSInteger i=[filepaths count]-1;i>=0;i--) {
-        if (![fm fileExistsAtPath:[filepaths objectAtIndex:i]])
+        NSString *path = [filepaths objectAtIndex:i];
+        // We check for path class because we might be fed with garbage from the prefs.
+        if ((![path isKindOfClass:[NSString class]]) || (![fm fileExistsAtPath:path])) {
             [filepaths removeObjectAtIndex:i];
+        }
     }
     [self rebuildMenu];
     return self;
