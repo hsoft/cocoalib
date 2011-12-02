@@ -81,4 +81,10 @@ http://www.hardcoded.net/licenses/bsd_license
     [[self view] reloadData];
     [self setViewSelection];
 }
+
+- (void)updateSelection
+{
+    NSIndexSet *selection = [NSIndexSet indexSetWithIndex:[[self py] selectedIndex]];
+    [[self view] selectRowIndexes:selection byExtendingSelection:NO];
+}
 @end
