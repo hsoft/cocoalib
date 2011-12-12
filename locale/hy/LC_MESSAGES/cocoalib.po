@@ -1,110 +1,115 @@
 # 
 msgid ""
 msgstr ""
+"Project-Id-Version: Armenian\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Hrant Ohanyan <hrantohanyan@mail.am>\n"
+"Language-Team: HaySoft <hrantohanyan@mail.am>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Armenian\n"
+"X-Poedit-Country: ARMENIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: cocoalib/en.lproj/about.strings:0
 msgid "This app is registered, thanks!"
-msgstr ""
+msgstr "Այս ծրագիրը գրանցված է, շնորհակալություն!"
 
 #: cocoalib/en.lproj/about.strings:0
 msgid "Register"
-msgstr ""
+msgstr "Գրանցել"
 
 #: cocoalib/en.lproj/ErrorReportWindow.strings:0
 msgid "Error report"
-msgstr ""
+msgstr "Սխալի զեկույց"
 
 #: cocoalib/en.lproj/ErrorReportWindow.strings:0
-msgid ""
-"Something went wrong. Would you like to send the error report to Hardcoded "
-"Software?"
-msgstr ""
+msgid "Something went wrong. Would you like to send the error report to Hardcoded Software?"
+msgstr "Ինչ-որ բան սխալ էր: Ուղարկե՞լ սխալի մասին զեկույց Hardcoded Software-ին:"
 
 #: cocoalib/en.lproj/ErrorReportWindow.strings:0
 msgid "Send"
-msgstr ""
+msgstr "Ուղարկել"
 
 #: cocoalib/en.lproj/ErrorReportWindow.strings:0
 msgid "Don't Send"
-msgstr ""
+msgstr "Չուղարկել"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "%@ is Fairware"
-msgstr ""
+msgstr "$appname-ը Fairware է"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
-#: cocoalib/en.lproj/FairwareReminder.strings:0
-#: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Enter Key"
-msgstr ""
+msgstr "Գրել բանալին"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Please contribute"
-msgstr ""
+msgstr "Խնդրում ենք մասնակցեք"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
-#: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Contribute"
-msgstr ""
+msgstr "Մասնակցել"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Continue"
-msgstr ""
+msgstr "Շարունակել"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Enter your key"
-msgstr ""
+msgstr "Շարունակել"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
-msgid ""
-"Type the key you received when you contributed to %@, as well as the e-mail "
-"used as a reference for the purchase."
-msgstr ""
+msgid "Type the key you received when you contributed to %@, as well as the e-mail used as a reference for the purchase."
+msgstr "Մուտքագրեք այն բանալին, որը ստացել եք %@-ին աջակցելիս, քանզի Ձեր էլ. հասցեն օգտագործվել է գնման ժամանակ:"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Registration key:"
-msgstr ""
+msgstr "Գրանցման բանալին."
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Reference e-mail:"
-msgstr ""
+msgstr "Հղման էլ. հասցեն."
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Submit"
-msgstr ""
+msgstr "Հաստատել"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Cancel"
-msgstr ""
+msgstr "Չեղարկել"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Unpaid hours: %0.1f"
-msgstr ""
+msgstr "Չվճարված ժամեր. %0.1f"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "More Info"
-msgstr ""
+msgstr "Լր. ինֆո"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Tell Hardcoded Software which operating system I'm using."
-msgstr ""
+msgstr "Ասացեք Hardcoded Software-ին, թե ինչ օպերացիոն համակարգ եք օգտագործում:"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "(to have some contribution statistics based on OSes)"
-msgstr ""
+msgstr "(ունենալու համար աջակցման վիճակագրությունը հիմնված OSes-ի վրա)"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "%@ is fairware"
-msgstr ""
+msgstr "%@-ը Fairware է"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Buy"
-msgstr ""
+msgstr "Գնել"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Try"
-msgstr ""
+msgstr "Փորձել"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Fairware?"
-msgstr ""
+msgstr "Fairware է՞"
+
