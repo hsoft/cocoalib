@@ -10,3 +10,4 @@ zh_CN.lproj/*.xib
 # fine, but we'll eventually only have en.lproj in the repo.
 nl.lproj
 hy.lproj
+ru.lproj
