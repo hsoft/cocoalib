@@ -91,9 +91,14 @@ static NSString *pluginName;
 
 + (Class)classNamed:(NSString *)className
 {
-    NSString *pluginPath = [[NSBundle mainBundle] pathForResource:pluginName ofType:@"plugin"];
-    NSBundle *pluginBundle = [NSBundle bundleWithPath:pluginPath];
-    return [pluginBundle classNamed:className];
+    if (pluginName != nil) {
+        NSString *pluginPath = [[NSBundle mainBundle] pathForResource:pluginName ofType:@"plugin"];
+        NSBundle *pluginBundle = [NSBundle bundleWithPath:pluginPath];
+        return [pluginBundle classNamed:className];
+    }
+    else {
+        return [[NSBundle mainBundle] classNamed:className];
+    }
 }
 @end
 
