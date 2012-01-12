@@ -10,7 +10,8 @@ http://www.hardcoded.net/licenses/bsd_license
 #import <Python.h>
 
 @protocol PyGUI2 <NSObject>
-- (id)initWithModel:(PyObject *)model callback:(PyObject *)callback;
+- (id)initWithModel:(PyObject *)model;
+- (void)bindCallback:(PyObject *)callback;
 - (void)connect;
 - (void)disconnect;
 - (void)free;
