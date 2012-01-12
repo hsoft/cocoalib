@@ -123,7 +123,7 @@ id <PyGUI2> createPyWrapper(NSString *aClassName, NSString *aModelName, NSString
     NSString *moduleName = [@"inter." stringByAppendingString:aViewClassName];
     PyObject *pCallback = ObjP_classInstanceWithRef(aViewClassName, moduleName, aViewRef);
     Class myClass = [[NSBundle mainBundle] classNamed:aClassName];
-    id <PyGUI2> pyWrapper = [(id <PyGUI2>)[myClass alloc] initWithModel:pModelInstance Callback:pCallback];
+    id <PyGUI2> pyWrapper = [(id <PyGUI2>)[myClass alloc] initWithModel:pModelInstance callback:pCallback];
     PyGILState_Release(gilState);
     return pyWrapper;
 }
