@@ -37,6 +37,37 @@ class PyGUIObject:
     def refresh(self):
         self.callback.refresh()
 
+class SelectableListView(GUIObjectView):
+    def updateSelection(self): pass
+
+class PySelectableList2(PyGUIObject):
+    def items(self) -> list:
+        # Should normally always return strings
+        return self.model[:]
+    
+    def selectIndex_(self, index: int):
+        self.model.select(index)
+    
+    def selectedIndex(self) -> int:
+        result = self.model.selected_index
+        if result is None:
+            result = -1
+        return result
+    
+    def selectedIndexes(self) -> list:
+        return self.model.selected_indexes
+    
+    def selectIndexes_(self, indexes: list):
+        self.model.select(indexes)
+    
+    def searchByPrefix_(self, prefix: str) -> int:
+        return self.model.search_by_prefix(prefix)
+    
+    #--- model --> view
+    @dontwrap
+    def update_selection(self):
+        self.callback.updateSelection()
+
 class ColumnsView:
     def restoreColumns(self): pass
     def setColumn_visible_(self, colname: str, visible: bool): pass
