@@ -7,6 +7,7 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
+#import "PyGUI2.h"
 
 //Useful shortcuts
 #define i2n(i) [NSNumber numberWithInteger:i]
@@ -36,3 +37,4 @@ http://www.hardcoded.net/licenses/bsd_license
 @end
 
 void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith);
+id <PyGUI2> createPyWrapper(NSString *aClassName, NSString *aModelName, NSString *aViewClassName, id aViewRef);

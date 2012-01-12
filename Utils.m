@@ -8,6 +8,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import "Utils.h"
 #import <CoreServices/CoreServices.h>
+#import "ObjP.h"
 
 @implementation Utils
 //This is to pass index sets to python as arrays (so it can be converted to native lists)
@@ -108,4 +109,21 @@ void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith)
     [replaceWith setFrame:[placeholder frame]];
     [replaceWith setAutoresizingMask:[placeholder autoresizingMask]];
     [parent replaceSubview:placeholder with:replaceWith];
+}
+
+id <PyGUI2> createPyWrapper(NSString *aClassName, NSString *aModelName, NSString *aViewClassName, id aViewRef)
+{
+    PyGILState_STATE gilState = PyGILState_Ensure();
+    PyObject *pModule = PyImport_AddModule("__main__");
+    OBJP_ERRCHECK(pModule);
+    PyObject *pAppInstance = PyObject_GetAttrString(pModule, "APP_INSTANCE");
+    OBJP_ERRCHECK(pAppInstance);
+    PyObject *pModelInstance = PyObject_GetAttrString(pAppInstance, [aModelName UTF8String]);
+    OBJP_ERRCHECK(pModelInstance);
+    NSString *moduleName = [@"inter." stringByAppendingString:aViewClassName];
+    PyObject *pCallback = ObjP_classInstanceWithRef(aViewClassName, moduleName, aViewRef);
+    Class myClass = [[NSBundle mainBundle] classNamed:aClassName];
+    id <PyGUI2> pyWrapper = [(id <PyGUI2>)[myClass alloc] initWithModel:pModelInstance Callback:pCallback];
+    PyGILState_Release(gilState);
+    return pyWrapper;
 }
