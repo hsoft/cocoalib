@@ -1,4 +1,7 @@
-from objp.util import pyref
+from objp.util import pyref, dontwrap
+
+class GUIObjectView:
+    def refresh(self): pass
 
 class PyGUIObject:
     def __init__(self, model: pyref, callback: pyref):
@@ -25,5 +28,6 @@ class PyGUIObject:
             del self.callback
     
     #--- Python -> Cocoa
+    @dontwrap
     def refresh(self):
         self.callback.refresh()
