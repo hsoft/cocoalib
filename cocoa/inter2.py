@@ -4,8 +4,12 @@ class GUIObjectView:
     def refresh(self): pass
 
 class PyGUIObject:
-    def __init__(self, model: pyref, callback: pyref):
+    def __init__(self, model: pyref):
         self.model = model
+        self.callback = None
+    
+    # This *has* to be called right after initialization.
+    def bindCallback_(self, callback: pyref):
         self.callback = callback
         self.model.view = self
     

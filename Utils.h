@@ -7,6 +7,7 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
+#import <Python.h>
 #import "PyGUI2.h"
 
 //Useful shortcuts
@@ -37,4 +38,5 @@ http://www.hardcoded.net/licenses/bsd_license
 @end
 
 void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith);
-id <PyGUI2> createPyWrapper(NSString *aClassName, NSString *aModelName, NSString *aViewClassName, id aViewRef);
+PyObject* findHackishModel(NSString *aModelName);
+PyObject* createCallback(NSString *aViewClassName, id aViewRef);

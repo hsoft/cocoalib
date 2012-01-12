@@ -111,7 +111,7 @@ void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith)
     [parent replaceSubview:placeholder with:replaceWith];
 }
 
-id <PyGUI2> createPyWrapper(NSString *aClassName, NSString *aModelName, NSString *aViewClassName, id aViewRef)
+PyObject* findHackishModel(NSString *aModelName)
 {
     PyGILState_STATE gilState = PyGILState_Ensure();
     PyObject *pModule = PyImport_AddModule("__main__");
@@ -120,10 +120,17 @@ id <PyGUI2> createPyWrapper(NSString *aClassName, NSString *aModelName, NSString
     OBJP_ERRCHECK(pAppInstance);
     PyObject *pModelInstance = PyObject_GetAttrString(pAppInstance, [aModelName UTF8String]);
     OBJP_ERRCHECK(pModelInstance);
-    NSString *moduleName = [@"inter." stringByAppendingString:aViewClassName];
-    PyObject *pCallback = ObjP_classInstanceWithRef(aViewClassName, moduleName, aViewRef);
-    Class myClass = [[NSBundle mainBundle] classNamed:aClassName];
-    id <PyGUI2> pyWrapper = [(id <PyGUI2>)[myClass alloc] initWithModel:pModelInstance callback:pCallback];
+    Py_DECREF(pAppInstance);
+    Py_DECREF(pModelInstance);
     PyGILState_Release(gilState);
-    return pyWrapper;
+    return pModelInstance;
+}
+
+PyObject* createCallback(NSString *aViewClassName, id aViewRef)
+{
+    NSString *moduleName = [@"inter." stringByAppendingString:aViewClassName];
+    PyGILState_STATE gilState = PyGILState_Ensure();
+    PyObject *pCallback = ObjP_classInstanceWithRef(aViewClassName, moduleName, aViewRef);
+    PyGILState_Release(gilState);
+    return pCallback;
 }
