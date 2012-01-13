@@ -15,14 +15,6 @@ class PyGUIObject:
         self.callback = callback
         self.model.view = self
     
-    def connect(self):
-        if hasattr(self.model, 'connect'):
-            self.model.connect()
-    
-    def disconnect(self):
-        if hasattr(self.model, 'disconnect'):
-            self.model.disconnect()
-    
     def free(self):
         # call this method only when you don't need to use this proxy anymore. you need to call this
         # if you want to release the cocoa side (self.callback is holding a refcount)
