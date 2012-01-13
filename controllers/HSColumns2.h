@@ -8,16 +8,14 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import <Cocoa/Cocoa.h>
 #import <Python.h>
+#import "HSGUIController2.h"
 #import "PyColumns2.h"
 #import "HSColumns.h" // for HSColumnDef
 
-@interface HSColumns2 : NSObject
-{
-    PyColumns2 *py;
-    NSTableView *tableView;
-}
+@interface HSColumns2 : HSGUIController2 {}
 - (id)initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView;
-- (PyColumns2 *)py;
+- (PyColumns2 *)model;
+- (NSTableView *)view;
 - (void)connectNotifications;
 - (void)disconnectNotifications;
 - (void)initializeColumns:(HSColumnDef *)columns;

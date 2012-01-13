@@ -163,3 +163,84 @@ class PyOutline2(PyGUIObject2):
     @dontwrap
     def update_selection(self):
         self.callback.updateSelection()
+
+class TableView(GUIObjectView):
+    def showSelectedRow(self): pass
+    def startEditing(self): pass
+    def stopEditing(self): pass
+    def updateSelection(self): pass
+
+class PyTable2(PyGUIObject2):
+    #--- Helpers
+    @dontwrap
+    def _getrow(self, row):
+        try:
+            return self.model[row]
+        except IndexError:
+            msg = "Trying to get an out of bounds row ({} / {}) on table {}"
+            logging.warning(msg.format(row, len(self.model), self.model.__class__.__name__))
+    
+    #--- Cocoa --> Python
+    def columns(self) -> pyref:
+        return self.model.columns
+    
+    def add(self):
+        self.model.add()
+    
+    def cancelEdits(self):
+        self.model.cancel_edits()
+    
+    def canEditColumn_atRow_(self, column: str, row: int) -> object:
+        return self.model.can_edit_cell(column, row)
+    
+    def deleteSelectedRows(self):
+        self.model.delete()
+    
+    def numberOfRows(self) -> int:
+        return len(self.model)
+    
+    def saveEdits(self):
+        self.model.save_edits()
+    
+    def selectRows_(self, rows: list):
+        self.model.select(list(rows))
+    
+    def selectedRows(self) -> list:
+        return self.model.selected_indexes
+    
+    def selectionAsCSV(self) -> str:
+        return self.model.selection_as_csv()
+    
+    def setValue_forColumn_row_(self, value: object, column: str, row: int):
+        # this try except is important for the case while a row is in edition mode and the delete
+        # button is clicked.
+        try:
+            self._getrow(row).set_cell_value(column, value)
+        except AttributeError:
+            msg = "Trying to set an attribute that can't: {} with value {} at row {} on table {}"
+            logging.warning(msg.format(column, value, row, self.model.__class__.__name__))
+            raise
+    
+    def sortByColumn_desc_(self, column: str, desc: bool):
+        self.model.sort_by(column, desc=desc)
+    
+    def valueForColumn_row_(self, column: str, row: int) -> object:
+        return self._getrow(row).get_cell_value(column)
+    
+    #--- Python -> Cocoa
+    @dontwrap
+    def show_selected_row(self):
+        self.callback.showSelectedRow()
+    
+    @dontwrap
+    def start_editing(self):
+        self.callback.startEditing()
+    
+    @dontwrap
+    def stop_editing(self):
+        self.callback.stopEditing()
+    
+    @dontwrap
+    def update_selection(self):
+        self.callback.updateSelection()
+    

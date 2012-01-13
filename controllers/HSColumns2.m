@@ -13,10 +13,10 @@ http://www.hardcoded.net/licenses/bsd_license
 @implementation HSColumns2
 - (id)initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView
 {
-    self = [super init];
-    py = [[PyColumns2 alloc] initWithModel:aPyRef];
-    [py bindCallback:createCallback(@"ColumnsView", self)];
-    tableView = [aTableView retain];
+    PyColumns2 *m = [[PyColumns2 alloc] initWithModel:aPyRef];
+    self = [super initWithModel:m view:aTableView];
+    [m bindCallback:createCallback(@"ColumnsView", self)];
+    [m release];
     [self connectNotifications];
     return self;
 }
@@ -24,19 +24,22 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)dealloc
 {
     [self disconnectNotifications];
-    [tableView release];
-    [py release];
     [super dealloc];
 }
 
-- (PyColumns2 *)py
+- (PyColumns2 *)model
 {
-    return py;
+    return (PyColumns2 *)model;
+}
+
+- (NSTableView *)view
+{
+    return (NSTableView *)view;
 }
 
 - (void)connectNotifications
 {
-    if (tableView == nil) {
+    if ([self view] == nil) {
         /* This can happen if there something broken somewhere, and even though when that happens,
            it means that something serious is going on, the fact that we connect to all columnMoved:
            events messes thigs up even MORE. Don't connect when tableView is nil!
@@ -44,13 +47,13 @@ http://www.hardcoded.net/licenses/bsd_license
         return;
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(columnMoved:)
-        name:NSTableViewColumnDidMoveNotification object:tableView];
+        name:NSTableViewColumnDidMoveNotification object:[self view]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(columnMoved:)
-        name:NSOutlineViewColumnDidMoveNotification object:tableView];
+        name:NSOutlineViewColumnDidMoveNotification object:[self view]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(columnResized:)
-        name:NSTableViewColumnDidResizeNotification object:tableView];
+        name:NSTableViewColumnDidResizeNotification object:[self view]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(columnResized:)
-        name:NSOutlineViewColumnDidResizeNotification object:tableView];
+        name:NSOutlineViewColumnDidResizeNotification object:[self view]];
 }
 
 - (void)disconnectNotifications
@@ -71,29 +74,29 @@ http://www.hardcoded.net/licenses/bsd_license
     /* We don't want default widths to overwrite stored with in the core code */
     [self disconnectNotifications];
     /* Translate the title of columns (needed for outlines) present already */
-    for (NSTableColumn *c in [tableView tableColumns]) {
+    for (NSTableColumn *c in [[self view] tableColumns]) {
         NSString *title = NSLocalizedStringFromTable([[c headerCell] stringValue], @"columns", @"");
         [[c headerCell] setStringValue:title];
     }
     NSUserDefaults *udc = [NSUserDefaultsController sharedUserDefaultsController];
     HSColumnDef *cdef = columns;
     while (cdef->attrname != nil) {
-        if ([tableView tableColumnWithIdentifier:cdef->attrname] != nil) {
+        if ([[self view] tableColumnWithIdentifier:cdef->attrname] != nil) {
             cdef++;
             continue;
         }
         NSTableColumn *c = [[[NSTableColumn alloc] initWithIdentifier:cdef->attrname] autorelease];
         [c setResizingMask:NSTableColumnUserResizingMask];
         /* If the column is not added right away, it causes glitches under 10.5 (minwidths instead of default widths) */
-        [tableView addTableColumn:c]; 
-        NSString *title = [[self py] columnDisplay:cdef->attrname];
+        [[self view] addTableColumn:c]; 
+        NSString *title = [[self model] columnDisplay:cdef->attrname];
         [[c headerCell] setStringValue:title];
         if (cdef->sortable) {
             NSSortDescriptor *d = [[[NSSortDescriptor alloc] initWithKey:cdef->attrname ascending:YES] autorelease];
             [c setSortDescriptorPrototype:d];
         }
         [c setWidth:cdef->defaultWidth];
-        [[self py] setColumn:cdef->attrname defaultWidth:cdef->defaultWidth];
+        [[self model] setColumn:cdef->attrname defaultWidth:cdef->defaultWidth];
         [c setMinWidth:cdef->minWidth];
         NSUInteger maxWidth = cdef->maxWidth;
         if (maxWidth == 0) {
@@ -118,35 +121,35 @@ http://www.hardcoded.net/licenses/bsd_license
        the old index is irrelevant since we have to find the moved column's name.
     */
     NSInteger index = n2i([[notification userInfo] objectForKey:@"NSNewColumn"]);
-    NSTableColumn *c = [[tableView tableColumns] objectAtIndex:index];
+    NSTableColumn *c = [[[self view] tableColumns] objectAtIndex:index];
     NSString *colName = [c identifier];
-    [[self py] moveColumn:colName toIndex:index];
+    [[self model] moveColumn:colName toIndex:index];
 }
 
 - (void)columnResized:(NSNotification *)notification
 {
     NSTableColumn *c = [[notification userInfo] objectForKey:@"NSTableColumn"];
-    [[self py] resizeColumn:[c identifier] toWidth:[c width]];
+    [[self model] resizeColumn:[c identifier] toWidth:[c width]];
 }
 
 /* Python --> Cocoa */
 - (void)restoreColumns
 {
     [self disconnectNotifications];
-    NSArray *columnOrder = [[self py] columnNamesInOrder];
+    NSArray *columnOrder = [[self model] columnNamesInOrder];
     for (NSInteger i=0; i<[columnOrder count]; i++) {
         NSString *colName = [columnOrder objectAtIndex:i];
-        NSInteger index = [tableView columnWithIdentifier:colName];
+        NSInteger index = [[self view] columnWithIdentifier:colName];
         if ((index != -1) && (index != i)) {
-            [tableView moveColumn:index toColumn:i];
+            [[self view] moveColumn:index toColumn:i];
         }
     }
-    for (NSTableColumn *c in [tableView tableColumns]) {
-        NSInteger width = [[self py] columnWidth:[c identifier]];
+    for (NSTableColumn *c in [[self view] tableColumns]) {
+        NSInteger width = [[self model] columnWidth:[c identifier]];
         if (width > 0) {
             [c setWidth:width];
         }
-        BOOL isVisible = [[self py] columnIsVisible:[c identifier]];
+        BOOL isVisible = [[self model] columnIsVisible:[c identifier]];
         [c setHidden:!isVisible];
     }
     [self connectNotifications];
@@ -154,13 +157,13 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)setColumn:(NSString *)colname visible:(BOOL)visible
 {
-    NSTableColumn *col = [tableView tableColumnWithIdentifier:colname];
+    NSTableColumn *col = [[self view] tableColumnWithIdentifier:colname];
     if (col == nil)
         return;
     if ([col isHidden] == !visible)
         return;
-    if ([tableView respondsToSelector:@selector(stopEditing)]) {
-        [(id)tableView stopEditing];
+    if ([[self view] respondsToSelector:@selector(stopEditing)]) {
+        [(id)[self view] stopEditing];
     }
     [col setHidden:!visible];
 }
