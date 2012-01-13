@@ -7,10 +7,15 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
-#import "HSGUIController.h"
+#import <Python.h>
 #import "PySelectableList.h"
 
-@interface HSPopUpList : HSGUIController {}
+@interface HSPopUpList : NSObject
+{
+    PySelectableList *py;
+    NSPopUpButton *view;
+}
+- (id)initWithPyRef:(PyObject *)aPyRef popupView:(NSPopUpButton *)aPopupView;
 - (NSPopUpButton *)view;
 - (void)setView:(NSPopUpButton *)aPopupView;
 - (PySelectableList *)py;

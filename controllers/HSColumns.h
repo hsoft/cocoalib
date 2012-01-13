@@ -7,16 +7,9 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
+#import <Python.h>
 #import "HSGUIController.h"
 #import "PyColumns.h"
-
-/*
-    This unit comes directly from MGColumns and has been pushed into cocoalib. In moneyGuru, all
-    MGTable have a MGColumns instance, but I didn't do that for HSTable because I'm a bit afraid
-    to break stuff in dupeGuru (We'll move HSColumns in HSTable when dupeGuru has been converted
-    to HSColumns). So, when you want to use HSColumns, you have to instantiate it in your table
-    manually.
-*/
 
 /*
     This structure is to define constants describing table columns (it's easier to maintain in code
@@ -31,12 +24,10 @@ typedef struct {
     Class cellClass;
 } HSColumnDef;
 
-@interface HSColumns : HSGUIController
-{
-    NSTableView *tableView;
-}
-- (id)initWithPy:(id)aPy tableView:(NSTableView *)aTableView;
-- (PyColumns *)py;
+@interface HSColumns : HSGUIController {}
+- (id)initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView;
+- (PyColumns *)model;
+- (NSTableView *)view;
 - (void)connectNotifications;
 - (void)disconnectNotifications;
 - (void)initializeColumns:(HSColumnDef *)columns;

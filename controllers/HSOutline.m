@@ -12,9 +12,10 @@ http://www.hardcoded.net/licenses/bsd_license
 #define CHILDREN_COUNT_PROPERTY @"children_count"
 
 @implementation HSOutline
-- (id)initWithPyClassName:(NSString *)aClassName pyParent:(id)aPyParent view:(HSOutlineView *)aOutlineView
+- (id)initWithPy:(PyOutline *)aPy view:(HSOutlineView *)aOutlineView
 {
-    self = [super initWithPyClassName:aClassName pyParent:aPyParent];
+    self = [super init];
+    py = [aPy retain];
     itemData = [[NSMutableDictionary dictionary] retain];
     /* Dictionaries don't retain its keys because it copies them. Our items are NSIndexPath and when
     an index path has the same value, it's the same instance. Before OS X 10.7, all these instances
@@ -36,6 +37,7 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     [itemData release];
     [itemRetainer release];
+    [py release];
     [super dealloc];
 }
 
@@ -46,7 +48,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (PyOutline *)py
 {
-    return (PyOutline *)py;
+    return py;
 }
 
 /* Private */

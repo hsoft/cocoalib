@@ -7,19 +7,16 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
-#import "PyGUI.h"
+#import "PyGUIObject.h"
 
 @interface HSGUIController : NSObject
 {
-    PyGUI *py;
+    PyGUIObject *model;
     NSView *view;
 }
-- (id)initWithPyClassName:(NSString *)aClassName pyParent:(id)aPyParent;
-- (id)initWithPy:(id)aPy;
-- (id)initWithPyClassName:(NSString *)aClassName pyParent:(id)aPyParent view:(NSView *)aView;
-- (id)initWithPy:(id)aPy view:(NSView *)aView;
+- (id)initWithModel:(PyGUIObject *)aPy;
+- (id)initWithModel:(PyGUIObject *)aPy view:(NSView *)aView;
+- (PyGUIObject *)model;
 - (NSView *)view;
 - (void)setView:(NSView *)aView;
-- (void)connect;
-- (void)disconnect;
 @end
