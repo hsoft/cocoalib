@@ -15,8 +15,8 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     HSColumns2 *columns;
 }
-- initWithModel:(PyTable2 *)aPy tableView:(NSTableView *)aTableView;
-- initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView;
+- (id)initWithModel:(PyTable2 *)aPy tableView:(NSTableView *)aTableView;
+- (id)initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView;
 
 /* Virtual */
 - (PyTable2 *)model;

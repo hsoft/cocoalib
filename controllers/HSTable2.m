@@ -10,14 +10,14 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "Utils.h"
 
 @implementation HSTable2
-- initWithModel:(PyTable2 *)aModel tableView:(NSTableView *)aTableView
+- (id)initWithModel:(PyTable2 *)aModel tableView:(NSTableView *)aTableView
 {
     self = [super initWithModel:aModel view:aTableView];
     columns = [[HSColumns2 alloc] initWithPyRef:[[self model] columns] tableView:aTableView];
     return self;
 }
 
-- initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView
+- (id)initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView
 {
     PyTable2 *m = [[PyTable2 alloc] initWithModel:aPyRef];
     self = [self initWithModel:m tableView:aTableView];
