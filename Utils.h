@@ -8,7 +8,6 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import <Cocoa/Cocoa.h>
 #import <Python.h>
-#import "PyGUI2.h"
 
 //Useful shortcuts
 #define i2n(i) [NSNumber numberWithInteger:i]

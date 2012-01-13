@@ -12,13 +12,13 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "NSIndexPathAdditions.h"
 
 @interface HSOutline2 : NSObject <HSOutlineViewDelegate, NSOutlineViewDataSource> {
-    id <PyOutline2> py;
+    PyOutline2 *py;
     HSOutlineView *outlineView;
     NSMutableDictionary *itemData;
     NSMutableSet *itemRetainer;
 }
-- (id)initWithPy:(id <PyOutline2>)aPy view:(HSOutlineView *)aOutlineView;
-- (id <PyOutline2>)py;
+- (id)initWithPy:(PyOutline2 *)aPy view:(HSOutlineView *)aOutlineView;
+- (PyOutline2 *)py;
 - (HSOutlineView *)outlineView;
 
 /* Public */

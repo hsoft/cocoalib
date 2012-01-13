@@ -10,11 +10,20 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "Utils.h"
 
 @implementation HSSelectableList2
-- initWithPy:(id <PySelectableList2>)aPy tableView:(NSTableView *)aTableView
+- initWithModel:(PySelectableList2 *)aModel tableView:(NSTableView *)aTableView
 {
     self = [super init];
-    py = [aPy retain];
+    model = [aModel retain];
     [self setView:aTableView];
+    return self;
+}
+
+- initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView
+{
+    PySelectableList2 *m = [[PySelectableList2 alloc] initWithModel:aPyRef];
+    self = [self initWithModel:m tableView:aTableView];
+    [m bindCallback:createCallback(@"SelectableListView", self)];
+    [m release];
     return self;
 }
 
@@ -30,7 +39,7 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     [items release];
     [view release];
-    [py release];
+    [model release];
     [super dealloc];
 }
 
@@ -38,22 +47,22 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)setPySelection
 {
     NSArray *selection = [Utils indexSet2Array:[[self view] selectedRowIndexes]];
-    NSArray *pyselection = [[self py] selectedIndexes];
+    NSArray *pyselection = [[self model] selectedIndexes];
     if (![selection isEqualTo:pyselection]) {
-        [[self py] selectIndexes:selection];
+        [[self model] selectIndexes:selection];
     }
 }
 
 - (void)setViewSelection
 {
-    NSIndexSet *selection = [Utils array2IndexSet:[[self py] selectedIndexes]];
+    NSIndexSet *selection = [Utils array2IndexSet:[[self model] selectedIndexes]];
     [[self view] selectRowIndexes:selection byExtendingSelection:NO];
 }
 
 /* HSGUIController */
-- (id <PySelectableList2>)py
+- (PySelectableList2 *)model
 {
-    return (id <PySelectableList2>)py;
+    return (PySelectableList2 *)model;
 }
 
 - (NSTableView *)view
@@ -87,14 +96,14 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     // If we just deleted the last item, we want to update the selection before we reload
     [items release];
-    items = [[[self py] items] retain];
+    items = [[[self model] items] retain];
     [[self view] reloadData];
     [self setViewSelection];
 }
 
 - (void)updateSelection
 {
-    NSIndexSet *selection = [NSIndexSet indexSetWithIndex:[[self py] selectedIndex]];
+    NSIndexSet *selection = [NSIndexSet indexSetWithIndex:[[self model] selectedIndex]];
     [[self view] selectRowIndexes:selection byExtendingSelection:NO];
 }
 @end

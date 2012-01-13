@@ -12,7 +12,7 @@ http://www.hardcoded.net/licenses/bsd_license
 #define CHILDREN_COUNT_PROPERTY @"children_count"
 
 @implementation HSOutline2
-- (id)initWithPy:(id <PyOutline2>)aPy view:(HSOutlineView *)aOutlineView
+- (id)initWithPy:(PyOutline2 *)aPy view:(HSOutlineView *)aOutlineView
 {
     self = [super init];
     py = [aPy retain];
@@ -46,7 +46,7 @@ http://www.hardcoded.net/licenses/bsd_license
     return outlineView;
 }
 
-- (id <PyOutline2>)py
+- (PyOutline2 *)py
 {
     return py;
 }

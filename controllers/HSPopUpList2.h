@@ -8,18 +8,17 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import <Cocoa/Cocoa.h>
 #import <Python.h>
-// XXX wrong, supposed to be PySelectableList but had to use PyPrioritizeList to quickly make it work.
-#import "PyPrioritizeList.h"
+#import "PySelectableList2.h"
 
 @interface HSPopUpList2 : NSObject
 {
-    PyPrioritizeList *py;
+    PySelectableList2 *py;
     NSPopUpButton *view;
 }
 - (id)initWithPyRef:(PyObject *)aPyRef popupView:(NSPopUpButton *)aPopupView;
 - (NSPopUpButton *)view;
 - (void)setView:(NSPopUpButton *)aPopupView;
-- (PyPrioritizeList *)py;
+- (PySelectableList2 *)py;
 
 - (void)popupViewSelectionChanged;
 - (void)refresh;

@@ -13,8 +13,8 @@ http://www.hardcoded.net/licenses/bsd_license
 - (id)initWithPyRef:(PyObject *)aPyRef popupView:(NSPopUpButton *)aPopupView
 {
     self = [super init];
-    py = [[PyPrioritizeList alloc] initWithModel:aPyRef];
-    [py bindCallback:createCallback(@"PrioritizeListView", self)];
+    py = [[PySelectableList2 alloc] initWithModel:aPyRef];
+    [py bindCallback:createCallback(@"SelectableListView", self)];
     [self setView:aPopupView];
     return self;
 }
@@ -40,9 +40,9 @@ http://www.hardcoded.net/licenses/bsd_license
     [self refresh];
 }
 
-- (PyPrioritizeList *)py
+- (PySelectableList2 *)py
 {
-    return (PyPrioritizeList *)py;
+    return (PySelectableList2 *)py;
 }
 
 - (void)popupViewSelectionChanged

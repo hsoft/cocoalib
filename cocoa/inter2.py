@@ -4,7 +4,7 @@ from objp.util import pyref, dontwrap
 class GUIObjectView:
     def refresh(self): pass
 
-class PyGUIObject:
+class PyGUIObject2:
     def __init__(self, model: pyref):
         self.model = model
         self.callback = None
@@ -40,7 +40,7 @@ class PyGUIObject:
 class SelectableListView(GUIObjectView):
     def updateSelection(self): pass
 
-class PySelectableList2(PyGUIObject):
+class PySelectableList2(PyGUIObject2):
     def items(self) -> list:
         # Should normally always return strings
         return self.model[:]
@@ -72,7 +72,7 @@ class ColumnsView:
     def restoreColumns(self): pass
     def setColumn_visible_(self, colname: str, visible: bool): pass
 
-class PyColumns2(PyGUIObject):
+class PyColumns2(PyGUIObject2):
     def columnNamesInOrder(self) -> list:
         return self.model.colnames
     
@@ -117,7 +117,7 @@ class OutlineView(GUIObjectView):
     def stopEditing(self): pass
     def updateSelection(self): pass
 
-class PyOutline(PyGUIObject):
+class PyOutline2(PyGUIObject2):
     def cancelEdits(self):
         self.model.cancel_edits()
     

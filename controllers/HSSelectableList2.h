@@ -11,14 +11,15 @@ http://www.hardcoded.net/licenses/bsd_license
 
 @interface HSSelectableList2 : NSObject <NSTableViewDelegate, NSTableViewDataSource>
 {
-    id <PySelectableList2> py;
+    PySelectableList2 *model;
     NSTableView *view;
     NSArray *items;
 }
-- initWithPy:(id <PySelectableList2>)aPy tableView:(NSTableView *)aTableView;
+- initWithModel:(PySelectableList2 *)aPy tableView:(NSTableView *)aTableView;
+- initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView;
 - (NSTableView *)view;
 - (void)setView:(NSTableView *)aTableView;
-- (id <PySelectableList2>)py;
+- (PySelectableList2 *)model;
 
 - (void)refresh;
 @end
