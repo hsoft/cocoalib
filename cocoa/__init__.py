@@ -13,8 +13,6 @@ import subprocess
 import sys
 
 from .CocoaProxy import CocoaProxy
-# from .inter import signature
-# from .objcmin import NSBundle, NSExceptionHandler, NSLogAndHandleEveryExceptionMask, NSObject
 
 proxy = CocoaProxy()
 

@@ -32,10 +32,7 @@ http://www.hardcoded.net/licenses/bsd_license
 + (NSIndexPath *)array2IndexPath:(NSArray *)indexArray;
 + (NSString *)indexPath2String:(NSIndexPath *)aIndexPath;
 + (NSIndexPath *)string2IndexPath:(NSString *)aString;
-+ (void)setPluginName:(NSString *)aPluginName;
-+ (Class)classNamed:(NSString *)className;
 @end
 
 void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith);
-PyObject* findHackishModel(NSString *aModelName);
 PyObject* createCallback(NSString *aViewClassName, id aViewRef);

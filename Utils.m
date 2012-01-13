@@ -82,25 +82,6 @@ http://www.hardcoded.net/licenses/bsd_license
         [indexes addObject:i2n([[components objectAtIndex:i] intValue])];
     return [Utils array2IndexPath:indexes];
 }
-
-static NSString *pluginName;
-+ (void)setPluginName:(NSString *)aPluginName
-{
-    [pluginName release];
-    pluginName = [aPluginName retain];
-}
-
-+ (Class)classNamed:(NSString *)className
-{
-    if (pluginName != nil) {
-        NSString *pluginPath = [[NSBundle mainBundle] pathForResource:pluginName ofType:@"plugin"];
-        NSBundle *pluginBundle = [NSBundle bundleWithPath:pluginPath];
-        return [pluginBundle classNamed:className];
-    }
-    else {
-        return [[NSBundle mainBundle] classNamed:className];
-    }
-}
 @end
 
 void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith)
@@ -109,21 +90,6 @@ void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith)
     [replaceWith setFrame:[placeholder frame]];
     [replaceWith setAutoresizingMask:[placeholder autoresizingMask]];
     [parent replaceSubview:placeholder with:replaceWith];
-}
-
-PyObject* findHackishModel(NSString *aModelName)
-{
-    PyGILState_STATE gilState = PyGILState_Ensure();
-    PyObject *pModule = PyImport_AddModule("__main__");
-    OBJP_ERRCHECK(pModule);
-    PyObject *pAppInstance = PyObject_GetAttrString(pModule, "APP_INSTANCE");
-    OBJP_ERRCHECK(pAppInstance);
-    PyObject *pModelInstance = PyObject_GetAttrString(pAppInstance, [aModelName UTF8String]);
-    OBJP_ERRCHECK(pModelInstance);
-    Py_DECREF(pAppInstance);
-    Py_DECREF(pModelInstance);
-    PyGILState_Release(gilState);
-    return pModelInstance;
 }
 
 PyObject* createCallback(NSString *aViewClassName, id aViewRef)
