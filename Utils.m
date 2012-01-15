@@ -94,9 +94,8 @@ void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith)
 
 PyObject* createCallback(NSString *aViewClassName, id aViewRef)
 {
-    NSString *moduleName = [@"inter." stringByAppendingString:aViewClassName];
     PyGILState_STATE gilState = PyGILState_Ensure();
-    PyObject *pCallback = ObjP_classInstanceWithRef(aViewClassName, moduleName, aViewRef);
+    PyObject *pCallback = ObjP_classInstanceWithRef(aViewClassName, @"inter.CocoaViews", aViewRef);
     PyGILState_Release(gilState);
     return pCallback;
 }
