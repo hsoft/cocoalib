@@ -1,4 +1,6 @@
 #import "CocoaProxy.h"
+#import <CoreServices/CoreServices.h>
+#import "HSErrorReportWindow.h"
 
 @implementation CocoaProxy
 - (void)openPath:(NSString *)path
@@ -39,6 +41,25 @@
 - (NSString *)systemLang
 {
     return [[NSBundle preferredLocalizationsFromArray:[[NSBundle mainBundle] localizations]] objectAtIndex:0];
+}
+
+- (NSString *)bundleIdentifier
+{
+    return [[NSBundle mainBundle] bundleIdentifier];
+}
+
+- (NSString *)appVersion
+{
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+}
+
+- (NSString *)osxVersion
+{
+    SInt32 major, minor, bugfix;
+    Gestalt(gestaltSystemVersionMajor, &major);
+    Gestalt(gestaltSystemVersionMinor, &minor);
+    Gestalt(gestaltSystemVersionBugFix, &bugfix);
+    return [NSString stringWithFormat:@"%d.%d.%d", major, minor, bugfix];
 }
 
 - (void)postNotification:(NSString *)name userInfo:(NSDictionary *)userInfo
@@ -83,4 +104,10 @@
     }
 }
 
+- (void)reportCrash:(NSString *)crashReport
+{
+    NSLog(@"foo");
+    [HSErrorReportWindow showErrorReportWithContent:crashReport];
+    NSLog(@"bar");
+}
 @end
