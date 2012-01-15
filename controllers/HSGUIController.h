@@ -16,6 +16,7 @@ http://www.hardcoded.net/licenses/bsd_license
 }
 - (id)initWithModel:(PyGUIObject *)aPy;
 - (id)initWithModel:(PyGUIObject *)aPy view:(NSView *)aView;
+- (id)initWithPyRef:(PyObject *)aPyRef wrapperClass:(Class)aWrapperClass callbackClassName:(NSString *)aCallbackClassName view:(NSView *)aView;
 - (PyGUIObject *)model;
 - (NSView *)view;
 - (void)setView:(NSView *)aView;

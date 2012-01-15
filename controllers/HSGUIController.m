@@ -7,7 +7,7 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import "HSGUIController.h"
-#import "Utils.h"
+#import "ObjP.h"
 
 @implementation HSGUIController
 - (id)initWithModel:(PyGUIObject *)aModel
@@ -26,22 +26,15 @@ http://www.hardcoded.net/licenses/bsd_license
     return self;
 }
 
-// - (oneway void)release
-// {
-//     // The py side hold one reference, which is why when we see that we only have 1 reference left,
-//     // we must break our reference in the py side (free). We also can't call retainCount after
-//     // [super release], because we might be freed. If the retainCount is 2 before the release, it
-//     // will be 1 afterwards.
-//     // By the way, so it is clearly remembered: The reason why we do this is because weak-referencing
-//     // objc instances from python is buggy. I think it's being worked on in pyobjc. As soon as this
-//     // is done, we can remove this ugly, ugly hack and simply weak reference the cocoa instance in py
-//     // interfacing code.
-//     if ([self retainCount] == 2) {
-//         // NSLog(@"%@ free", [[self class] description]);
-//         [py free];
-//     }
-//     [super release];
-// }
+- (id)initWithPyRef:(PyObject *)aPyRef wrapperClass:(Class)aWrapperClass callbackClassName:(NSString *)aCallbackClassName view:(NSView *)aView
+{
+    PyGUIObject *m = [[aWrapperClass alloc] initWithModel:aPyRef];
+    self = [self initWithModel:m view:aView];
+    PyObject *pCallback = ObjP_classInstanceWithRef(aCallbackClassName, @"inter.CocoaViews", self);
+    [m bindCallback:pCallback];
+    [m release];
+    return self;
+}
 
 - (void)dealloc
 {
