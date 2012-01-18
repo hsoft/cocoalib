@@ -12,9 +12,9 @@ http://www.hardcoded.net/licenses/bsd_license
 #define CHILDREN_COUNT_PROPERTY @"children_count"
 
 @implementation HSOutline
-- (id)initWithPyClassName:(NSString *)aClassName pyParent:(id)aPyParent view:(HSOutlineView *)aOutlineView
+- (id)initWithPy:(id)aPy view:(HSOutlineView *)aOutlineView
 {
-    self = [super initWithPyClassName:aClassName pyParent:aPyParent];
+    self = [super initWithPy:aPy];
     itemData = [[NSMutableDictionary dictionary] retain];
     /* Dictionaries don't retain its keys because it copies them. Our items are NSIndexPath and when
     an index path has the same value, it's the same instance. Before OS X 10.7, all these instances
@@ -26,9 +26,7 @@ http://www.hardcoded.net/licenses/bsd_license
     same value will always be the same instance.
     */
     itemRetainer = [[NSMutableSet set] retain];
-    outlineView = aOutlineView;
-    [outlineView setDataSource:self];
-    [outlineView setDelegate:self];
+    [self setView:aOutlineView];
     return self;
 }
 
@@ -39,9 +37,16 @@ http://www.hardcoded.net/licenses/bsd_license
     [super dealloc];
 }
 
-- (HSOutlineView *)outlineView
+- (HSOutlineView *)view
 {
-    return outlineView;
+    return (HSOutlineView *)view;
+}
+
+- (void)setView:(HSOutlineView *)aView
+{
+    [super setView:aView];
+    [aView setDataSource:self];
+    [aView setDelegate:self];
 }
 
 - (PyOutline *)py
@@ -53,10 +58,10 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)setPySelection
 {
     NSMutableArray *paths = [NSMutableArray array];
-    NSIndexSet *indexes = [outlineView selectedRowIndexes];
+    NSIndexSet *indexes = [[self view] selectedRowIndexes];
     NSInteger i = [indexes firstIndex];
     while (i != NSNotFound) {
-        NSIndexPath *path = [outlineView itemAtRow:i];
+        NSIndexPath *path = [[self view] itemAtRow:i];
         [paths addObject:p2a(path)];
         i = [indexes indexGreaterThanIndex:i];
     }
@@ -85,9 +90,9 @@ http://www.hardcoded.net/licenses/bsd_license
     // We can't get rid of our instances just yet, we have to wait until after reloadData
     NSSet *oldRetainer = itemRetainer;
     itemRetainer = [[NSMutableSet set] retain];
-    [outlineView setDelegate:nil];
-    [outlineView reloadData];
-    [outlineView setDelegate:self];
+    [[self view] setDelegate:nil];
+    [[self view] reloadData];
+    [[self view] setDelegate:self];
     [oldRetainer release];
     [self updateSelection];
 }
@@ -104,17 +109,17 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)startEditing
 {
-    [outlineView startEditing];
+    [[self view] startEditing];
 }
 
 - (void)stopEditing
 {
-    [outlineView stopEditing];
+    [[self view] stopEditing];
 }
 
 - (void)updateSelection
 {
-    [outlineView updateSelection];
+    [[self view] updateSelection];
 }
 
 /* Caching */
@@ -196,7 +201,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (BOOL)outlineView:(NSOutlineView *)theOutlineView isItemExpandable:(id)item
 {
-    return [self outlineView:outlineView numberOfChildrenOfItem:item] > 0;
+    return [self outlineView:[self view] numberOfChildrenOfItem:item] > 0;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)column item:(id)item

@@ -13,13 +13,13 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "NSIndexPathAdditions.h"
 
 @interface HSOutline : HSGUIController <HSOutlineViewDelegate, NSOutlineViewDataSource> {
-    HSOutlineView *outlineView;
     NSMutableDictionary *itemData;
     NSMutableSet *itemRetainer;
 }
-- (id)initWithPyClassName:(NSString *)aClassName pyParent:(id)aPyParent view:(HSOutlineView *)aOutlineView;
+- (id)initWithPy:(id)aPy view:(HSOutlineView *)aOutlineView;
 
-- (HSOutlineView *)outlineView;
+- (HSOutlineView *)view;
+- (void)setView:(HSOutlineView *)aView;
 - (PyOutline *)py;
 
 /* Public */
