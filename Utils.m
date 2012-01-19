@@ -8,6 +8,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import "Utils.h"
 #import <CoreServices/CoreServices.h>
+#import "ObjP.h"
 
 @implementation Utils
 //This is to pass index sets to python as arrays (so it can be converted to native lists)
@@ -108,4 +109,32 @@ void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith)
     [replaceWith setFrame:[placeholder frame]];
     [replaceWith setAutoresizingMask:[placeholder autoresizingMask]];
     [parent replaceSubview:placeholder with:replaceWith];
+}
+
+@interface PyHack: NSObject {}
+- (void)setRef:(id)pyobjcRef;
+@end
+
+PyObject* getHackedPyRef(id pyobjcRef)
+{
+    Class myclass = [Utils classNamed:@"PyHack"];
+    PyHack *hack = [[myclass alloc] init];
+    [hack setRef:pyobjcRef];
+    [hack release];
+    PyGILState_STATE gilState = PyGILState_Ensure();
+    PyObject *pModule = PyImport_AddModule("__main__");
+    OBJP_ERRCHECK(pModule);
+    PyObject *pHackInstance = PyObject_GetAttrString(pModule, "HACK_INSTANCE");
+    OBJP_ERRCHECK(pHackInstance);
+    PyGILState_Release(gilState);
+    return pHackInstance;
+}
+
+PyObject* createCallback(NSString *aViewClassName, id aViewRef)
+{
+    NSString *moduleName = @"CocoaViews";
+    PyGILState_STATE gilState = PyGILState_Ensure();
+    PyObject *pCallback = ObjP_classInstanceWithRef(aViewClassName, moduleName, aViewRef);
+    PyGILState_Release(gilState);
+    return pCallback;
 }
