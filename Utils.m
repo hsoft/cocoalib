@@ -92,9 +92,24 @@ void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith)
     [parent replaceSubview:placeholder with:replaceWith];
 }
 
+static NSString *gCocoaViewsModuleName;
+void setCocoaViewsModuleName(NSString *moduleName)
+{
+    if (gCocoaViewsModuleName != nil) {
+        [gCocoaViewsModuleName release];
+    }
+    gCocoaViewsModuleName = [moduleName retain];
+}
+
 PyObject* createCallback(NSString *aViewClassName, id aViewRef)
 {
-    NSString *moduleName = @"CocoaViews";
+    NSString *moduleName;
+    if (gCocoaViewsModuleName != nil) {
+        moduleName = gCocoaViewsModuleName;
+    }
+    else {
+        moduleName = @"inter.CocoaViews";
+    }
     PyGILState_STATE gilState = PyGILState_Ensure();
     PyObject *pCallback = ObjP_classInstanceWithRef(aViewClassName, moduleName, aViewRef);
     PyGILState_Release(gilState);
