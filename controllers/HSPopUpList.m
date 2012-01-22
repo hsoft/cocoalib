@@ -7,11 +7,23 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import "HSPopUpList.h"
+#import "Utils.h"
 
 @implementation HSPopUpList
+- (id)initWithPyRef:(PyObject *)aPyRef popupView:(NSPopUpButton *)aPopupView
+{
+    self = [super init];
+    py = [[PySelectableList alloc] initWithModel:aPyRef];
+    [py bindCallback:createCallback(@"SelectableListView", self)];
+    [self setView:aPopupView];
+    return self;
+}
+
 - (void)dealloc
 {
     [[self view] setTarget:nil];
+    [view release];
+    [py release];
     [super dealloc];
 }
 
@@ -22,7 +34,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)setView:(NSPopUpButton *)aPopupView
 {
-    [super setView:aPopupView];
+    view = [aPopupView retain];
     [aPopupView setAction:@selector(popupViewSelectionChanged)];
     [aPopupView setTarget:self];
     [self refresh];

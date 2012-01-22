@@ -7,8 +7,19 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import "HSComboBox.h"
+#import "Utils.h"
 
 @implementation HSComboBox
+- (id)initWithPyRef:(PyObject *)aPyRef view:(NSComboBox *)aView
+{
+    PySelectableList *m = [[PySelectableList alloc] initWithModel:aPyRef];
+    self = [super initWithModel:m];
+    [m bindCallback:createCallback(@"SelectableListView", self)];
+    [m release];
+    [self setView:aView];
+    return self;
+}
+
 - (void)dealloc
 {
     [[self view] setTarget:nil];
@@ -31,16 +42,16 @@ http://www.hardcoded.net/licenses/bsd_license
     [self refresh];
 }
 
-- (PySelectableList *)py
+- (PySelectableList *)model
 {
-    return (PySelectableList *)py;
+    return (PySelectableList *)model;
 }
 
 - (void)comboboxViewSelectionChanged
 {
     NSInteger index = [[self view] indexOfSelectedItem];
     if (index >= 0) {
-        [[self py] selectIndex:index];
+        [[self model] selectIndex:index];
     }
 }
 
@@ -60,7 +71,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (NSUInteger)comboBox:(NSComboBox *)aComboBox indexOfItemWithStringValue:(NSString *)aString
 {
-    NSInteger index = [[self py] searchByPrefix:aString];
+    NSInteger index = [[self model] searchByPrefix:aString];
     if (index >= 0) {
         return index;
     }
@@ -71,7 +82,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (NSString *)comboBox:(NSComboBox *)aComboBox completedString:(NSString *)uncompletedString
 {
-    NSInteger index = [[self py] searchByPrefix:uncompletedString];
+    NSInteger index = [[self model] searchByPrefix:uncompletedString];
     if (index >= 0) {
         return [items objectAtIndex:index];
     }
@@ -84,13 +95,13 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)refresh
 {
     [items release];
-    items = [[[self py] items] retain];
+    items = [[[self model] items] retain];
     [[self view] reloadData];
     [self updateSelection];
 }
 
 - (void)updateSelection
 {
-    [[self view] selectItemAtIndex:[[self py] selectedIndex]]; 
+    [[self view] selectItemAtIndex:[[self model] selectedIndex]]; 
 }
 @end

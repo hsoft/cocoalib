@@ -5,7 +5,7 @@ from . import proxy
 class GUIObjectView:
     def refresh(self): pass
 
-class PyGUIObject2:
+class PyGUIObject:
     def __init__(self, model: pyref):
         self.model = model
         self.callback = None
@@ -41,7 +41,7 @@ class PyGUIObject2:
 class SelectableListView(GUIObjectView):
     def updateSelection(self): pass
 
-class PySelectableList2(PyGUIObject2):
+class PySelectableList(PyGUIObject):
     def items(self) -> list:
         # Should normally always return strings
         return self.model[:]
@@ -73,7 +73,7 @@ class ColumnsView:
     def restoreColumns(self): pass
     def setColumn_visible_(self, colname: str, visible: bool): pass
 
-class PyColumns2(PyGUIObject2):
+class PyColumns(PyGUIObject):
     def columnNamesInOrder(self) -> list:
         return self.model.colnames
     
@@ -118,7 +118,7 @@ class OutlineView(GUIObjectView):
     def stopEditing(self): pass
     def updateSelection(self): pass
 
-class PyOutline2(PyGUIObject2):
+class PyOutline(PyGUIObject):
     def cancelEdits(self):
         self.model.cancel_edits()
     
@@ -171,7 +171,7 @@ class TableView(GUIObjectView):
     def stopEditing(self): pass
     def updateSelection(self): pass
 
-class PyTable2(PyGUIObject2):
+class PyTable(PyGUIObject):
     #--- Helpers
     @dontwrap
     def _getrow(self, row):
@@ -244,14 +244,14 @@ class PyTable2(PyGUIObject2):
     @dontwrap
     def update_selection(self):
         self.callback.updateSelection()
-    
+
 class FairwareView:
     def setupAsRegistered(self): pass
     def showFairwareNagWithPrompt_(self, prompt: str): pass
     def showDemoNagWithPrompt_(self, prompt: str): pass
     def showMessage_(self, msg: str): pass
 
-class PyFairware2(PyGUIObject2):
+class PyFairware(PyGUIObject):
     def initialRegistrationSetup(self):
         self.model.initial_registration_setup()
     
@@ -304,4 +304,3 @@ class PyFairware2(PyGUIObject2):
     @dontwrap
     def show_message(self, msg):
         self.callback.showMessage_(msg)
-    

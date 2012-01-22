@@ -14,9 +14,10 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     NSArray *items;
 }
+- (id)initWithPyRef:(PyObject *)aPyRef view:(NSComboBox *)aView;
 - (NSComboBox *)view;
 - (void)setView:(NSComboBox *)aComboboxView;
-- (PySelectableList *)py;
+- (PySelectableList *)model;
 
 - (void)comboboxViewSelectionChanged;
 - (void)refresh;

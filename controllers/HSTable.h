@@ -13,14 +13,15 @@ http://www.hardcoded.net/licenses/bsd_license
 
 @interface HSTable : HSGUIController <NSTableViewDelegate, NSTableViewDataSource>
 {
-    NSTableView *tableView;
     HSColumns *columns;
 }
-- (id)initWithPyClassName:(NSString *)aClassName pyParent:(id)aPyParent view:(NSTableView *)aTableView;
-- (id)initWithPy:(id)aPy view:(NSTableView *)aTableView;
+- (id)initWithModel:(PyTable *)aPy tableView:(NSTableView *)aTableView;
+- (id)initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView;
 
 /* Virtual */
-- (PyTable *)py;
+- (PyTable *)model;
+- (NSTableView *)view;
+- (void)setView:(NSTableView *)aTableView;
 
 /* Public */
 - (HSColumns *)columns;

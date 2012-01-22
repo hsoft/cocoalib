@@ -10,23 +10,19 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "Utils.h"
 
 @implementation HSTable
-- (id)initWithPyClassName:(NSString *)aClassName pyParent:(id)aPyParent view:(NSTableView *)aTableView
+- (id)initWithModel:(PyTable *)aModel tableView:(NSTableView *)aTableView
 {
-    self = [super initWithPyClassName:aClassName pyParent:aPyParent];
-    columns = [[HSColumns alloc] initWithPy:[[self py] columns] tableView:aTableView];
-    tableView = aTableView;
-    [tableView setDataSource:self];
-    [tableView setDelegate:self];
+    self = [super initWithModel:aModel view:aTableView];
+    columns = [[HSColumns alloc] initWithPyRef:[[self model] columns] tableView:aTableView];
     return self;
 }
 
-- (id)initWithPy:(id)aPy view:(NSTableView *)aTableView
+- (id)initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView
 {
-    self = [super initWithPy:aPy view:aTableView];
-    columns = [[HSColumns alloc] initWithPy:[[self py] columns] tableView:aTableView];
-    tableView = aTableView;
-    [tableView setDataSource:self];
-    [tableView setDelegate:self];
+    PyTable *m = [[PyTable alloc] initWithModel:aPyRef];
+    self = [self initWithModel:m tableView:aTableView];
+    [m bindCallback:createCallback(@"TableView", self)];
+    [m release];
     return self;
 }
 
@@ -39,42 +35,49 @@ http://www.hardcoded.net/licenses/bsd_license
 /* Private */
 - (void)setPySelection
 {
-    NSArray *selection = [Utils indexSet2Array:[tableView selectedRowIndexes]];
-    NSArray *pyselection = [[self py] selectedRows];
+    NSArray *selection = [Utils indexSet2Array:[[self view] selectedRowIndexes]];
+    NSArray *pyselection = [[self model] selectedRows];
     if (![selection isEqualTo:pyselection])
-        [[self py] selectRows:selection];
+        [[self model] selectRows:selection];
 }
 
 - (void)setViewSelection
 {
-    NSIndexSet *selection = [Utils array2IndexSet:[[self py] selectedRows]];
-	[tableView selectRowIndexes:selection byExtendingSelection:NO];
+    NSIndexSet *selection = [Utils array2IndexSet:[[self model] selectedRows]];
+	[[self view] selectRowIndexes:selection byExtendingSelection:NO];
 }
 
 /* HSGUIController */
-- (PyTable *)py
+- (PyTable *)model
 {
-    return (PyTable *)py;
+    return (PyTable *)model;
 }
 
-- (NSView *)view
+- (NSTableView *)view
 {
-    return tableView;
+    return (NSTableView *)view;
+}
+
+- (void)setView:(NSTableView *)aTableView
+{
+    [super setView:aTableView];
+    [aTableView setDataSource:self];
+    [aTableView setDelegate:self];
 }
 
 /* Data source */
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    return [[self py] numberOfRows];
+    return [[self model] numberOfRows];
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)column row:(NSInteger)row
 {
     // Cocoa's typeselect mechanism can call us with an out-of-range row
-    if (row >= [[self py] numberOfRows]) {
+    if (row >= [[self model] numberOfRows]) {
         return @"";
     }
-    return [[self py] valueForColumn:[column identifier] row:row];
+    return [[self model] valueForColumn:[column identifier] row:row];
 }
 
 /* NSTableView Delegate */
@@ -84,7 +87,7 @@ http://www.hardcoded.net/licenses/bsd_license
         return;
     }
     NSSortDescriptor *sd = [[aTableView sortDescriptors] objectAtIndex:0];
-    [[self py] sortByColumn:[sd key] desc:![sd ascending]];
+    [[self model] sortByColumn:[sd key] desc:![sd ascending]];
 }
 
 // See HSOutline.outlineViewSelectionIsChanging: to know why we update selection in both notifs
@@ -108,13 +111,13 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     // If we just deleted the last item, we want to update the selection before we reload
     [self setViewSelection];
-    [tableView reloadData];
+    [[self view] reloadData];
     [self setViewSelection];
 }
 
 - (void)showSelectedRow
 {
-    [tableView scrollRowToVisible:[tableView selectedRow]];
+    [[self view] scrollRowToVisible:[[self view] selectedRow]];
 }
 
 - (void)updateSelection
