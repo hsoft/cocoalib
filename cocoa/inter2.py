@@ -1,5 +1,6 @@
 import logging
 from objp.util import pyref, dontwrap
+from . import proxy
 
 class GUIObjectView:
     def refresh(self): pass
@@ -243,4 +244,64 @@ class PyTable2(PyGUIObject2):
     @dontwrap
     def update_selection(self):
         self.callback.updateSelection()
+    
+class FairwareView:
+    def setupAsRegistered(self): pass
+    def showFairwareNagWithPrompt_(self, prompt: str): pass
+    def showDemoNagWithPrompt_(self, prompt: str): pass
+    def showMessage_(self, msg: str): pass
+
+class PyFairware2(PyGUIObject2):
+    def initialRegistrationSetup(self):
+        self.model.initial_registration_setup()
+    
+    def appName(self) -> str:
+        return self.model.PROMPT_NAME
+    
+    def isRegistered(self) -> bool:
+        return self.model.registered
+    
+    def setRegisteredCode_andEmail_registerOS_(self, code: str, email: str, registerOS: bool) -> bool:
+        return self.model.set_registration(code, email, registerOS)
+    
+    def unpaidHours(self) -> object: # NSNumber
+        return self.model.unpaid_hours
+    
+    def contribute(self):
+        self.model.contribute()
+    
+    def buy(self):
+        self.model.buy()
+    
+    def aboutFairware(self):
+        self.model.about_fairware()
+    
+    #--- Python --> Cocoa
+    @dontwrap
+    def get_default(self, key_name):
+        return proxy.prefValue_(key_name)
+    
+    @dontwrap
+    def set_default(self, key_name, value):
+        proxy.setPrefValue_value_(key_name, value)
+    
+    @dontwrap
+    def setup_as_registered(self):
+        self.callback.setupAsRegistered()
+    
+    @dontwrap
+    def show_fairware_nag(self, prompt):
+        self.callback.showFairwareNagWithPrompt_(prompt)
+    
+    @dontwrap
+    def show_demo_nag(self, prompt):
+        self.callback.showDemoNagWithPrompt_(prompt)
+    
+    @dontwrap
+    def open_url(self, url):
+        proxy.openPath_(url)
+    
+    @dontwrap
+    def show_message(self, msg):
+        self.callback.showMessage_(msg)
     
