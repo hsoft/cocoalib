@@ -37,5 +37,4 @@ http://www.hardcoded.net/licenses/bsd_license
 @end
 
 void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith);
-PyObject* getHackedPyRef(id pyobjcRef);
 PyObject* createCallback(NSString *aViewClassName, id aViewRef);

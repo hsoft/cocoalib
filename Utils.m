@@ -111,25 +111,6 @@ void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith)
     [parent replaceSubview:placeholder with:replaceWith];
 }
 
-@interface PyHack: NSObject {}
-- (void)setRef:(id)pyobjcRef;
-@end
-
-PyObject* getHackedPyRef(id pyobjcRef)
-{
-    Class myclass = [Utils classNamed:@"PyHack"];
-    PyHack *hack = [[myclass alloc] init];
-    [hack setRef:pyobjcRef];
-    [hack release];
-    PyGILState_STATE gilState = PyGILState_Ensure();
-    PyObject *pModule = PyImport_AddModule("__main__");
-    OBJP_ERRCHECK(pModule);
-    PyObject *pHackInstance = PyObject_GetAttrString(pModule, "HACK_INSTANCE");
-    OBJP_ERRCHECK(pHackInstance);
-    PyGILState_Release(gilState);
-    return pHackInstance;
-}
-
 PyObject* createCallback(NSString *aViewClassName, id aViewRef)
 {
     NSString *moduleName = @"CocoaViews";
