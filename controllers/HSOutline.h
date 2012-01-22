@@ -7,19 +7,18 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
+#import "HSGUIController.h"
 #import "HSOutlineView.h"
 #import "PyOutline.h"
 #import "NSIndexPathAdditions.h"
 
-@interface HSOutline : NSObject <HSOutlineViewDelegate, NSOutlineViewDataSource> {
-    PyOutline *py;
-    HSOutlineView *outlineView;
+@interface HSOutline : HSGUIController <HSOutlineViewDelegate, NSOutlineViewDataSource> {
     NSMutableDictionary *itemData;
     NSMutableSet *itemRetainer;
 }
-- (id)initWithPy:(PyOutline *)aPy view:(HSOutlineView *)aOutlineView;
-- (PyOutline *)py;
-- (HSOutlineView *)outlineView;
+- (id)initWithPyRef:(PyObject *)aPyRef wrapperClass:(Class)aWrapperClass callbackClassName:(NSString *)aCallbackClassName view:(HSOutlineView *)aView;
+- (PyOutline *)model;
+- (HSOutlineView *)view;
 
 /* Public */
 - (void)refresh;

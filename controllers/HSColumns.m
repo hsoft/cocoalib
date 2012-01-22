@@ -13,10 +13,8 @@ http://www.hardcoded.net/licenses/bsd_license
 @implementation HSColumns
 - (id)initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView
 {
-    PyColumns *m = [[PyColumns alloc] initWithModel:aPyRef];
-    self = [super initWithModel:m view:aTableView];
-    [m bindCallback:createCallback(@"ColumnsView", self)];
-    [m release];
+    self = [super initWithPyRef:aPyRef wrapperClass:[PyColumns class]
+        callbackClassName:@"ColumnsView" view:aTableView];
     [self connectNotifications];
     return self;
 }

@@ -17,13 +17,16 @@ http://www.hardcoded.net/licenses/bsd_license
     return self;
 }
 
+- (id)initWithPyRef:(PyObject *)aPyRef wrapperClass:(Class)aWrapperClass callbackClassName:(NSString *)aCallbackClassName view:(NSTableView *)aTableView
+{
+    self = [super initWithPyRef:aPyRef wrapperClass:aWrapperClass callbackClassName:aCallbackClassName view:aTableView];
+    columns = [[HSColumns alloc] initWithPyRef:[[self model] columns] tableView:aTableView];
+    return self;
+}
+
 - (id)initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView
 {
-    PyTable *m = [[PyTable alloc] initWithModel:aPyRef];
-    self = [self initWithModel:m tableView:aTableView];
-    [m bindCallback:createCallback(@"TableView", self)];
-    [m release];
-    return self;
+    return [self initWithPyRef:aPyRef wrapperClass:[PyTable class] callbackClassName:@"TableView" view:aTableView];
 }
 
 - (void)dealloc

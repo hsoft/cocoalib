@@ -12,10 +12,9 @@ http://www.hardcoded.net/licenses/bsd_license
 #define CHILDREN_COUNT_PROPERTY @"children_count"
 
 @implementation HSOutline
-- (id)initWithPy:(PyOutline *)aPy view:(HSOutlineView *)aOutlineView
+- (id)initWithPyRef:(PyObject *)aPyRef wrapperClass:(Class)aWrapperClass callbackClassName:(NSString *)aCallbackClassName view:(HSOutlineView *)aView
 {
-    self = [super init];
-    py = [aPy retain];
+    self = [super initWithPyRef:aPyRef wrapperClass:aWrapperClass callbackClassName:aCallbackClassName view:aView];
     itemData = [[NSMutableDictionary dictionary] retain];
     /* Dictionaries don't retain its keys because it copies them. Our items are NSIndexPath and when
     an index path has the same value, it's the same instance. Before OS X 10.7, all these instances
@@ -27,9 +26,6 @@ http://www.hardcoded.net/licenses/bsd_license
     same value will always be the same instance.
     */
     itemRetainer = [[NSMutableSet set] retain];
-    outlineView = aOutlineView;
-    [outlineView setDataSource:self];
-    [outlineView setDelegate:self];
     return self;
 }
 
@@ -37,32 +33,38 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     [itemData release];
     [itemRetainer release];
-    [py release];
     [super dealloc];
 }
 
-- (HSOutlineView *)outlineView
+- (HSOutlineView *)view
 {
-    return outlineView;
+    return (HSOutlineView *)view;
 }
 
-- (PyOutline *)py
+- (void)setView:(HSOutlineView *)aOutlineView
 {
-    return py;
+    [super setView:aOutlineView];
+    [aOutlineView setDataSource:self];
+    [aOutlineView setDelegate:self];
+}
+
+- (PyOutline *)model
+{
+    return (PyOutline *)model;
 }
 
 /* Private */
 - (void)setPySelection
 {
     NSMutableArray *paths = [NSMutableArray array];
-    NSIndexSet *indexes = [outlineView selectedRowIndexes];
+    NSIndexSet *indexes = [[self view] selectedRowIndexes];
     NSInteger i = [indexes firstIndex];
     while (i != NSNotFound) {
-        NSIndexPath *path = [outlineView itemAtRow:i];
+        NSIndexPath *path = [[self view] itemAtRow:i];
         [paths addObject:p2a(path)];
         i = [indexes indexGreaterThanIndex:i];
     }
-    [[self py] setSelectedPaths:paths];
+    [[self model] setSelectedPaths:paths];
 }
 
 - (NSIndexPath *)internalizedPath:(NSIndexPath *)path
@@ -87,16 +89,16 @@ http://www.hardcoded.net/licenses/bsd_license
     // We can't get rid of our instances just yet, we have to wait until after reloadData
     NSSet *oldRetainer = itemRetainer;
     itemRetainer = [[NSMutableSet set] retain];
-    [outlineView setDelegate:nil];
-    [outlineView reloadData];
-    [outlineView setDelegate:self];
+    [[self view] setDelegate:nil];
+    [[self view] reloadData];
+    [[self view] setDelegate:self];
     [oldRetainer release];
     [self updateSelection];
 }
 
 - (NSArray *)selectedIndexPaths
 {
-    NSArray *arrayPaths = [[self py] selectedPaths];
+    NSArray *arrayPaths = [[self model] selectedPaths];
     NSMutableArray *result = [NSMutableArray array];
     for (NSArray *arrayPath in arrayPaths) {
         [result addObject:[self internalizedPath:a2p(arrayPath)]];
@@ -106,17 +108,17 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)startEditing
 {
-    [outlineView startEditing];
+    [[self view] startEditing];
 }
 
 - (void)stopEditing
 {
-    [outlineView stopEditing];
+    [[self view] stopEditing];
 }
 
 - (void)updateSelection
 {
-    [outlineView updateSelection];
+    [[self view] updateSelection];
 }
 
 /* Caching */
@@ -125,7 +127,7 @@ http://www.hardcoded.net/licenses/bsd_license
     NSMutableDictionary *props = [itemData objectForKey:path];
     id value = [props objectForKey:property];
     if (value == nil) {
-        value = [[self py] property:property valueAtPath:p2a(path)];
+        value = [[self model] property:property valueAtPath:p2a(path)];
         if (value == nil) {
             value = [NSNull null];
         }
@@ -141,7 +143,7 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     NSMutableDictionary *props = [itemData objectForKey:path];
     [props removeObjectForKey:property];
-    [[self py] setProperty:property value:value atPath:p2a(path)];
+    [[self model] setProperty:property value:value atPath:p2a(path)];
 }
 
 - (NSString *)stringProperty:(NSString *)property valueAtPath:(NSIndexPath *)path
@@ -198,12 +200,12 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (BOOL)outlineView:(NSOutlineView *)theOutlineView isItemExpandable:(id)item
 {
-    return [self outlineView:outlineView numberOfChildrenOfItem:item] > 0;
+    return [self outlineView:[self view] numberOfChildrenOfItem:item] > 0;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)column item:(id)item
 {
-    return [[self py] canEditProperty:[column identifier] atPath:p2a((NSIndexPath *)item)];
+    return [[self model] canEditProperty:[column identifier] atPath:p2a((NSIndexPath *)item)];
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)column byItem:(id)item
@@ -216,8 +218,8 @@ http://www.hardcoded.net/licenses/bsd_license
     [self setProperty:[column identifier] value:value atPath:(NSIndexPath *)item];
 }
 
-/* We need to change the py selection at both IsChanging and DidChange. We need to set the
-py selection at IsChanging before of the arrow clicking. The action launched by this little arrow
+/* We need to change the model selection at both IsChanging and DidChange. We need to set the
+model selection at IsChanging before of the arrow clicking. The action launched by this little arrow
 is performed before DidChange. However, when using the arrow to change the selection, IsChanging is
 never called
 */
@@ -250,7 +252,7 @@ never called
 
 - (void)outlineViewDidEndEditing:(HSOutlineView *)outlineView
 {
-    [[self py] saveEdits];
+    [[self model] saveEdits];
 }
 
 - (void)outlineViewWasDoubleClicked:(HSOutlineView *)outlineView
@@ -259,6 +261,6 @@ never called
 
 - (void)outlineViewCancelsEdition:(HSOutlineView *)outlineView
 {
-    [[self py] cancelEdits];
+    [[self model] cancelEdits];
 }
 @end

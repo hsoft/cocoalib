@@ -12,19 +12,9 @@ http://www.hardcoded.net/licenses/bsd_license
 @implementation HSPopUpList
 - (id)initWithPyRef:(PyObject *)aPyRef popupView:(NSPopUpButton *)aPopupView
 {
-    self = [super init];
-    py = [[PySelectableList alloc] initWithModel:aPyRef];
-    [py bindCallback:createCallback(@"SelectableListView", self)];
-    [self setView:aPopupView];
+    self = self = [super initWithPyRef:aPyRef wrapperClass:[PySelectableList class]
+        callbackClassName:@"SelectableListView" view:aPopupView];
     return self;
-}
-
-- (void)dealloc
-{
-    [[self view] setTarget:nil];
-    [view release];
-    [py release];
-    [super dealloc];
 }
 
 - (NSPopUpButton *)view
@@ -34,32 +24,32 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)setView:(NSPopUpButton *)aPopupView
 {
-    view = [aPopupView retain];
+    [super setView:aPopupView];
     [aPopupView setAction:@selector(popupViewSelectionChanged)];
     [aPopupView setTarget:self];
     [self refresh];
 }
 
-- (PySelectableList *)py
+- (PySelectableList *)model
 {
-    return (PySelectableList *)py;
+    return (PySelectableList *)model;
 }
 
 - (void)popupViewSelectionChanged
 {
-    [[self py] selectIndex:[[self view] indexOfSelectedItem]];
+    [[self model] selectIndex:[[self view] indexOfSelectedItem]];
 }
 
 /* model --> view */
 - (void)refresh
 {
     [[self view] removeAllItems];
-    [[self view] addItemsWithTitles:[[self py] items]];
+    [[self view] addItemsWithTitles:[[self model] items]];
     [self updateSelection];
 }
 
 - (void)updateSelection
 {
-    [[self view] selectItemAtIndex:[[self py] selectedIndex]]; 
+    [[self view] selectItemAtIndex:[[self model] selectedIndex]]; 
 }
 @end

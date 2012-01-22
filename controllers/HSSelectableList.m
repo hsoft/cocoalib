@@ -10,37 +10,40 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "Utils.h"
 
 @implementation HSSelectableList
-- initWithModel:(PySelectableList *)aModel tableView:(NSTableView *)aTableView
+- (id)initWithPyRef:(PyObject *)aPyRef wrapperClass:(Class)aWrapperClass callbackClassName:(NSString *)aCallbackClassName view:(NSTableView *)aTableView;
 {
-    self = [super init];
-    model = [aModel retain];
-    [self setView:aTableView];
+    self = [super initWithPyRef:aPyRef wrapperClass:aWrapperClass callbackClassName:aCallbackClassName view:aTableView];
     return self;
 }
 
-- initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView
+- (id)initWithPyRef:(PyObject *)aPyRef tableView:(NSTableView *)aTableView
 {
-    PySelectableList *m = [[PySelectableList alloc] initWithModel:aPyRef];
-    self = [self initWithModel:m tableView:aTableView];
-    [m bindCallback:createCallback(@"SelectableListView", self)];
-    [m release];
+    self = [self initWithPyRef:aPyRef wrapperClass:[PySelectableList class] callbackClassName:@"SelectableListView" view:aTableView];
     return self;
-}
-
-- (void)setView:(NSTableView *)aTableView
-{
-    view = [aTableView retain];
-    [aTableView setDataSource:self];
-    [aTableView setDelegate:self];
-    [self refresh];
 }
 
 - (void)dealloc
 {
     [items release];
-    [view release];
-    [model release];
     [super dealloc];
+}
+
+- (PySelectableList *)model
+{
+    return (PySelectableList *)model;
+}
+
+- (NSTableView *)view
+{
+    return (NSTableView *)view;
+}
+
+- (void)setView:(NSTableView *)aTableView
+{
+    [super setView:aTableView];
+    [aTableView setDataSource:self];
+    [aTableView setDelegate:self];
+    [self refresh];
 }
 
 /* Private */
@@ -57,17 +60,6 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     NSIndexSet *selection = [Utils array2IndexSet:[[self model] selectedIndexes]];
     [[self view] selectRowIndexes:selection byExtendingSelection:NO];
-}
-
-/* HSGUIController */
-- (PySelectableList *)model
-{
-    return (PySelectableList *)model;
-}
-
-- (NSTableView *)view
-{
-    return (NSTableView *)view;
 }
 
 /* Data source */
