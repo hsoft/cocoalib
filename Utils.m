@@ -82,25 +82,6 @@ http://www.hardcoded.net/licenses/bsd_license
         [indexes addObject:i2n([[components objectAtIndex:i] intValue])];
     return [Utils array2IndexPath:indexes];
 }
-
-static NSString *pluginName;
-+ (void)setPluginName:(NSString *)aPluginName
-{
-    [pluginName release];
-    pluginName = [aPluginName retain];
-}
-
-+ (Class)classNamed:(NSString *)className
-{
-    if (pluginName != nil) {
-        NSString *pluginPath = [[NSBundle mainBundle] pathForResource:pluginName ofType:@"plugin"];
-        NSBundle *pluginBundle = [NSBundle bundleWithPath:pluginPath];
-        return [pluginBundle classNamed:className];
-    }
-    else {
-        return [[NSBundle mainBundle] classNamed:className];
-    }
-}
 @end
 
 void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith)

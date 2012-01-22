@@ -16,6 +16,9 @@
 - (NSString *)systemNumberDecimalSeparator;
 - (NSString *)systemNumberGroupingSeparator;
 - (NSString *)systemCurrency;
+- (NSString *)bundleIdentifier;
+- (NSString *)appVersion;
+- (NSString *)osxVersion;
 - (void)postNotification:(NSString *)name userInfo:(NSDictionary *)userInfo;
 - (id)prefValue:(NSString *)prefname;
 - (void)setPrefValue:(NSString *)prefname value:(id)value;
@@ -23,4 +26,5 @@
 - (NSString *)url2path:(NSString *)url;
 - (void)createPool;
 - (void)destroyPool;
+- (void)reportCrash:(NSString *)crashReport;
 @end
