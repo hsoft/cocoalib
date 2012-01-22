@@ -12,6 +12,10 @@
 - (NSString *)getCachePath;
 - (NSString *)getResourcePath;
 - (NSString *)systemLang;
+- (NSString *)systemShortDateFormat;
+- (NSString *)systemNumberDecimalSeparator;
+- (NSString *)systemNumberGroupingSeparator;
+- (NSString *)systemCurrency;
 - (void)postNotification:(NSString *)name userInfo:(NSDictionary *)userInfo;
 - (id)prefValue:(NSString *)prefname;
 - (void)setPrefValue:(NSString *)prefname value:(id)value;

@@ -41,6 +41,40 @@
     return [[NSBundle preferredLocalizationsFromArray:[[NSBundle mainBundle] localizations]] objectAtIndex:0];
 }
 
+- (NSString *)systemShortDateFormat
+{
+    [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehavior10_4];
+    NSDateFormatter *f = [[NSDateFormatter alloc] init];
+    [f setDateStyle:NSDateFormatterShortStyle];
+    [f setTimeStyle:NSDateFormatterNoStyle];
+    NSString *result = [[f dateFormat] retain];
+    [f release];
+    return [result autorelease];
+}
+
+- (NSString *)systemNumberDecimalSeparator
+{
+    [NSNumberFormatter setDefaultFormatterBehavior:NSNumberFormatterBehavior10_4];
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    NSString *result = [[f decimalSeparator] retain];
+    [f release];
+    return [result autorelease];
+}
+
+- (NSString *)systemNumberGroupingSeparator
+{
+    [NSNumberFormatter setDefaultFormatterBehavior:NSNumberFormatterBehavior10_4];
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    NSString *result = [[f groupingSeparator] retain];
+    [f release];
+    return [result autorelease];
+}
+
+- (NSString *)systemCurrency
+{
+    return [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
+}
+
 - (void)postNotification:(NSString *)name userInfo:(NSDictionary *)userInfo
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:nil userInfo:userInfo];
