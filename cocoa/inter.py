@@ -30,6 +30,14 @@ class PyGUIObject:
     def refresh(self):
         self.callback.refresh()
 
+class PyTextField(PyGUIObject):
+    def text(self) -> str:
+        return self.model.text
+    
+    def setText_(self, newtext: str):
+        self.model.text = newtext
+    
+
 class SelectableListView(GUIObjectView):
     def updateSelection(self): pass
 
