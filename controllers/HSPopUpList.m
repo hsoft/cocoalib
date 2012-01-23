@@ -12,7 +12,7 @@ http://www.hardcoded.net/licenses/bsd_license
 @implementation HSPopUpList
 - (id)initWithPyRef:(PyObject *)aPyRef popupView:(NSPopUpButton *)aPopupView
 {
-    self = self = [super initWithPyRef:aPyRef wrapperClass:[PySelectableList class]
+    self = [super initWithPyRef:aPyRef wrapperClass:[PySelectableList class]
         callbackClassName:@"SelectableListView" view:aPopupView];
     return self;
 }

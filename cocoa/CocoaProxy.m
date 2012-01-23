@@ -140,8 +140,6 @@
 
 - (void)reportCrash:(NSString *)crashReport
 {
-    NSLog(@"foo");
     [HSErrorReportWindow showErrorReportWithContent:crashReport];
-    NSLog(@"bar");
 }
 @end
