@@ -26,5 +26,6 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)stopEditing;
 - (id <HSTableViewDelegate>)delegate;
 - (void)setDelegate:(id <HSTableViewDelegate>)aDelegate;
+- (NSScrollView *)wrapInScrollView;
 @end
 

@@ -2,6 +2,7 @@ syntax: glob
 
 .DS_Store
 __pycache__
+*.pyc
 *.so
 fr.lproj/*.xib
 de.lproj/*.xib

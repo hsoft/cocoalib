@@ -86,4 +86,17 @@ http://www.hardcoded.net/licenses/bsd_license
     }
 }
 
+- (NSScrollView *)wrapInScrollView;
+{
+    /* When programmatically creating an NSTableView, we have to wrap it in a scroll view for it to
+       behave properly.
+    */
+    NSScrollView *container = [[NSScrollView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)];
+    [container setDocumentView:self];
+    [container setHasVerticalScroller:YES];
+    [container setHasHorizontalScroller:YES];
+    [container setAutohidesScrollers:YES];
+    return [container autorelease];
+}
+
 @end
