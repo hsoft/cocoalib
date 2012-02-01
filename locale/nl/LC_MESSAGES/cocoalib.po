@@ -33,8 +33,6 @@ msgid "%@ is Fairware"
 msgstr ""
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
-#: cocoalib/en.lproj/FairwareReminder.strings:0
-#: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Enter Key"
 msgstr ""
 
@@ -42,7 +40,6 @@ msgstr ""
 msgid "Please contribute"
 msgstr ""
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Contribute"
 msgstr ""
@@ -107,4 +104,10 @@ msgstr ""
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Fairware?"
+msgstr ""
+
+#: cocoalib/en.lproj/ErrorReportWindow.strings:0
+msgid ""
+"Although the application should continue to run after this error, it may be "
+"in an instable state, so it is recommended that you restart the application."
 msgstr ""

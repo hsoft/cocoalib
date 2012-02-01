@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Ukrainian\n"
 "X-Poedit-Country: UKRAINE\n"
+"X-Poedit-Language: Ukrainian\n"
 
 #: cocoalib/en.lproj/about.strings:0
 msgid "This app is registered, thanks!"
@@ -25,8 +25,11 @@ msgid "Error report"
 msgstr "Повідомлення про помилки"
 
 #: cocoalib/en.lproj/ErrorReportWindow.strings:0
-msgid "Something went wrong. Would you like to send the error report to Hardcoded Software?"
-msgstr "Щось пішло не так. Хочете відправити звіт про помилку в Hardcoded Software?"
+msgid ""
+"Something went wrong. Would you like to send the error report to Hardcoded "
+"Software?"
+msgstr ""
+"Щось пішло не так. Хочете відправити звіт про помилку в Hardcoded Software?"
 
 #: cocoalib/en.lproj/ErrorReportWindow.strings:0
 msgid "Send"
@@ -61,8 +64,12 @@ msgid "Enter your key"
 msgstr "Введіть ваш ключ"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
-msgid "Type the key you received when you contributed to %@, as well as the e-mail used as a reference for the purchase."
-msgstr "Тип ключа, який ви отримали при сприяла %@, а також електронної пошти використовується як посилання для покупки."
+msgid ""
+"Type the key you received when you contributed to %@, as well as the e-mail "
+"used as a reference for the purchase."
+msgstr ""
+"Тип ключа, який ви отримали при сприяла %@, а також електронної пошти "
+"використовується як посилання для покупки."
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Registration key:"
@@ -112,3 +119,8 @@ msgstr "Намагатися"
 msgid "Fairware?"
 msgstr "Fairware?"
 
+#: cocoalib/en.lproj/ErrorReportWindow.strings:0
+msgid ""
+"Although the application should continue to run after this error, it may be "
+"in an instable state, so it is recommended that you restart the application."
+msgstr ""
