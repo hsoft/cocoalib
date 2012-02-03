@@ -112,6 +112,29 @@ http://www.hardcoded.net/licenses/bsd_license
     [self connectNotifications];
 }
 
+/*
+    Here, instead of having all our column defs, we have one column model, which we use to create
+    our column defs using column names in [[self model] columnNamesInOrder].
+*/
+- (void)initializeColumnsFromModel:(HSColumnDef)columnModel
+{
+    NSArray *colnames = [[self model] columnNamesInOrder];
+    HSColumnDef *defs = (HSColumnDef *)malloc(([colnames count]+1)*sizeof(HSColumnDef));
+    HSColumnDef *def = defs;
+    for (NSString *colname in colnames) {
+        def->attrname = colname;
+        def->defaultWidth = columnModel.defaultWidth;
+        def->minWidth = columnModel.minWidth;
+        def->maxWidth = columnModel.maxWidth;
+        def->sortable = columnModel.sortable;
+        def->cellClass = columnModel.cellClass;
+        def++;
+    }
+    def->attrname = nil; // Sentinel
+    [self initializeColumns:defs];
+    free(defs);
+}
+
 /* Notifications */
 - (void)columnMoved:(NSNotification *)notification
 {
