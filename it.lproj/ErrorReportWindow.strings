@@ -1,4 +1,4 @@
-
+﻿
 /* Class = "NSWindow"; title = "Error report"; ObjectID = "1"; */
 "1.title" = "Rapporto di errore";
 
@@ -10,3 +10,6 @@
 
 /* Class = "NSButtonCell"; title = "Don't Send"; ObjectID = "10"; */
 "10.title" = "Non inviare";
+
+/* Class = "NSTextFieldCell"; title = "Although the application should continue to run after this error, it may be in an instable state, so it is recommended that you restart the application."; ObjectID = "23"; */
+"23.title" = "Although the application should continue to run after this error, it may be in an instable state, so it is recommended that you restart the application.";
