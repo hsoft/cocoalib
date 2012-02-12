@@ -33,11 +33,7 @@ http://www.hardcoded.net/licenses/bsd_license
     _nib = [[NSNib alloc] initWithNibNamed:@"FairwareReminder" bundle:[NSBundle bundleForClass:[self class]]];
     app = aApp;
     [_nib instantiateNibWithOwner:self topLevelObjects:nil];
-    [fairwareNagPanel update];
     [codePanel update];
-    [fairwareNagPanel setTitle:fmt([fairwareNagPanel title],[app appName])];
-    [demoNagPanel setTitle:fmt([demoNagPanel title],[app appName])];
-    [fairwareUnpaidHoursTextField setStringValue:fmt([fairwareUnpaidHoursTextField stringValue],n2f([app unpaidHours]))];
     [codePromptTextField setStringValue:fmt([codePromptTextField stringValue],[app appName])];
     return self;
 }
@@ -113,12 +109,16 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (BOOL)showFairwareNagPanelWithPrompt:(NSString *)prompt
 {
+    [fairwareNagPanel update];
+    [fairwareNagPanel setTitle:fmt([fairwareNagPanel title],[app appName])];
+    [fairwareUnpaidHoursTextField setStringValue:fmt([fairwareUnpaidHoursTextField stringValue],n2f([app unpaidHours]))];
     [fairwarePromptTextField setStringValue:prompt];
     return [self showNagPanel:fairwareNagPanel];
 }
 
 - (BOOL)showDemoNagPanelWithPrompt:(NSString *)prompt
 {
+    [demoNagPanel setTitle:fmt([demoNagPanel title],[app appName])];
     [demoPromptTextField setStringValue:prompt];
     return [self showNagPanel:demoNagPanel];
 }
