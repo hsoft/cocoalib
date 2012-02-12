@@ -63,9 +63,15 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)setView:(NSTableView *)aTableView
 {
+    if ([self view] != nil) {
+        [[self view] setDataSource:nil];
+        [[self view] setDelegate:nil];
+    }
     [super setView:aTableView];
-    [aTableView setDataSource:self];
-    [aTableView setDelegate:self];
+    if (aTableView != nil) {
+        [aTableView setDataSource:self];
+        [aTableView setDelegate:self];
+    }
 }
 
 /* Data source */

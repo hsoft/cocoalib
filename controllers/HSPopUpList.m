@@ -24,10 +24,15 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)setView:(NSPopUpButton *)aPopupView
 {
+    if ([self view] != nil) {
+        [[self view] setTarget:nil];
+    }
     [super setView:aPopupView];
-    [aPopupView setAction:@selector(popupViewSelectionChanged)];
-    [aPopupView setTarget:self];
-    [self refresh];
+    if (aPopupView != nil) {
+        [aPopupView setAction:@selector(popupViewSelectionChanged)];
+        [aPopupView setTarget:self];
+        [self refresh];
+    }
 }
 
 - (PySelectableList *)model

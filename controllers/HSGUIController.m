@@ -38,8 +38,9 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)dealloc
 {
     // NSLog([NSString stringWithFormat:@"%@ dealloc",[[self class] description]]);
+    [self setView:nil];
+    [model free];
     [model release];
-    [view release];
     [super dealloc];
 }
 
@@ -55,6 +56,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)setView:(NSView *)aView
 {
+    [view release];
     view = [aView retain];
 }
 @end

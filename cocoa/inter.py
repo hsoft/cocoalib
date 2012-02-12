@@ -15,6 +15,11 @@ class PyGUIObject:
         self.callback = callback
         self.model.view = self
     
+    # Call this before the ObjC callback is deallocated to avoid calls to that deallocated instance.
+    def free(self):
+        self.model.view = None
+        self.callback = None
+    
     def modelRef(self) -> pyref:
         return self.model
     

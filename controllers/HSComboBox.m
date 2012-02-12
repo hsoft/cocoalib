@@ -35,11 +35,17 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)setView:(NSComboBox *)aComboboxView
 {
+    if ([self view] != nil) {
+        [[self view] setDataSource:nil];
+        [[self view] setTarget:nil];
+    }
     [super setView:aComboboxView];
-    [aComboboxView setDataSource:self];
-    [aComboboxView setAction:@selector(comboboxViewSelectionChanged)];
-    [aComboboxView setTarget:self];
-    [self refresh];
+    if (aComboboxView != nil) {
+        [aComboboxView setDataSource:self];
+        [aComboboxView setAction:@selector(comboboxViewSelectionChanged)];
+        [aComboboxView setTarget:self];
+        [self refresh];
+    }
 }
 
 - (PySelectableList *)model

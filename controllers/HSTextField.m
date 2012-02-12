@@ -24,9 +24,14 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)setView:(NSTextField *)aView
 {
+    if ([self view] != nil) {
+        [[self view] setDelegate:nil];
+    }   
     [super setView:aView];
-    [aView setDelegate:self];
-    [self refresh];
+    if (aView != nil) {
+        [aView setDelegate:self];
+        [self refresh];
+    }
 }
 
 - (PyTextField *)model

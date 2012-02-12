@@ -43,9 +43,15 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)setView:(HSOutlineView *)aOutlineView
 {
+    if ([self view] != nil) {
+        [[self view] setDataSource:nil];
+        [[self view] setDelegate:nil];
+    }
     [super setView:aOutlineView];
-    [aOutlineView setDataSource:self];
-    [aOutlineView setDelegate:self];
+    if (aOutlineView != nil) {
+        [aOutlineView setDataSource:self];
+        [aOutlineView setDelegate:self];
+    }
 }
 
 - (PyOutline *)model
