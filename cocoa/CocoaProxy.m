@@ -5,7 +5,7 @@
 @implementation CocoaProxy
 - (void)openPath:(NSString *)path
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:path]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path isDirectory:NO]];
 }
 
 - (void)revealPath:(NSString *)path
