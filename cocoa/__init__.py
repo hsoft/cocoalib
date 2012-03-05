@@ -17,25 +17,13 @@ from .CocoaProxy import CocoaProxy
 proxy = CocoaProxy()
 
 try:
-    from jobprogress.job import JobCancelled
     from jobprogress.performer import ThreadedJobPerformer as ThreadedJobPerformerBase
     class ThreadedJobPerformer(ThreadedJobPerformerBase):
         def _async_run(self, *args):
             proxy.createPool()
-            target = args[0]
-            args = tuple(args[1:])
-            self._job_running = True
-            self._last_error = None
             try:
-                target(*args)
-            except JobCancelled:
-                pass
-            except Exception:
-                self._last_error = sys.exc_info()
-                report_crash(*self._last_error)
+                ThreadedJobPerformerBase._async_run(self, *args)
             finally:
-                self._job_running = False
-                self.last_progress = None
                 proxy.destroyPool()
 except ImportError:
     # jobprogress isn't used in all HS apps
@@ -66,6 +54,38 @@ def as_fetch(as_list, as_type, step_size=1000):
     logging.info('%d items fetched' % len(result))
     return result
 
+def extract_tb_noline(tb):
+    # Same as traceback.extract_tb(), but without line fetching
+    limit = 100
+    list = []
+    n = 0
+    while tb is not None and (limit is None or n < limit):
+        f = tb.tb_frame
+        lineno = tb.tb_lineno
+        co = f.f_code
+        filename = co.co_filename
+        name = co.co_name
+        list.append((filename, lineno, name, None))
+        tb = tb.tb_next
+        n = n+1
+    return list
+
+def safe_format_exception(type, value, tb):
+    """Format exception from type, value and tb and fallback if there's a problem.
+    
+    In some cases in threaded exceptions under Cocoa, I get tracebacks targeting pyc files instead
+    of py files, which results in traceback.format_exception() trying to print lines from pyc files
+    and then crashing when trying to interpret that binary data as utf-8. We want a fallback in
+    these cases.
+    """
+    try:
+        return traceback.format_exception(type, value, tb)
+    except Exception:
+        result = ['Traceback (most recent call last):\n']
+        result.extend(traceback.format_list(extract_tb_noline(tb)))
+        result.extend(traceback.format_exception_only(type, value))
+        return result
+
 def report_crash(type, value, tb):
     app_identifier = proxy.bundleIdentifier()
     app_version = proxy.appVersion()
@@ -73,7 +93,7 @@ def report_crash(type, value, tb):
     s = "Application Identifier: {}\n".format(app_identifier)
     s += "Application Version: {}\n".format(app_version)
     s += "Mac OS X Version: {}\n\n".format(osx_version)
-    s += ''.join(traceback.format_exception(type, value, tb))
+    s += ''.join(safe_format_exception(type, value, tb))
     if app_identifier:
         s += '\nRelevant Console logs:\n\n'
         p = subprocess.Popen(['grep', app_identifier, '/var/log/system.log'], stdout=subprocess.PIPE)
