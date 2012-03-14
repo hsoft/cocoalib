@@ -32,6 +32,7 @@ typedef struct {
 - (void)disconnectNotifications;
 - (void)initializeColumns:(HSColumnDef *)columns;
 - (void)initializeColumnsFromModel:(HSColumnDef)columnModel;
+- (void)setColumnsAsReadOnly;
 - (void)restoreColumns;
 - (void)setColumn:(NSString *)colname visible:(BOOL)visible;
 @end

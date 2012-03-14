@@ -135,6 +135,13 @@ http://www.hardcoded.net/licenses/bsd_license
     free(defs);
 }
 
+- (void)setColumnsAsReadOnly
+{
+    for (NSTableColumn *col in [[self view] tableColumns]) {
+        [col setEditable:NO];
+    }
+}
+
 /* Notifications */
 - (void)columnMoved:(NSNotification *)notification
 {
