@@ -8,6 +8,11 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path isDirectory:NO]];
 }
 
+- (void)openURL:(NSString *)url
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+}
+
 - (void)revealPath:(NSString *)path
 {
     [[NSWorkspace sharedWorkspace] selectFile:path inFileViewerRootedAtPath:@""];

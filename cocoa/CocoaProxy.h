@@ -5,6 +5,7 @@
 	NSAutoreleasePool *currentPool;
 }
 - (void)openPath:(NSString *)path;
+- (void)openURL:(NSString *)url;
 - (void)revealPath:(NSString *)path;
 - (NSString *)getUTI:(NSString *)path;
 - (BOOL)type:(NSString *)type conformsToType:(NSString *)refType;

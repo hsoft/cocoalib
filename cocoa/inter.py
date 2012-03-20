@@ -297,7 +297,7 @@ class PyFairware(PyGUIObject):
     
     @dontwrap
     def open_url(self, url):
-        proxy.openPath_(url)
+        proxy.openURL_(url)
     
     @dontwrap
     def show_message(self, msg):
