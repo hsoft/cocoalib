@@ -27,7 +27,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)updateFields
 {
-    [titleTextField setStringValue:[app appName]];
+    [titleTextField setStringValue:[app appLongName]];
     NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
     [versionTextField setStringValue:[NSString stringWithFormat:@"Version: %@",version]];
     NSString *copyright = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSHumanReadableCopyright"];

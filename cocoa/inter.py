@@ -256,6 +256,9 @@ class PyFairware(PyGUIObject):
     def appName(self) -> str:
         return self.model.PROMPT_NAME
     
+    def appLongName(self) -> str:
+        return self.model.NAME
+    
     def isRegistered(self) -> bool:
         return self.model.registered
     
