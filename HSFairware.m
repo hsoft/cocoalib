@@ -174,7 +174,7 @@ NSString* normalizeString(NSString *str)
 
 - (void)buy
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://open.hardcoded.net/purchase.htm"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.hardcoded.net/purchase.htm"]];
 }
 
 - (void)aboutFairware
