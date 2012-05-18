@@ -8,7 +8,6 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import "Utils.h"
 #import <CoreServices/CoreServices.h>
-#import "ObjP.h"
 
 @implementation Utils
 //This is to pass index sets to python as arrays (so it can be converted to native lists)
@@ -83,35 +82,3 @@ http://www.hardcoded.net/licenses/bsd_license
     return [Utils array2IndexPath:indexes];
 }
 @end
-
-void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith)
-{
-    NSView *parent = [placeholder superview];
-    [replaceWith setFrame:[placeholder frame]];
-    [replaceWith setAutoresizingMask:[placeholder autoresizingMask]];
-    [parent replaceSubview:placeholder with:replaceWith];
-}
-
-static NSString *gCocoaViewsModuleName;
-void setCocoaViewsModuleName(NSString *moduleName)
-{
-    if (gCocoaViewsModuleName != nil) {
-        [gCocoaViewsModuleName release];
-    }
-    gCocoaViewsModuleName = [moduleName retain];
-}
-
-PyObject* createCallback(NSString *aViewClassName, id aViewRef)
-{
-    NSString *moduleName;
-    if (gCocoaViewsModuleName != nil) {
-        moduleName = gCocoaViewsModuleName;
-    }
-    else {
-        moduleName = @"inter.CocoaViews";
-    }
-    PyGILState_STATE gilState = PyGILState_Ensure();
-    PyObject *pCallback = ObjP_classInstanceWithRef(aViewClassName, moduleName, aViewRef);
-    PyGILState_Release(gilState);
-    return pCallback;
-}

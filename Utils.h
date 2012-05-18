@@ -7,7 +7,6 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
-#import <Python.h>
 
 //Useful shortcuts
 #define i2n(i) [NSNumber numberWithInteger:i]
@@ -33,7 +32,3 @@ http://www.hardcoded.net/licenses/bsd_license
 + (NSString *)indexPath2String:(NSIndexPath *)aIndexPath;
 + (NSIndexPath *)string2IndexPath:(NSString *)aString;
 @end
-
-void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith);
-void setCocoaViewsModuleName(NSString *moduleName);
-PyObject* createCallback(NSString *aViewClassName, id aViewRef);
