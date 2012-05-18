@@ -7,7 +7,7 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
-#import "PyFairware.h"
+#import "HSFairware.h"
 
 @interface HSFairwareReminder : NSObject
 {
@@ -23,12 +23,12 @@ http://www.hardcoded.net/licenses/bsd_license
     IBOutlet NSTextField *demoPromptTextField;
     
     NSNib *_nib;
-    PyFairware *app;
+    HSFairware *app;
 }
 //Show nag only if needed
-+ (BOOL)showFairwareNagWithApp:(PyFairware *)app prompt:(NSString *)prompt;
-+ (BOOL)showDemoNagWithApp:(PyFairware *)app prompt:(NSString *)prompt;
-- (id)initWithApp:(PyFairware *)app;
++ (BOOL)showFairwareNagWithApp:(HSFairware *)app prompt:(NSString *)prompt;
++ (BOOL)showDemoNagWithApp:(HSFairware *)app prompt:(NSString *)prompt;
+- (id)initWithApp:(HSFairware *)app;
 
 - (IBAction)contribute:(id)sender;
 - (IBAction)buy:(id)sender;
