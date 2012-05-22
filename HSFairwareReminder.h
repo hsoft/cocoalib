@@ -7,7 +7,7 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
-#import "HSFairware.h"
+#import "HSFairwareProtocol.h"
 
 @interface HSFairwareReminder : NSObject
 {
@@ -23,12 +23,12 @@ http://www.hardcoded.net/licenses/bsd_license
     IBOutlet NSTextField *demoPromptTextField;
     
     NSNib *_nib;
-    HSFairware *app;
+    id <HSFairwareProtocol> app;
 }
 //Show nag only if needed
-+ (BOOL)showFairwareNagWithApp:(HSFairware *)app prompt:(NSString *)prompt;
-+ (BOOL)showDemoNagWithApp:(HSFairware *)app prompt:(NSString *)prompt;
-- (id)initWithApp:(HSFairware *)app;
++ (BOOL)showFairwareNagWithApp:(id <HSFairwareProtocol>)app prompt:(NSString *)prompt;
++ (BOOL)showDemoNagWithApp:(id <HSFairwareProtocol>)app prompt:(NSString *)prompt;
+- (id)initWithApp:(id <HSFairwareProtocol>)app;
 
 - (IBAction)contribute:(id)sender;
 - (IBAction)buy:(id)sender;

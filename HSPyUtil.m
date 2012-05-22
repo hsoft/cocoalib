@@ -9,14 +9,6 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "HSPyUtil.h"
 #import "ObjP.h"
 
-void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith)
-{
-    NSView *parent = [placeholder superview];
-    [replaceWith setFrame:[placeholder frame]];
-    [replaceWith setAutoresizingMask:[placeholder autoresizingMask]];
-    [parent replaceSubview:placeholder with:replaceWith];
-}
-
 static NSString *gCocoaViewsModuleName;
 void setCocoaViewsModuleName(NSString *moduleName)
 {

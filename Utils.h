@@ -32,3 +32,5 @@ http://www.hardcoded.net/licenses/bsd_license
 + (NSString *)indexPath2String:(NSIndexPath *)aIndexPath;
 + (NSIndexPath *)string2IndexPath:(NSString *)aString;
 @end
+
+void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith);

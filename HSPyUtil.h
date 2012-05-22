@@ -9,6 +9,5 @@ http://www.hardcoded.net/licenses/bsd_license
 #import <Cocoa/Cocoa.h>
 #import <Python.h>
 
-void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith);
 void setCocoaViewsModuleName(NSString *moduleName);
 PyObject* createCallback(NSString *aViewClassName, id aViewRef);

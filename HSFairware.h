@@ -7,18 +7,7 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
-
-@protocol HSFairwareProtocol
-- (void)initialRegistrationSetup;
-- (NSString *)appName;
-- (NSString *)appLongName;
-- (BOOL)isRegistered;
-- (BOOL)setRegisteredCode:(NSString *)code andEmail:(NSString *)email registerOS:(BOOL)registerOS;
-- (NSNumber *)unpaidHours;
-- (void)contribute;
-- (void)buy;
-- (void)aboutFairware;
-@end
+#import "HSFairwareProtocol.h"
 
 @interface HSFairware : NSObject <HSFairwareProtocol>
 {

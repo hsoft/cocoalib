@@ -11,7 +11,7 @@ http://www.hardcoded.net/licenses/bsd_license
 #import "Utils.h"
 
 @implementation HSFairwareReminder
-+ (BOOL)showFairwareNagWithApp:(HSFairware *)app prompt:(NSString *)prompt
++ (BOOL)showFairwareNagWithApp:(id <HSFairwareProtocol>)app prompt:(NSString *)prompt
 {
     HSFairwareReminder *fr = [[HSFairwareReminder alloc] initWithApp:app];
     BOOL r = [fr showFairwareNagPanelWithPrompt:prompt];
@@ -19,7 +19,7 @@ http://www.hardcoded.net/licenses/bsd_license
     return r;
 }
 
-+ (BOOL)showDemoNagWithApp:(HSFairware *)app prompt:(NSString *)prompt
++ (BOOL)showDemoNagWithApp:(id <HSFairwareProtocol>)app prompt:(NSString *)prompt
 {
     HSFairwareReminder *fr = [[HSFairwareReminder alloc] initWithApp:app];
     BOOL r = [fr showDemoNagPanelWithPrompt:prompt];
@@ -27,7 +27,7 @@ http://www.hardcoded.net/licenses/bsd_license
     return r;
 }
 
-- (id)initWithApp:(HSFairware *)aApp
+- (id)initWithApp:(id <HSFairwareProtocol>)aApp
 {
     self = [super init];
     _nib = [[NSNib alloc] initWithNibNamed:@"FairwareReminder" bundle:[NSBundle bundleForClass:[self class]]];

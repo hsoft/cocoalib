@@ -250,6 +250,8 @@ class FairwareView:
     def showMessage_(self, msg: str): pass
 
 class PyFairware(PyGUIObject):
+    FOLLOW_PROTOCOLS = ['HSFairwareProtocol']
+    
     def initialRegistrationSetup(self):
         self.model.initial_registration_setup()
     

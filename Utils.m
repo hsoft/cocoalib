@@ -82,3 +82,11 @@ http://www.hardcoded.net/licenses/bsd_license
     return [Utils array2IndexPath:indexes];
 }
 @end
+
+void replacePlaceholderInView(NSView *placeholder, NSView *replaceWith)
+{
+    NSView *parent = [placeholder superview];
+    [replaceWith setFrame:[placeholder frame]];
+    [replaceWith setAutoresizingMask:[placeholder autoresizingMask]];
+    [parent replaceSubview:placeholder with:replaceWith];
+}
