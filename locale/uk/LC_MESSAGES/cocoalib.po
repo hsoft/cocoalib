@@ -25,8 +25,11 @@ msgid "Error report"
 msgstr "Повідомити про помилку"
 
 #: cocoalib/en.lproj/ErrorReportWindow.strings:0
-msgid "Something went wrong. Would you like to send the error report to Hardcoded Software?"
-msgstr "Щось пішло не так. Хочете відправити звіт про помилку до Hardcoded Software?"
+msgid ""
+"Something went wrong. Would you like to send the error report to Hardcoded "
+"Software?"
+msgstr ""
+"Щось пішло не так. Хочете відправити звіт про помилку до Hardcoded Software?"
 
 #: cocoalib/en.lproj/ErrorReportWindow.strings:0
 msgid "Send"
@@ -61,8 +64,12 @@ msgid "Enter your key"
 msgstr "Введіть Ваш ключ"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
-msgid "Type the key you received when you contributed to %@, as well as the e-mail used as a reference for the purchase."
-msgstr "Введіть ключ, який Ви отримали зробивши внесок за %@, а також адресу електронної пошти, яка була вказана під час покупки."
+msgid ""
+"Type the key you received when you contributed to %@, as well as the e-mail "
+"used as a reference for the purchase."
+msgstr ""
+"Введіть ключ, який Ви отримали зробивши внесок за %@, а також адресу "
+"електронної пошти, яка була вказана під час покупки."
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "Registration key:"
@@ -113,6 +120,9 @@ msgid "Fairware?"
 msgstr "Fairware?"
 
 #: cocoalib/en.lproj/ErrorReportWindow.strings:0
-msgid "Although the application should continue to run after this error, it may be in an instable state, so it is recommended that you restart the application."
-msgstr "Хоча програма має продовжувати роботу після цієї помилки, вона може перебувати у нестабільному стані, тож рекомендується перезапустити програму."
-
+msgid ""
+"Although the application should continue to run after this error, it may be "
+"in an instable state, so it is recommended that you restart the application."
+msgstr ""
+"Хоча програма має продовжувати роботу після цієї помилки, вона може "
+"перебувати у нестабільному стані, тож рекомендується перезапустити програму."
