@@ -4,11 +4,6 @@ syntax: glob
 __pycache__
 *.pyc
 *.so
-fr.lproj/*.xib
-de.lproj/*.xib
-it.lproj/*.xib
-cs.lproj/*.xib
-zh_CN.lproj/*.xib
 nl.lproj
 cs.lproj
 de.lproj
@@ -18,3 +13,4 @@ hy.lproj
 ru.lproj
 uk.lproj
 zh_CN.lproj
+pt_BR.lproj
