@@ -8,12 +8,19 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import "ProgressController.h"
 #import "Utils.h"
+#import "ProgressController_UI.h"
 
 NSString *JobCompletedNotification = @"JobCompletedNotification";
 NSString *JobCancelledNotification = @"JobCancelledNotification";
 static ProgressController *_mainPC = nil;
 
 @implementation ProgressController
+
+@synthesize cancelButton;
+@synthesize progressBar;
+@synthesize statusText;
+@synthesize descText;
+
 + (ProgressController *)mainProgressController
 {
     if (_mainPC == nil)
@@ -23,8 +30,8 @@ static ProgressController *_mainPC = nil;
 
 - (id)init
 {
-    self = [super initWithWindowNibName:@"progress"];
-    [self window]; // initialize outlets
+    self = [super initWithWindow:nil];
+    [self setWindow:createProgressController_UI(self)];
     [progressBar setUsesThreadedAnimation:YES];
     _worker = nil;
     _running = NO;
@@ -32,7 +39,7 @@ static ProgressController *_mainPC = nil;
     return self;
 }
 
-- (IBAction)cancel:(id)sender
+- (void)cancel
 {
     [self hide];
 }

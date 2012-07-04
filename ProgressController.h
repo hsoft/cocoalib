@@ -12,22 +12,28 @@ http://www.hardcoded.net/licenses/bsd_license
 extern NSString *JobCompletedNotification;
 extern NSString *JobCancelledNotification;
 
-@interface ProgressController : NSWindowController
+@interface ProgressController : NSWindowController <NSWindowDelegate>
 {
-    IBOutlet NSButton *cancelButton;
-    IBOutlet NSProgressIndicator *progressBar;
-    IBOutlet NSTextField *statusText;
-    IBOutlet NSTextField *descText;
+    NSButton *cancelButton;
+    NSProgressIndicator *progressBar;
+    NSTextField *statusText;
+    NSTextField *descText;
     
     id _jobId;
     BOOL _running;
     NSObject<Worker> *_worker;
 }
+
+@property (readwrite, assign) NSButton *cancelButton;
+@property (readwrite, assign) NSProgressIndicator *progressBar;
+@property (readwrite, assign) NSTextField *statusText;
+@property (readwrite, assign) NSTextField *descText;
+
 + (ProgressController *)mainProgressController;
 
 - (id)init;
 
-- (IBAction)cancel:(id)sender;
+- (void)cancel;
 
 - (void)hide;
 - (void)show;
