@@ -15,7 +15,7 @@ contributeButton = Button(result, "Contribute")
 
 owner.fairwarePromptTextField = fairwarePromptLabel
 owner.fairwareUnpaidHoursTextField = unpaidHoursLabel
-# result.properties['initialFirstResponder'] = continueButton
+result.initialFirstResponder = continueButton
 titleLabel.font = Font(FontFamily.Label, FontSize.RegularControl, traits=[FontTrait.Bold])
 fairwarePromptLabel.font = Font(FontFamily.Label, FontSize.SmallControl)
 unpaidHoursLabel.font = titleLabel.font

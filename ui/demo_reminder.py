@@ -12,7 +12,7 @@ buyButton = Button(result, "Buy")
 fairwareButton = Button(result, "Fairware?")
 
 owner.demoPromptTextField = demoPromptLabel
-# result.properties['initialFirstResponder'] = tryButton
+result.initialFirstResponder = tryButton
 demoPromptLabel.font = Font(FontFamily.Label, FontSize.SmallControl)
 tryButton.action = Action(owner, 'closeDialog')
 tryButton.keyEquivalent = "\\r"

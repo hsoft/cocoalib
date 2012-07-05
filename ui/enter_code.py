@@ -21,7 +21,7 @@ owner.codePromptTextField = promptLabel
 owner.codeTextField = regkeyField
 owner.emailTextField = regemailField
 owner.registerOperatingSystemButton = osCheckbox
-# result.properties['initialFirstResponder'] = continueButton
+result.initialFirstResponder = regkeyField
 titleLabel.font = Font(FontFamily.Label, FontSize.RegularControl, traits=[FontTrait.Bold])
 smallerFont = Font(FontFamily.Label, FontSize.SmallControl)
 for control in (promptLabel, regkeyLabel, regemailLabel, osCheckbox, osSubLabel):
