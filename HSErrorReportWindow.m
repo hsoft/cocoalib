@@ -7,8 +7,12 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import "HSErrorReportWindow.h"
+#import "HSErrorReportWindow_UI.h"
 
 @implementation HSErrorReportWindow
+
+@synthesize contentTextView;
+
 + (void)showErrorReportWithContent:(NSString *)content
 {
     HSErrorReportWindow *report = [[HSErrorReportWindow alloc] initWithContent:content];
@@ -18,14 +22,14 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (id)initWithContent:(NSString *)content
 {
-    self = [super initWithWindowNibName:@"ErrorReportWindow"];
-    [self window];
+    self = [super initWithWindow:nil];
+    [self setWindow:createHSErrorReportWindow_UI(self)];
     [contentTextView alignLeft:nil];
     [[[contentTextView textStorage] mutableString] setString:content];
     return self;
 }
 
-- (IBAction)send:(id)sender
+- (void)send
 {
     NSString *text = [[contentTextView textStorage] string];
     NSString *URL = [NSString stringWithFormat:@"mailto:support@hardcoded.net?SUBJECT=Error Report&BODY=%@",text];
@@ -36,7 +40,7 @@ http://www.hardcoded.net/licenses/bsd_license
     [NSApp stopModalWithCode:NSOKButton];
 }
 
-- (IBAction)dontSend:(id)sender
+- (void)dontSend
 {
     [[self window] orderOut:self];
     [NSApp stopModalWithCode:NSCancelButton];

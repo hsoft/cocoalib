@@ -10,11 +10,14 @@ http://www.hardcoded.net/licenses/bsd_license
 
 @interface HSErrorReportWindow : NSWindowController
 {
-    IBOutlet NSTextView *contentTextView;
+    NSTextView *contentTextView;
 }
+
+@property (readwrite, retain) NSTextView *contentTextView;
+
 + (void)showErrorReportWithContent:(NSString *)content;
 - (id)initWithContent:(NSString *)content;
 
-- (IBAction)send:(id)sender;
-- (IBAction)dontSend:(id)sender;
+- (void)send;
+- (void)dontSend;
 @end
