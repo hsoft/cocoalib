@@ -20,11 +20,11 @@ http://www.hardcoded.net/licenses/bsd_license
     PyFairware *app;
 }
 
-@property (readwrite, assign) NSTextField *titleTextField;
-@property (readwrite, assign) NSTextField *versionTextField;
-@property (readwrite, assign) NSTextField *copyrightTextField;
-@property (readwrite, assign) NSTextField *registeredTextField;
-@property (readwrite, assign) NSButton *registerButton;
+@property (readwrite, retain) NSTextField *titleTextField;
+@property (readwrite, retain) NSTextField *versionTextField;
+@property (readwrite, retain) NSTextField *copyrightTextField;
+@property (readwrite, retain) NSTextField *registeredTextField;
+@property (readwrite, retain) NSButton *registerButton;
 
 - (id)initWithApp:(PyFairware *)app;
 - (void)updateFields;

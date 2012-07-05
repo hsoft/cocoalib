@@ -24,10 +24,10 @@ extern NSString *JobCancelledNotification;
     NSObject<Worker> *_worker;
 }
 
-@property (readwrite, assign) NSButton *cancelButton;
-@property (readwrite, assign) NSProgressIndicator *progressBar;
-@property (readwrite, assign) NSTextField *statusText;
-@property (readwrite, assign) NSTextField *descText;
+@property (readwrite, retain) NSButton *cancelButton;
+@property (readwrite, retain) NSProgressIndicator *progressBar;
+@property (readwrite, retain) NSTextField *statusText;
+@property (readwrite, retain) NSTextField *descText;
 
 + (ProgressController *)mainProgressController;
 
