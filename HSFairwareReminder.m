@@ -7,10 +7,25 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import "HSFairwareReminder.h"
+#import "HSFairwareReminder_UI.h"
+#import "HSDemoReminder_UI.h"
+#import "HSEnterCode_UI.h"
 #import "Dialogs.h"
 #import "Utils.h"
 
 @implementation HSFairwareReminder
+
+@synthesize codePanel;
+@synthesize codePromptTextField;
+@synthesize codeTextField;
+@synthesize emailTextField;
+@synthesize registerOperatingSystemButton;
+@synthesize fairwareNagPanel;
+@synthesize fairwarePromptTextField;
+@synthesize fairwareUnpaidHoursTextField;
+@synthesize demoNagPanel;
+@synthesize demoPromptTextField;
+
 + (BOOL)showFairwareNagWithApp:(id <HSFairwareProtocol>)app prompt:(NSString *)prompt
 {
     HSFairwareReminder *fr = [[HSFairwareReminder alloc] initWithApp:app];
@@ -30,49 +45,44 @@ http://www.hardcoded.net/licenses/bsd_license
 - (id)initWithApp:(id <HSFairwareProtocol>)aApp
 {
     self = [super init];
-    _nib = [[NSNib alloc] initWithNibNamed:@"FairwareReminder" bundle:[NSBundle bundleForClass:[self class]]];
     app = aApp;
-    [_nib instantiateNibWithOwner:self topLevelObjects:nil];
+    [self setFairwareNagPanel:createHSFairwareReminder_UI(self)];
+    [self setDemoNagPanel:createHSDemoReminder_UI(self)];
+    [self setCodePanel:createHSEnterCode_UI(self)];
     [codePanel update];
     [codePromptTextField setStringValue:fmt([codePromptTextField stringValue],[app appName])];
     return self;
 }
 
-- (void)dealloc
-{
-    [_nib release];
-    [super dealloc];
-}
-
-- (IBAction)contribute:(id)sender
+- (void)contribute
 {
     [app contribute];
 }
 
-- (IBAction)buy:(id)sender
+- (void)buy
 {
     [app buy];
 }
 
-- (IBAction)moreInfo:(id)sender
+- (void)moreInfo
 {
     [app aboutFairware];
 }
 
-- (IBAction)cancelCode:(id)sender
+- (void)cancelCode
 {
     [codePanel close];
     [NSApp stopModalWithCode:NSCancelButton];
 }
 
-- (IBAction)enterCode:(id)sender
+- (void)showEnterCode
 {
     [fairwareNagPanel close];
     [demoNagPanel close];
     [NSApp stopModalWithCode:NSOKButton];
 }
 
-- (IBAction)submitCode:(id)sender
+- (void)submitCode
 {
     NSString *code = [codeTextField stringValue];
     NSString *email = [emailTextField stringValue];
@@ -83,14 +93,14 @@ http://www.hardcoded.net/licenses/bsd_license
     }
 }
 
-- (IBAction)closeDialog:(id)sender
+- (void)closeDialog
 {
     [fairwareNagPanel close];
     [demoNagPanel close];
     [NSApp stopModalWithCode:NSCancelButton];
 }
 
-- (BOOL)showNagPanel:(NSPanel *)panel;
+- (BOOL)showNagPanel:(NSWindow *)panel;
 {
     NSInteger r;
     while (YES) {

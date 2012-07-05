@@ -11,34 +11,45 @@ http://www.hardcoded.net/licenses/bsd_license
 
 @interface HSFairwareReminder : NSObject
 {
-    IBOutlet NSPanel *codePanel;
-    IBOutlet NSTextField *codePromptTextField;
-    IBOutlet NSTextField *codeTextField;
-    IBOutlet NSTextField *emailTextField;
-    IBOutlet NSButton *registerOperatingSystemButton;
-    IBOutlet NSPanel *fairwareNagPanel;
-    IBOutlet NSTextField *fairwarePromptTextField;
-    IBOutlet NSTextField *fairwareUnpaidHoursTextField;
-    IBOutlet NSPanel *demoNagPanel;
-    IBOutlet NSTextField *demoPromptTextField;
+    NSWindow *codePanel;
+    NSTextField *codePromptTextField;
+    NSTextField *codeTextField;
+    NSTextField *emailTextField;
+    NSButton *registerOperatingSystemButton;
+    NSWindow *fairwareNagPanel;
+    NSTextField *fairwarePromptTextField;
+    NSTextField *fairwareUnpaidHoursTextField;
+    NSWindow *demoNagPanel;
+    NSTextField *demoPromptTextField;
     
-    NSNib *_nib;
     id <HSFairwareProtocol> app;
 }
+
+@property (readwrite, retain) NSWindow *codePanel;
+@property (readwrite, retain) NSTextField *codePromptTextField;
+@property (readwrite, retain) NSTextField *codeTextField;
+@property (readwrite, retain) NSTextField *emailTextField;
+@property (readwrite, retain) NSButton *registerOperatingSystemButton;
+@property (readwrite, retain) NSWindow *fairwareNagPanel;
+@property (readwrite, retain) NSTextField *fairwarePromptTextField;
+@property (readwrite, retain) NSTextField *fairwareUnpaidHoursTextField;
+@property (readwrite, retain) NSWindow *demoNagPanel;
+@property (readwrite, retain) NSTextField *demoPromptTextField;
+
 //Show nag only if needed
 + (BOOL)showFairwareNagWithApp:(id <HSFairwareProtocol>)app prompt:(NSString *)prompt;
 + (BOOL)showDemoNagWithApp:(id <HSFairwareProtocol>)app prompt:(NSString *)prompt;
 - (id)initWithApp:(id <HSFairwareProtocol>)app;
 
-- (IBAction)contribute:(id)sender;
-- (IBAction)buy:(id)sender;
-- (IBAction)moreInfo:(id)sender;
-- (IBAction)cancelCode:(id)sender;
-- (IBAction)enterCode:(id)sender;
-- (IBAction)submitCode:(id)sender;
-- (IBAction)closeDialog:(id)sender;
+- (void)contribute;
+- (void)buy;
+- (void)moreInfo;
+- (void)cancelCode;
+- (void)showEnterCode;
+- (void)submitCode;
+- (void)closeDialog;
 
-- (BOOL)showNagPanel:(NSPanel *)panel; //YES: The code has been sucessfully submitted NO: The use wan't to try the demo.
+- (BOOL)showNagPanel:(NSWindow *)panel; //YES: The code has been sucessfully submitted NO: The use wan't to try the demo.
 - (BOOL)showFairwareNagPanelWithPrompt:(NSString *)prompt;
 - (BOOL)showDemoNagPanelWithPrompt:(NSString *)prompt;
 - (NSInteger)enterCode; //returns the modal code.
