@@ -1,7 +1,7 @@
 ownerclass = 'HSAboutBox'
 ownerimport = 'HSAboutBox.h'
 
-result = Window(552, 386, 259, 217, "")
+result = Window(259, 217, "")
 result.canResize = False
 result.canMinimize = False
 image = ImageView(result, "NSApplicationIcon")
