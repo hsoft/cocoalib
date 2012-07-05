@@ -11,16 +11,23 @@ http://www.hardcoded.net/licenses/bsd_license
 
 @interface HSAboutBox : NSWindowController
 {
-    IBOutlet NSTextField *titleTextField;
-    IBOutlet NSTextField *versionTextField;
-    IBOutlet NSTextField *copyrightTextField;
-    IBOutlet NSTextField *registeredTextField;
-    IBOutlet NSButton *registerButton;
+    NSTextField *titleTextField;
+    NSTextField *versionTextField;
+    NSTextField *copyrightTextField;
+    NSTextField *registeredTextField;
+    NSButton *registerButton;
     
     PyFairware *app;
 }
+
+@property (readwrite, assign) NSTextField *titleTextField;
+@property (readwrite, assign) NSTextField *versionTextField;
+@property (readwrite, assign) NSTextField *copyrightTextField;
+@property (readwrite, assign) NSTextField *registeredTextField;
+@property (readwrite, assign) NSButton *registerButton;
+
 - (id)initWithApp:(PyFairware *)app;
 - (void)updateFields;
 
-- (IBAction)showRegisterDialog:(id)sender;
+- (void)showRegisterDialog;
 @end

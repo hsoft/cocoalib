@@ -2,6 +2,7 @@ ownerclass = 'ProgressController'
 ownerimport = 'ProgressController.h'
 
 result = Window(440, 520, 323, 143, "Work in progress...")
+result.canClose = result.canResize = result.canMinimize = False
 descLabel = Label(result, "Work in progress, please wait.")
 progress = ProgressIndicator(result)
 statusLabel = Label(result, "Status: Working...")

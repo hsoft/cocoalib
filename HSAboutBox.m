@@ -7,13 +7,21 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import "HSAboutBox.h"
+#import "HSAboutBox_UI.h"
 #import "HSFairwareReminder.h"
 
 @implementation HSAboutBox
+
+@synthesize titleTextField;
+@synthesize versionTextField;
+@synthesize copyrightTextField;
+@synthesize registeredTextField;
+@synthesize registerButton;
+
 - (id)initWithApp:(PyFairware *)aApp
 {
-    self = [super initWithWindowNibName:@"about"];
-    [self window];
+    self = [super initWithWindow:nil];
+    [self setWindow:createHSAboutBox_UI(self)];
     app = [aApp retain];
     [self updateFields];
     return self;
@@ -42,7 +50,7 @@ http://www.hardcoded.net/licenses/bsd_license
     }    
 }
 
-- (IBAction)showRegisterDialog:(id)sender
+- (void)showRegisterDialog
 {
     HSFairwareReminder *fr = [[HSFairwareReminder alloc] initWithApp:app];
     [fr enterCode];
