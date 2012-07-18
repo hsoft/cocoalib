@@ -16,6 +16,7 @@ owner.titleTextField = titleLabel
 owner.versionTextField = versionLabel
 owner.copyrightTextField = copyrightLabel
 owner.registeredTextField = registeredLabel
+owner.registerButton = registerButton
 for label in (titleLabel, versionLabel, copyrightLabel, registeredLabel):
     label.alignment = const.NSCenterTextAlignment
 titleLabel.font = Font(FontFamily.Label, FontSize.RegularControl, traits=[FontTrait.Bold])

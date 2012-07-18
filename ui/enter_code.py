@@ -1,7 +1,7 @@
 ownerclass = 'HSFairwareReminder'
 ownerimport = 'HSFairwareReminder.h'
 
-result = Window(427, 228, "Enter Key")
+result = Window(440, 228, "Enter Key")
 result.canClose = False
 result.canResize = False
 result.canMinimize = False
