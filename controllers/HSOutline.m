@@ -127,6 +127,11 @@ http://www.hardcoded.net/licenses/bsd_license
     [[self view] updateSelection];
 }
 
+- (void)expandItem:(NSIndexPath *)item
+{
+    [[self view] expandItem:[self internalizedPath:item]];
+}
+
 /* Caching */
 - (id)property:(NSString *)property valueAtPath:(NSIndexPath *)path
 {
