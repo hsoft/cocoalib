@@ -91,7 +91,7 @@ msgstr "Dizer à Hardcoded Software qual sistema operacional eu uso."
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "(to have some contribution statistics based on OSes)"
-msgstr "(para que haja estatísticas de contribuição baseadas em sistemas operacionais)"
+msgstr "(somente para fins estatísticos)"
 
 #: cocoalib/en.lproj/FairwareReminder.strings:0
 msgid "%@ is fairware"
