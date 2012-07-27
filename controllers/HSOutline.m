@@ -26,6 +26,9 @@ http://www.hardcoded.net/licenses/bsd_license
     same value will always be the same instance.
     */
     itemRetainer = [[NSMutableSet set] retain];
+    if (([[self view] outlineTableColumn] == nil) && ([[[self view] tableColumns] count] > 0)) {
+        [[self view] setOutlineTableColumn:[[[self view] tableColumns] objectAtIndex:0]];
+    }
     return self;
 }
 
