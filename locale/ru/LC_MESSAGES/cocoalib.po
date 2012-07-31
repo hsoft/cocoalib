@@ -12,58 +12,58 @@ msgstr ""
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
 
-#: cocoalib/en.lproj/about.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "This app is registered, thanks!"
 msgstr "Это приложение зарегистрировано, спасибо!"
 
-#: cocoalib/en.lproj/about.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Register"
 msgstr "Регистрация"
 
-#: cocoalib/en.lproj/ErrorReportWindow.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Error report"
 msgstr "Сообщение об ошибках"
 
-#: cocoalib/en.lproj/ErrorReportWindow.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid ""
 "Something went wrong. Would you like to send the error report to Hardcoded "
 "Software?"
 msgstr ""
 "Что-то пошло не так. Хотите отправить отчет об ошибке в Hardcoded Software?"
 
-#: cocoalib/en.lproj/ErrorReportWindow.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Send"
 msgstr "Отправить"
 
-#: cocoalib/en.lproj/ErrorReportWindow.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Don't Send"
 msgstr "Не отправлять"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "%@ is Fairware"
 msgstr "%@ является Fairware"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Enter Key"
 msgstr "Видите ключ"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Please contribute"
 msgstr "Пожалуйста, способствовайте"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Contribute"
 msgstr "Способствовайте"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Continue"
 msgstr "Продолжать"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Enter your key"
 msgstr "Видите Ваш ключ"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid ""
 "Type the key you received when you contributed to %@, as well as the e-mail "
 "used as a reference for the purchase."
@@ -71,55 +71,55 @@ msgstr ""
 "Тип ключа, который вы получили при способствовала %@, а также электронной "
 "почты используется в качестве ссылки для покупки."
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Registration key:"
 msgstr "Регистрационный ключ:"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Reference e-mail:"
 msgstr "Ссылка по электронной почте:"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Submit"
 msgstr "Передать"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Cancel"
 msgstr "Отменить"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Unpaid hours: %0.1f"
 msgstr "Неоплачиваемый часы: %0.1f"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "More Info"
 msgstr "Подробнее"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Tell Hardcoded Software which operating system I'm using."
 msgstr "Скажите Hardcoded Software, какую операционную систему я использую."
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "(to have some contribution statistics based on OSes)"
 msgstr "(чтобы иметь определенный вклад статистика, основанная на ОС)"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "%@ is fairware"
 msgstr "%@ является Fairware"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Buy"
 msgstr "Купить"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Try"
 msgstr "Пробовать"
 
-#: cocoalib/en.lproj/FairwareReminder.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Fairware?"
 msgstr "Fairware?"
 
-#: cocoalib/en.lproj/ErrorReportWindow.strings:0
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid ""
 "Although the application should continue to run after this error, it may be "
 "in an instable state, so it is recommended that you restart the application."
