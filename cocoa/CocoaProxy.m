@@ -147,4 +147,9 @@
 {
     [HSErrorReportWindow showErrorReportWithContent:crashReport];
 }
+
+- (void)log:(NSString *)s
+{
+    NSLog(@"%@", s);
+}
 @end

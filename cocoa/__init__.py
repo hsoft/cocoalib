@@ -106,3 +106,10 @@ def report_crash(type, value, tb):
 
 def install_exception_hook():
     sys.excepthook = report_crash
+
+class CocoaHandler(logging.Handler):
+    def emit(self, record):
+        proxy.log_(record.getMessage())
+
+def install_cocoa_logger():
+    logging.getLogger().addHandler(CocoaHandler())

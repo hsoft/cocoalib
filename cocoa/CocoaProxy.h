@@ -28,4 +28,5 @@
 - (void)createPool;
 - (void)destroyPool;
 - (void)reportCrash:(NSString *)crashReport;
+- (void)log:(NSString *)s;
 @end
