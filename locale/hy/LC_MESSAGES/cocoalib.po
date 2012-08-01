@@ -22,10 +22,6 @@ msgid "Register"
 msgstr "Գրանցել"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
-msgid "Error report"
-msgstr "Սխալի զեկույց"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
 msgid ""
 "Something went wrong. Would you like to send the error report to Hardcoded "
 "Software?"
@@ -47,10 +43,6 @@ msgstr "$appname-ը Fairware է"
 #: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Enter Key"
 msgstr "Գրել բանալին"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
-msgid "Please contribute"
-msgstr "Խնդրում ենք մասնակցեք"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Contribute"
@@ -75,10 +67,6 @@ msgstr ""
 #: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Registration key:"
 msgstr "Գրանցման բանալին."
-
-#: cocoalib/en.lproj/cocoalib.strings:0
-msgid "Reference e-mail:"
-msgstr "Հղման էլ. հասցեն."
 
 #: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Submit"
@@ -106,10 +94,6 @@ msgid "(to have some contribution statistics based on OSes)"
 msgstr "(ունենալու համար աջակցման վիճակագրությունը հիմնված OSes-ի վրա)"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
-msgid "%@ is fairware"
-msgstr "%@-ը Fairware է"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Buy"
 msgstr "Գնել"
 
@@ -125,4 +109,40 @@ msgstr "Fairware է՞"
 msgid ""
 "Although the application should continue to run after this error, it may be "
 "in an instable state, so it is recommended that you restart the application."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Error Report"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "No"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "OK"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Please Contribute"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Registration e-mail:"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Status: Working..."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Work in progress, please wait."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Work in progress..."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Yes"
 msgstr ""

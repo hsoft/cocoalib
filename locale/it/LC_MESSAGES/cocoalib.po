@@ -11,10 +11,6 @@ msgid "Register"
 msgstr "Registra"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
-msgid "Error report"
-msgstr "Rapporto di errore"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
 msgid ""
 "Something went wrong. Would you like to send the error report to Hardcoded "
 "Software?"
@@ -37,10 +33,6 @@ msgstr "%@ è Fairware"
 #: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Enter Key"
 msgstr "Inserisci Codice"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
-msgid "Please contribute"
-msgstr "Contribuisci"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Contribute"
@@ -67,10 +59,6 @@ msgid "Registration key:"
 msgstr "Codice di registrazione:"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
-msgid "Reference e-mail:"
-msgstr "E-mail di riferimento:"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Submit"
 msgstr "Invia"
 
@@ -95,10 +83,6 @@ msgid "(to have some contribution statistics based on OSes)"
 msgstr "(per avere dei dati statistici sui sistemi operativi)"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
-msgid "%@ is fairware"
-msgstr "%@ è fairware"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Buy"
 msgstr "Acquista"
 
@@ -114,4 +98,40 @@ msgstr "Fairware?"
 msgid ""
 "Although the application should continue to run after this error, it may be "
 "in an instable state, so it is recommended that you restart the application."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Error Report"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "No"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "OK"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Please Contribute"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Registration e-mail:"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Status: Working..."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Work in progress, please wait."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Work in progress..."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Yes"
 msgstr ""

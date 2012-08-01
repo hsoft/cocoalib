@@ -21,10 +21,6 @@ msgid "Register"
 msgstr "Зареєструвати"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
-msgid "Error report"
-msgstr "Повідомити про помилку"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
 msgid ""
 "Something went wrong. Would you like to send the error report to Hardcoded "
 "Software?"
@@ -46,10 +42,6 @@ msgstr "%@ це Fairware"
 #: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Enter Key"
 msgstr "Введіть ключ"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
-msgid "Please contribute"
-msgstr "Будь ласка, зробіть внесок"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Contribute"
@@ -76,10 +68,6 @@ msgid "Registration key:"
 msgstr "Реєстраційний ключ:"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
-msgid "Reference e-mail:"
-msgstr "Адреса електронної пошти:"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Submit"
 msgstr "Надіслати"
 
@@ -104,10 +92,6 @@ msgid "(to have some contribution statistics based on OSes)"
 msgstr "(щоб мати статистику внесків за операційними системами)"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
-msgid "%@ is fairware"
-msgstr "%@ є fairware"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Buy"
 msgstr "Купити"
 
@@ -126,3 +110,39 @@ msgid ""
 msgstr ""
 "Хоча програма має продовжувати роботу після цієї помилки, вона може "
 "перебувати у нестабільному стані, тож рекомендується перезапустити програму."
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Error Report"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "No"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "OK"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Please Contribute"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Registration e-mail:"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Status: Working..."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Work in progress, please wait."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Work in progress..."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Yes"
+msgstr ""

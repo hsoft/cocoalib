@@ -11,10 +11,6 @@ msgid "Register"
 msgstr "Registrar"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
-msgid "Error report"
-msgstr "Relatório de erro"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
 msgid ""
 "Something went wrong. Would you like to send the error report to Hardcoded "
 "Software?"
@@ -36,10 +32,6 @@ msgstr "%@ é Fairware"
 #: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Enter Key"
 msgstr "Entrar Chave"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
-msgid "Please contribute"
-msgstr "Por favor contribua"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Contribute"
@@ -66,10 +58,6 @@ msgid "Registration key:"
 msgstr "Chave de registro:"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
-msgid "Reference e-mail:"
-msgstr "e-mail registrado:"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Submit"
 msgstr "Enviar"
 
@@ -94,10 +82,6 @@ msgid "(to have some contribution statistics based on OSes)"
 msgstr "(somente para fins estatísticos)"
 
 #: cocoalib/en.lproj/cocoalib.strings:0
-msgid "%@ is fairware"
-msgstr "%@ é fairware"
-
-#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Buy"
 msgstr "Comprar"
 
@@ -116,3 +100,39 @@ msgid ""
 msgstr ""
 "Embora o aplicativo continue a funcionar após este erro, ele pode estar "
 "instável. É recomendável reiniciá-lo."
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Error Report"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "No"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "OK"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Please Contribute"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Registration e-mail:"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Status: Working..."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Work in progress, please wait."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Work in progress..."
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Yes"
+msgstr ""
