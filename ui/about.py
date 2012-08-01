@@ -5,9 +5,9 @@ result = Window(259, 217, "")
 result.canResize = False
 result.canMinimize = False
 image = ImageView(result, "NSApplicationIcon")
-titleLabel = Label(result, "AppTitle")
-versionLabel = Label(result, "AppVersion")
-copyrightLabel = Label(result, "AppCopyright")
+titleLabel = Label(result, NLSTR("AppTitle"))
+versionLabel = Label(result, NLSTR("AppVersion"))
+copyrightLabel = Label(result, NLSTR("AppCopyright"))
 registeredLabel = Label(result, "This app is registered, thanks!")
 registerButton = Button(result, "Register")
 
