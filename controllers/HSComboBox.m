@@ -7,7 +7,7 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import "HSComboBox.h"
-#import "Utils.h"
+#import "HSPyUtil.h"
 
 @implementation HSComboBox
 - (id)initWithPyRef:(PyObject *)aPyRef view:(NSComboBox *)aView
