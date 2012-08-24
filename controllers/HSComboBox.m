@@ -41,9 +41,15 @@ http://www.hardcoded.net/licenses/bsd_license
     }
     [super setView:aComboboxView];
     if (aComboboxView != nil) {
+        [aComboboxView setUsesDataSource:YES];
         [aComboboxView setDataSource:self];
         [aComboboxView setAction:@selector(comboboxViewSelectionChanged)];
         [aComboboxView setTarget:self];
+        /* This is required for the combobox to send its action whenever it's changed. Normally, it's
+           already set, but then the combobox is created programmatically (xibless), it's not. We
+           make sure it is here.
+        */
+        [[aComboboxView cell] setSendsActionOnEndEditing:YES];
         [self refresh];
     }
 }
