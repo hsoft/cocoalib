@@ -25,6 +25,10 @@ msgid "Cancel"
 msgstr ""
 
 #: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Clear List"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Continue"
 msgstr ""
 
@@ -66,6 +70,10 @@ msgstr ""
 
 #: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Please Contribute"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Please wait..."
 msgstr ""
 
 #: cocoalib/en.lproj/cocoalib.strings:0

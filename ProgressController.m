@@ -142,7 +142,7 @@ static ProgressController *_mainPC = nil;
 - (void)setJobDesc:(NSString *)desc
 {
     [descText setStringValue:desc];
-    [statusText setStringValue:@"Please wait..."];
+    [statusText setStringValue:NSLocalizedStringFromTable(@"Please wait...", @"cocoalib", @"")];
 }
 
 - (void)setWorker:(NSObject<Worker> *)worker

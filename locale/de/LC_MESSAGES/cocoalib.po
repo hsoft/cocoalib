@@ -135,3 +135,11 @@ msgstr ""
 #: cocoalib/en.lproj/cocoalib.strings:0
 msgid "Yes"
 msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Clear List"
+msgstr ""
+
+#: cocoalib/en.lproj/cocoalib.strings:0
+msgid "Please wait..."
+msgstr ""

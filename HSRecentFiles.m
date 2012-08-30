@@ -53,7 +53,7 @@ http://www.hardcoded.net/licenses/bsd_license
     [self fillMenu:menu];
     if ([filepaths count] > 0) {
         [menu addItem:[NSMenuItem separatorItem]];
-        NSMenuItem *mi = [menu addItemWithTitle:@"Clear List" action:@selector(clearMenu:) keyEquivalent:@""];
+        NSMenuItem *mi = [menu addItemWithTitle:NSLocalizedStringFromTable(@"Clear List", @"cocoalib", @"") action:@selector(clearMenu:) keyEquivalent:@""];
         [mi setTarget:self];
     }
 }
