@@ -22,11 +22,13 @@ owner.codeTextField = regkeyField
 owner.emailTextField = regemailField
 owner.registerOperatingSystemButton = osCheckbox
 result.initialFirstResponder = regkeyField
+
 titleLabel.font = Font(FontFamily.Label, FontSize.RegularControl, traits=[FontTrait.Bold])
 smallerFont = Font(FontFamily.Label, FontSize.SmallControl)
 for control in (promptLabel, regkeyLabel, regemailLabel, osCheckbox, osSubLabel):
     control.font = smallerFont
-osCheckbox.controlSize = const.NSSmallControlSize
+regkeyField.usesSingleLineMode = regemailField.usesSingleLineMode = False
+osCheckbox.controlSize = ControlSize.Small
 osCheckbox.state = const.NSOnState
 contributeButton.action = Action(owner, 'contribute')
 cancelButton.action = Action(owner, 'cancelCode')
