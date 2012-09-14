@@ -27,7 +27,7 @@ titleLabel.font = Font(FontFamily.Label, FontSize.RegularControl, traits=[FontTr
 smallerFont = Font(FontFamily.Label, FontSize.SmallControl)
 for control in (promptLabel, regkeyLabel, regemailLabel, osCheckbox, osSubLabel):
     control.font = smallerFont
-regkeyField.usesSingleLineMode = regemailField.usesSingleLineMode = False
+regkeyField.usesSingleLineMode = regemailField.usesSingleLineMode = True
 osCheckbox.controlSize = ControlSize.Small
 osCheckbox.state = const.NSOnState
 contributeButton.action = Action(owner, 'contribute')
