@@ -8,14 +8,17 @@ http://www.hardcoded.net/licenses/bsd_license
 
 #import "HSAboutBox.h"
 #import "HSAboutBox_UI.h"
+#import "HSFairwareReminder.h"
 
 @implementation HSAboutBox
 
 @synthesize titleTextField;
 @synthesize versionTextField;
 @synthesize copyrightTextField;
+@synthesize registeredTextField;
+@synthesize registerButton;
 
-- (id)initWithApp:(PyBaseApp *)aApp
+- (id)initWithApp:(PyFairware *)aApp
 {
     self = [super initWithWindow:nil];
     [self setWindow:createHSAboutBox_UI(self)];
@@ -37,6 +40,21 @@ http://www.hardcoded.net/licenses/bsd_license
     [versionTextField setStringValue:[NSString stringWithFormat:@"Version: %@",version]];
     NSString *copyright = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSHumanReadableCopyright"];
     [copyrightTextField setStringValue:copyright];
+    if ([app isRegistered]) {
+        [registeredTextField setHidden:NO];
+        [registerButton setHidden:YES];
+    }
+    else {
+        [registeredTextField setHidden:YES];
+        [registerButton setHidden:NO];
+    }    
 }
 
+- (void)showRegisterDialog
+{
+    HSFairwareReminder *fr = [[HSFairwareReminder alloc] initWithApp:app];
+    [fr enterCode];
+    [fr release];
+    [self updateFields];
+}
 @end

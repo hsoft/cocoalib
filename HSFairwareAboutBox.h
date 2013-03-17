@@ -7,7 +7,7 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
-#import "PyBaseApp.h"
+#import "PyFairware.h"
 
 @interface HSAboutBox : NSWindowController
 {
@@ -17,13 +17,17 @@ http://www.hardcoded.net/licenses/bsd_license
     NSTextField *registeredTextField;
     NSButton *registerButton;
     
-    PyBaseApp *app;
+    PyFairware *app;
 }
 
 @property (readwrite, retain) NSTextField *titleTextField;
 @property (readwrite, retain) NSTextField *versionTextField;
 @property (readwrite, retain) NSTextField *copyrightTextField;
+@property (readwrite, retain) NSTextField *registeredTextField;
+@property (readwrite, retain) NSButton *registerButton;
 
-- (id)initWithApp:(PyBaseApp *)app;
+- (id)initWithApp:(PyFairware *)app;
 - (void)updateFields;
+
+- (void)showRegisterDialog;
 @end

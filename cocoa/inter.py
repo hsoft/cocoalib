@@ -243,23 +243,43 @@ class PyTable(PyGUIObject):
     def update_selection(self):
         self.callback.updateSelection()
 
-class FairwareView:
-    def setupAsRegistered(self): pass
-    def showFairwareNagWithPrompt_(self, prompt: str): pass
-    def showDemoNagWithPrompt_(self, prompt: str): pass
+class BaseAppView:
     def showMessage_(self, msg: str): pass
-
-class PyFairware(PyGUIObject):
-    FOLLOW_PROTOCOLS = ['HSFairwareProtocol']
     
-    def initialRegistrationSetup(self):
-        self.model.initial_registration_setup()
-    
+class PyBaseApp(PyGUIObject):
     def appName(self) -> str:
         return self.model.PROMPT_NAME
     
     def appLongName(self) -> str:
         return self.model.NAME
+    
+    #--- Python --> Cocoa
+    @dontwrap
+    def get_default(self, key_name):
+        return proxy.prefValue_(key_name)
+    
+    @dontwrap
+    def set_default(self, key_name, value):
+        proxy.setPrefValue_value_(key_name, value)
+    
+    @dontwrap
+    def open_url(self, url):
+        proxy.openURL_(url)
+    
+    @dontwrap
+    def show_message(self, msg):
+        self.callback.showMessage_(msg)
+
+class FairwareView(BaseAppView):
+    def setupAsRegistered(self): pass
+    def showFairwareNagWithPrompt_(self, prompt: str): pass
+    def showDemoNagWithPrompt_(self, prompt: str): pass
+
+class PyFairware(PyBaseApp):
+    FOLLOW_PROTOCOLS = ['HSFairwareProtocol']
+    
+    def initialRegistrationSetup(self):
+        self.model.initial_registration_setup()
     
     def isRegistered(self) -> bool:
         return self.model.registered
@@ -281,14 +301,6 @@ class PyFairware(PyGUIObject):
     
     #--- Python --> Cocoa
     @dontwrap
-    def get_default(self, key_name):
-        return proxy.prefValue_(key_name)
-    
-    @dontwrap
-    def set_default(self, key_name, value):
-        proxy.setPrefValue_value_(key_name, value)
-    
-    @dontwrap
     def setup_as_registered(self):
         self.callback.setupAsRegistered()
     
@@ -300,10 +312,3 @@ class PyFairware(PyGUIObject):
     def show_demo_nag(self, prompt):
         self.callback.showDemoNagWithPrompt_(prompt)
     
-    @dontwrap
-    def open_url(self, url):
-        proxy.openURL_(url)
-    
-    @dontwrap
-    def show_message(self, msg):
-        self.callback.showMessage_(msg)
