@@ -132,7 +132,7 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)expandItem:(NSIndexPath *)item
 {
-    [[self view] expandItem:[self internalizedPath:item]];
+    [[self view] ensureExpanded:item];
 }
 
 /* Caching */

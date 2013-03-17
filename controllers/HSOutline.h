@@ -29,6 +29,7 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)stopEditing;
 - (void)updateSelection;
 - (void)expandItem:(NSIndexPath *)item;
+- (NSIndexPath *)internalizedPath:(NSIndexPath *)path;
 
 /* Caching */
 - (id)property:(NSString *)property valueAtPath:(NSIndexPath *)path;

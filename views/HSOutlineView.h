@@ -15,6 +15,7 @@ http://www.hardcoded.net/licenses/bsd_license
 @protocol HSOutlineViewDelegate <NSOutlineViewDelegate>
 - (NSArray *)selectedIndexPaths; /* array of NSIndexPath* */
 - (NSString *)dataForCopyToPasteboard;
+- (NSIndexPath *)internalizedPath:(NSIndexPath *)path;
 - (void)outlineViewDidEndEditing:(HSOutlineView *)outlineView;
 - (void)outlineViewCancelsEdition:(HSOutlineView *)outlineView;
 - (void)outlineViewWasDoubleClicked:(HSOutlineView *)outlineView;
@@ -34,6 +35,7 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)stopEditing;
 - (void)updateSelection;
 - (void)ignoreEventForEdition:(NSEvent *)aEvent;
+- (void)ensureExpanded:(NSIndexPath *)aPath;
 
 - (IBAction)copy:(id)sender;
 @end

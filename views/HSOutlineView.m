@@ -109,24 +109,32 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)selectNodePaths:(NSArray *)aPaths
 {
-	NSMutableIndexSet *toSelect = [NSMutableIndexSet indexSet];
-	/* To ensure that we have correct row indexes, we must first expand all paths, and *then* select
-	 * row indexes.
-	**/
-	for (NSIndexPath *path in aPaths) {
-	    NSIndexPath *tmppath = [NSIndexPath indexPathWithIndex:[path indexAtPosition:0]];
-	    for (int i=1; i<[path length]; i++) {
-            [self expandItem:tmppath];
-            tmppath = [tmppath indexPathByAddingIndex:[path indexAtPosition:i]];
-        }
-	}
-	for (NSIndexPath *path in aPaths) {
-		[toSelect addIndex:[self rowForItem:path]];
-	}
-	[self selectRowIndexes:toSelect byExtendingSelection:NO];
-	if ([toSelect count] > 0) {
-		[self scrollRowToVisible:[toSelect firstIndex]];
-	}
+    NSMutableIndexSet *toSelect = [NSMutableIndexSet indexSet];
+    /* To ensure that we have correct row indexes, we must first expand all paths, and *then* select
+     * row indexes.
+    **/
+    for (NSIndexPath *path in aPaths) {
+        [self ensureExpanded:path];
+    }
+    for (NSIndexPath *path in aPaths) {
+        [toSelect addIndex:[self rowForItem:path]];
+    }
+    [self selectRowIndexes:toSelect byExtendingSelection:NO];
+    if ([toSelect count] > 0) {
+        [self scrollRowToVisible:[toSelect firstIndex]];
+    }
+}
+
+- (void)ensureExpanded:(NSIndexPath *)aPath
+{
+    /* Expands aPath and make sure that its parent items are expanded as well.
+    */
+    id <HSOutlineViewDelegate> delegate = [self delegate];
+    NSIndexPath *tmppath = [NSIndexPath indexPathWithIndex:[aPath indexAtPosition:0]];
+    for (NSInteger i=1; i<[aPath length]; i++) {
+        [self expandItem:[delegate internalizedPath:tmppath]];
+        tmppath = [tmppath indexPathByAddingIndex:[aPath indexAtPosition:i]];
+    }
 }
 
 - (void)stopEditing
