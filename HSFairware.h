@@ -14,7 +14,6 @@ http://www.hardcoded.net/licenses/bsd_license
     NSInteger appId;
     NSString *name;
     BOOL registered;
-    NSNumber *unpaidHours;
 }
 - (id)initWithAppId:(NSInteger)aAppId name:(NSString *)aName;
 @end

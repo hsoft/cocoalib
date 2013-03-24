@@ -1,5 +1,5 @@
-ownerclass = 'HSAboutBox'
-ownerimport = 'HSAboutBox.h'
+ownerclass = 'HSFairwareAboutBox'
+ownerimport = 'HSFairwareAboutBox.h'
 
 result = Window(259, 217, "")
 result.canResize = False

@@ -50,14 +50,12 @@ NSString* normalizeString(NSString *str)
     appId = aAppId;
     name = [aName retain];
     registered = NO;
-    unpaidHours = nil;
     return self;
 }
 
 - (void)dealloc
 {
     [name release];
-    [unpaidHours release];
     [super dealloc];
 }
 
@@ -78,26 +76,7 @@ NSString* normalizeString(NSString *str)
     }
     if (!registered) {
         BOOL fairwareMode = [ud boolForKey:@"FairwareMode"];
-        if (fairwareMode) {
-            if ([[self unpaidHours] doubleValue] >= 1.0) {
-                NSString *prompt = @"%@ is Fairware, which means \"open source software developed "
-                "with expectation of fair contributions from users\". Hours have been invested in "
-                "this software with the expectation that users will be fair enough to compensate "
-                "them. The \"Unpaid hours\" figure you see below is the hours that have yet to be "
-                "compensated for this project."
-                "\n\n"
-                "If you like this application, please make a contribution that you consider fair. "
-                "Thanks!"
-                "\n\n"
-                "If you cannot afford to contribute, you can either ignore this reminder or send "
-                "an e-mail at support@hardcoded.net so I can send you a registration key."
-                "\n\n"
-                "This dialog doesn't show when there are no unpaid hours or when you have a valid "
-                "contribution key.";
-                [HSFairwareReminder showFairwareNagWithApp:self prompt:fmt(prompt, name)];
-            }
-        }
-        else {
+        if (!fairwareMode) {
             NSString *prompt = @"%@ is fairware, which means \"open source software developed "
                 "with expectation of fair contributions from users\". It's a very interesting "
                 "concept, but one year of fairware has shown that most people just want to know "
@@ -129,7 +108,7 @@ NSString* normalizeString(NSString *str)
     return registered;
 }
 
-- (BOOL)setRegisteredCode:(NSString *)code andEmail:(NSString *)email registerOS:(BOOL)registerOS
+- (BOOL)setRegisteredCode:(NSString *)code andEmail:(NSString *)email
 {
     code = normalizeString(code);
     email = normalizeString(email);
@@ -151,20 +130,6 @@ NSString* normalizeString(NSString *str)
             "make sure that the e-mail you gave is the same as the e-mail you used for your purchase."];
         return NO;
     }
-}
-
-- (NSNumber *)unpaidHours
-{
-    if (unpaidHours == nil) {
-        NSURL *url = [NSURL URLWithString:fmt(@"http://open.hardcoded.net/backend/unpaid/%i", appId)];
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-        NSURLResponse *response = nil;
-        NSError *error = nil;
-        NSData *data = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
-        NSString *unpaidStr = [NSString stringWithUTF8String:[data bytes]];
-        unpaidHours = [[NSNumber numberWithDouble:[unpaidStr doubleValue]] retain];
-    }
-    return unpaidHours;
 }
 
 - (void)contribute

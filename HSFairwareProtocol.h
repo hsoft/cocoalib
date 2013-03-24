@@ -13,8 +13,7 @@ http://www.hardcoded.net/licenses/bsd_license
 - (NSString *)appName;
 - (NSString *)appLongName;
 - (BOOL)isRegistered;
-- (BOOL)setRegisteredCode:(NSString *)code andEmail:(NSString *)email registerOS:(BOOL)registerOS;
-- (NSNumber *)unpaidHours;
+- (BOOL)setRegisteredCode:(NSString *)code andEmail:(NSString *)email;
 - (void)contribute;
 - (void)buy;
 - (void)aboutFairware;

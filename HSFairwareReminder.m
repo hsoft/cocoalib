@@ -7,7 +7,6 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import "HSFairwareReminder.h"
-#import "HSFairwareReminder_UI.h"
 #import "HSDemoReminder_UI.h"
 #import "HSEnterCode_UI.h"
 #import "Dialogs.h"
@@ -19,20 +18,8 @@ http://www.hardcoded.net/licenses/bsd_license
 @synthesize codePromptTextField;
 @synthesize codeTextField;
 @synthesize emailTextField;
-@synthesize registerOperatingSystemButton;
-@synthesize fairwareNagPanel;
-@synthesize fairwarePromptTextField;
-@synthesize fairwareUnpaidHoursTextField;
 @synthesize demoNagPanel;
 @synthesize demoPromptTextField;
-
-+ (BOOL)showFairwareNagWithApp:(id <HSFairwareProtocol>)app prompt:(NSString *)prompt
-{
-    HSFairwareReminder *fr = [[HSFairwareReminder alloc] initWithApp:app];
-    BOOL r = [fr showFairwareNagPanelWithPrompt:prompt];
-    [fr release];
-    return r;
-}
 
 + (BOOL)showDemoNagWithApp:(id <HSFairwareProtocol>)app prompt:(NSString *)prompt
 {
@@ -46,7 +33,6 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     self = [super init];
     app = aApp;
-    [self setFairwareNagPanel:createHSFairwareReminder_UI(self)];
     [self setDemoNagPanel:createHSDemoReminder_UI(self)];
     [self setCodePanel:createHSEnterCode_UI(self)];
     [codePanel update];
@@ -77,7 +63,6 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)showEnterCode
 {
-    [fairwareNagPanel close];
     [demoNagPanel close];
     [NSApp stopModalWithCode:NSOKButton];
 }
@@ -86,8 +71,7 @@ http://www.hardcoded.net/licenses/bsd_license
 {
     NSString *code = [codeTextField stringValue];
     NSString *email = [emailTextField stringValue];
-    BOOL registerOperatingSystem = [registerOperatingSystemButton state] == NSOnState;
-    if ([app setRegisteredCode:code andEmail:email registerOS:registerOperatingSystem]) {
+    if ([app setRegisteredCode:code andEmail:email]) {
         [codePanel close];
         [NSApp stopModalWithCode:NSOKButton];
     }
@@ -95,7 +79,6 @@ http://www.hardcoded.net/licenses/bsd_license
 
 - (void)closeDialog
 {
-    [fairwareNagPanel close];
     [demoNagPanel close];
     [NSApp stopModalWithCode:NSCancelButton];
 }
@@ -115,15 +98,6 @@ http://www.hardcoded.net/licenses/bsd_license
             return NO;
         }
     }
-}
-
-- (BOOL)showFairwareNagPanelWithPrompt:(NSString *)prompt
-{
-    [fairwareNagPanel update];
-    [fairwareNagPanel setTitle:fmt([fairwareNagPanel title],[app appName])];
-    [fairwareUnpaidHoursTextField setStringValue:fmt([fairwareUnpaidHoursTextField stringValue],n2f([app unpaidHours]))];
-    [fairwarePromptTextField setStringValue:prompt];
-    return [self showNagPanel:fairwareNagPanel];
 }
 
 - (BOOL)showDemoNagPanelWithPrompt:(NSString *)prompt

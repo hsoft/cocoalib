@@ -15,10 +15,6 @@ http://www.hardcoded.net/licenses/bsd_license
     NSTextField *codePromptTextField;
     NSTextField *codeTextField;
     NSTextField *emailTextField;
-    NSButton *registerOperatingSystemButton;
-    NSWindow *fairwareNagPanel;
-    NSTextField *fairwarePromptTextField;
-    NSTextField *fairwareUnpaidHoursTextField;
     NSWindow *demoNagPanel;
     NSTextField *demoPromptTextField;
     
@@ -29,15 +25,10 @@ http://www.hardcoded.net/licenses/bsd_license
 @property (readwrite, retain) NSTextField *codePromptTextField;
 @property (readwrite, retain) NSTextField *codeTextField;
 @property (readwrite, retain) NSTextField *emailTextField;
-@property (readwrite, retain) NSButton *registerOperatingSystemButton;
-@property (readwrite, retain) NSWindow *fairwareNagPanel;
-@property (readwrite, retain) NSTextField *fairwarePromptTextField;
-@property (readwrite, retain) NSTextField *fairwareUnpaidHoursTextField;
 @property (readwrite, retain) NSWindow *demoNagPanel;
 @property (readwrite, retain) NSTextField *demoPromptTextField;
 
 //Show nag only if needed
-+ (BOOL)showFairwareNagWithApp:(id <HSFairwareProtocol>)app prompt:(NSString *)prompt;
 + (BOOL)showDemoNagWithApp:(id <HSFairwareProtocol>)app prompt:(NSString *)prompt;
 - (id)initWithApp:(id <HSFairwareProtocol>)app;
 
@@ -50,7 +41,6 @@ http://www.hardcoded.net/licenses/bsd_license
 - (void)closeDialog;
 
 - (BOOL)showNagPanel:(NSWindow *)panel; //YES: The code has been sucessfully submitted NO: The use wan't to try the demo.
-- (BOOL)showFairwareNagPanelWithPrompt:(NSString *)prompt;
 - (BOOL)showDemoNagPanelWithPrompt:(NSString *)prompt;
 - (NSInteger)enterCode; //returns the modal code.
 @end

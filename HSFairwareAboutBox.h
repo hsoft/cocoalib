@@ -9,7 +9,7 @@ http://www.hardcoded.net/licenses/bsd_license
 #import <Cocoa/Cocoa.h>
 #import "PyFairware.h"
 
-@interface HSAboutBox : NSWindowController
+@interface HSFairwareAboutBox : NSWindowController
 {
     NSTextField *titleTextField;
     NSTextField *versionTextField;

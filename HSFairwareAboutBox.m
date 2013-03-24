@@ -6,11 +6,11 @@ which should be included with this package. The terms are also available at
 http://www.hardcoded.net/licenses/bsd_license
 */
 
-#import "HSAboutBox.h"
-#import "HSAboutBox_UI.h"
+#import "HSFairwareAboutBox.h"
+#import "HSFairwareAboutBox_UI.h"
 #import "HSFairwareReminder.h"
 
-@implementation HSAboutBox
+@implementation HSFairwareAboutBox
 
 @synthesize titleTextField;
 @synthesize versionTextField;
@@ -21,7 +21,7 @@ http://www.hardcoded.net/licenses/bsd_license
 - (id)initWithApp:(PyFairware *)aApp
 {
     self = [super initWithWindow:nil];
-    [self setWindow:createHSAboutBox_UI(self)];
+    [self setWindow:createHSFairwareAboutBox_UI(self)];
     app = [aApp retain];
     [self updateFields];
     return self;

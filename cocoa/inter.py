@@ -272,7 +272,6 @@ class PyBaseApp(PyGUIObject):
 
 class FairwareView(BaseAppView):
     def setupAsRegistered(self): pass
-    def showFairwareNagWithPrompt_(self, prompt: str): pass
     def showDemoNagWithPrompt_(self, prompt: str): pass
 
 class PyFairware(PyBaseApp):
@@ -284,11 +283,8 @@ class PyFairware(PyBaseApp):
     def isRegistered(self) -> bool:
         return self.model.registered
     
-    def setRegisteredCode_andEmail_registerOS_(self, code: str, email: str, registerOS: bool) -> bool:
-        return self.model.set_registration(code, email, registerOS)
-    
-    def unpaidHours(self) -> object: # NSNumber
-        return self.model.unpaid_hours
+    def setRegisteredCode_andEmail_(self, code: str, email: str) -> bool:
+        return self.model.set_registration(code, email, False)
     
     def contribute(self):
         self.model.contribute()
@@ -303,10 +299,6 @@ class PyFairware(PyBaseApp):
     @dontwrap
     def setup_as_registered(self):
         self.callback.setupAsRegistered()
-    
-    @dontwrap
-    def show_fairware_nag(self, prompt):
-        self.callback.showFairwareNagWithPrompt_(prompt)
     
     @dontwrap
     def show_demo_nag(self, prompt):

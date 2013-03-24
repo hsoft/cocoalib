@@ -1,7 +1,7 @@
 ownerclass = 'HSFairwareReminder'
 ownerimport = 'HSFairwareReminder.h'
 
-result = Window(450, 228, "Enter Key")
+result = Window(450, 185, "Enter Key")
 result.canClose = False
 result.canResize = False
 result.canMinimize = False
@@ -11,8 +11,6 @@ regkeyLabel = Label(result, "Registration key:")
 regkeyField = TextField(result, "")
 regemailLabel = Label(result, "Registration e-mail:")
 regemailField = TextField(result, "")
-osCheckbox = Checkbox(result, "Tell Hardcoded Software which operating system I'm using.")
-osSubLabel = Label(result, "(to have some contribution statistics based on OSes)")
 contributeButton = Button(result, "Contribute")
 cancelButton = Button(result, "Cancel")
 submitButton = Button(result, "Submit")
@@ -20,16 +18,13 @@ submitButton = Button(result, "Submit")
 owner.codePromptTextField = promptLabel
 owner.codeTextField = regkeyField
 owner.emailTextField = regemailField
-owner.registerOperatingSystemButton = osCheckbox
 result.initialFirstResponder = regkeyField
 
 titleLabel.font = Font(FontFamily.Label, FontSize.RegularControl, traits=[FontTrait.Bold])
 smallerFont = Font(FontFamily.Label, FontSize.SmallControl)
-for control in (promptLabel, regkeyLabel, regemailLabel, osCheckbox, osSubLabel):
+for control in (promptLabel, regkeyLabel, regemailLabel):
     control.font = smallerFont
 regkeyField.usesSingleLineMode = regemailField.usesSingleLineMode = True
-osCheckbox.controlSize = ControlSize.Small
-osCheckbox.state = const.NSOnState
 contributeButton.action = Action(owner, 'contribute')
 cancelButton.action = Action(owner, 'cancelCode')
 cancelButton.keyEquivalent = "\\E"
@@ -52,12 +47,6 @@ regkeyField.fill(Pack.Left)
 regemailField.packRelativeTo(regkeyField, Pack.Below, Pack.Right)
 regemailLabel.packRelativeTo(regemailField, Pack.Left, Pack.Middle)
 regemailField.fill(Pack.Left)
-osCheckbox.packRelativeTo(regemailField, Pack.Below, Pack.Right)
-osCheckbox.fill(Pack.Left)
-osSubLabel.packRelativeTo(osCheckbox, Pack.Below, Pack.Left)
-osSubLabel.y += 3
-contributeButton.packRelativeTo(osSubLabel, Pack.Below, Pack.Left)
-osSubLabel.x += 18
-osSubLabel.fill(Pack.Right)
-submitButton.packRelativeTo(osSubLabel, Pack.Below, Pack.Right)
+contributeButton.packRelativeTo(regemailLabel, Pack.Below, Pack.Left)
+submitButton.packRelativeTo(regemailField, Pack.Below, Pack.Right)
 cancelButton.packRelativeTo(submitButton, Pack.Left, Pack.Middle)
