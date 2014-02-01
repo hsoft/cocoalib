@@ -7,7 +7,13 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
-#import <Python.h>
+#import "HSFairwareProtocol.h"
 
-void setCocoaViewsModuleName(NSString *moduleName);
-PyObject* createCallback(NSString *aViewClassName, id aViewRef);
+@interface HSFairware : NSObject <HSFairwareProtocol>
+{
+    NSInteger appId;
+    NSString *name;
+    BOOL registered;
+}
+- (id)initWithAppId:(NSInteger)aAppId name:(NSString *)aName;
+@end

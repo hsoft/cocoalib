@@ -7,7 +7,14 @@ http://www.hardcoded.net/licenses/bsd_license
 */
 
 #import <Cocoa/Cocoa.h>
-#import <Python.h>
 
-void setCocoaViewsModuleName(NSString *moduleName);
-PyObject* createCallback(NSString *aViewClassName, id aViewRef);
+@protocol HSFairwareProtocol
+- (void)initialRegistrationSetup;
+- (NSString *)appName;
+- (NSString *)appLongName;
+- (BOOL)isRegistered;
+- (BOOL)setRegisteredCode:(NSString *)code andEmail:(NSString *)email;
+- (void)contribute;
+- (void)buy;
+- (void)aboutFairware;
+@end
