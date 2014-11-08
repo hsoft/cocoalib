@@ -76,7 +76,7 @@ http://www.hardcoded.net/licenses/bsd_license
         NSString *title = NSLocalizedStringFromTable([[c headerCell] stringValue], @"columns", @"");
         [[c headerCell] setStringValue:title];
     }
-    NSUserDefaults *udc = [NSUserDefaultsController sharedUserDefaultsController];
+    NSUserDefaultsController *udc = [NSUserDefaultsController sharedUserDefaultsController];
     HSColumnDef *cdef = columns;
     while (cdef->attrname != nil) {
         if ([[self view] tableColumnWithIdentifier:cdef->attrname] != nil) {
