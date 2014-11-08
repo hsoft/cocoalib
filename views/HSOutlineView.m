@@ -131,9 +131,10 @@ http://www.hardcoded.net/licenses/bsd_license
     */
     id <HSOutlineViewDelegate> delegate = [self delegate];
     NSIndexPath *tmppath = [NSIndexPath indexPathWithIndex:[aPath indexAtPosition:0]];
+    [self expandItem:[delegate internalizedPath:tmppath]];
     for (NSInteger i=1; i<[aPath length]; i++) {
-        [self expandItem:[delegate internalizedPath:tmppath]];
         tmppath = [tmppath indexPathByAddingIndex:[aPath indexAtPosition:i]];
+        [self expandItem:[delegate internalizedPath:tmppath]];
     }
 }
 
