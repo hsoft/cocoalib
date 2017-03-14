@@ -14,10 +14,10 @@ extern NSString *JobCancelledNotification;
 
 @interface ProgressController : NSWindowController <NSWindowDelegate>
 {
-    NSButton *cancelButton;
-    NSProgressIndicator *progressBar;
-    NSTextField *statusText;
-    NSTextField *descText;
+    IBOutlet NSButton *cancelButton;
+    IBOutlet NSProgressIndicator *progressBar;
+    IBOutlet NSTextField *statusText;
+    IBOutlet NSTextField *descText;
     
     id _jobId;
     BOOL _running;
@@ -33,7 +33,7 @@ extern NSString *JobCancelledNotification;
 
 - (id)init;
 
-- (void)cancel;
+- (IBAction)cancel:(id)sender;
 
 - (void)hide;
 - (void)show;

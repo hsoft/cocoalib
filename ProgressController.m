@@ -8,7 +8,6 @@ http://www.gnu.org/licenses/gpl-3.0.html
 
 #import "ProgressController.h"
 #import "Utils.h"
-#import "ProgressController_UI.h"
 
 NSString *JobCompletedNotification = @"JobCompletedNotification";
 NSString *JobCancelledNotification = @"JobCancelledNotification";
@@ -30,8 +29,8 @@ static ProgressController *_mainPC = nil;
 
 - (id)init
 {
-    self = [super initWithWindow:nil];
-    [self setWindow:createProgressController_UI(self)];
+    self = [super initWithWindowNibName:@"progress"];
+    [self window];
     [progressBar setUsesThreadedAnimation:YES];
     _worker = nil;
     _running = NO;
@@ -39,7 +38,7 @@ static ProgressController *_mainPC = nil;
     return self;
 }
 
-- (void)cancel
+- (IBAction)cancel:(id)sender
 {
     [self hide];
 }
