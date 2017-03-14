@@ -1,5 +1,5 @@
 /* 
-Copyright 2015 Hardcoded Software (http://www.hardcoded.net)
+Copyright 2017 Virgil Dupras
 
 This software is licensed under the "GPLv3" License as described in the "LICENSE" file, 
 which should be included with this package. The terms are also available at 
@@ -10,7 +10,7 @@ http://www.gnu.org/licenses/gpl-3.0.html
 
 @interface HSErrorReportWindow : NSWindowController
 {
-    NSTextView *contentTextView;
+    IBOutlet NSTextView *contentTextView;
     NSString *githubUrl;
 }
 
@@ -21,6 +21,6 @@ http://www.gnu.org/licenses/gpl-3.0.html
 + (void)showErrorReportWithContent:(NSString *)content githubUrl:(NSString *)githubUrl;
 - (id)initWithContent:(NSString *)content githubUrl:(NSString *)githubUrl;
 
-- (void)goToGithub;
-- (void)close;
+- (IBAction)goToGithub:(id)sender;
+- (IBAction)close:(id)sender;
 @end
