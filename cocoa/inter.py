@@ -14,7 +14,10 @@ class PyGUIObject:
     def bindCallback_(self, callback: pyref):
         self.callback = callback
         self.model.view = self
-    
+
+    def bindCallbackWithoutView_(self, callback: pyref):
+        self.callback = callback
+
     # Call this before the ObjC callback is deallocated to avoid calls to that deallocated instance.
     def free(self):
         self.model.view = None
